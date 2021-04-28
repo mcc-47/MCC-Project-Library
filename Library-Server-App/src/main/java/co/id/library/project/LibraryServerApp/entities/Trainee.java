@@ -49,7 +49,6 @@ public class Trainee implements Serializable {
     @JoinColumn(name = "id_mcc", referencedColumnName = "id_mcc", insertable = false, updatable = false)
     @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Employee employee;
-    
 
     public Trainee() {
     }
@@ -58,20 +57,11 @@ public class Trainee implements Serializable {
         this.idMcc = idMcc;
     }
 
-
-    public Trainee(Integer idMcc, String batch, String statusMcc, Project idProject) {
+    public Trainee(Integer idMcc, String statusMcc) {
         this.idMcc = idMcc;
-        this.batch = batch;
         this.statusMcc = statusMcc;
-        this.idProject = idProject;
     }
 
-    public Trainee(Project idProject) {
-        this.idProject = idProject;
-    }
-    
-    
-    
     public Integer getIdMcc() {
         return idMcc;
     }

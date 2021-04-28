@@ -5,11 +5,10 @@
  */
 package co.id.library.project.LibraryServerApp.dto;
 
-/**
- *
- * @author ASUS
- */
+import java.util.List;
+
 public class ProjectTraineeDTO {
+    
     private Integer idProject;
     private String judul;
     private String deskripsi;
@@ -17,24 +16,22 @@ public class ProjectTraineeDTO {
     private String uml;
     private String skema;
     private String link;
-    private String currentStatus;
-    private Integer idSatu;
-    private Integer idDua;
-    private Integer idTiga;
+    private Integer jumlahAnggota;
+    private List<Integer> idMcc;
 
-    public ProjectTraineeDTO(Integer idProject, String judul, String deskripsi, String erd, String uml, String skema, 
-            String link, String currentStatus, Integer idSatu, Integer idDua, Integer idTiga) {
-        this.idProject = idProject;
-        this.judul = judul;
-        this.deskripsi = deskripsi;
-        this.erd = erd;
-        this.uml = uml;
-        this.skema = skema;
-        this.link = link;
-        this.currentStatus = currentStatus;
-        this.idSatu = idSatu;
-        this.idDua = idDua;
-        this.idTiga = idTiga;
+    public ProjectTraineeDTO() {
+    }
+
+    public ProjectTraineeDTO(ProjectTraineeDTO projectTrainee) {
+        this.idProject = projectTrainee.getIdProject();
+        this.judul = projectTrainee.getJudul();
+        this.deskripsi = projectTrainee.getDeskripsi();
+        this.erd = projectTrainee.getErd();
+        this.uml = projectTrainee.getUml();
+        this.skema = projectTrainee.getSkema();
+        this.link = projectTrainee.getLink();
+        this.jumlahAnggota = projectTrainee.getJumlahAnggota();
+        this.idMcc = projectTrainee.getIdMcc();
     }
 
     public Integer getIdProject() {
@@ -93,39 +90,20 @@ public class ProjectTraineeDTO {
         this.link = link;
     }
 
-    public String getCurrentStatus() {
-        return currentStatus;
+    public Integer getJumlahAnggota() {
+        return jumlahAnggota;
     }
 
-    public void setCurrentStatus(String currentStatus) {
-        this.currentStatus = currentStatus;
+    public void setJumlahAnggota(Integer jumlahAnggota) {
+        this.jumlahAnggota = jumlahAnggota;
     }
 
-    public Integer getIdSatu() {
-        return idSatu;
+    public List<Integer> getIdMcc() {
+        return idMcc;
     }
 
-    public void setIdSatu(Integer idSatu) {
-        this.idSatu = idSatu;
+    public void setIdMcc(List<Integer> idMcc) {
+        this.idMcc = idMcc;
     }
-
-    public Integer getIdDua() {
-        return idDua;
-    }
-
-    public void setIdDua(Integer idDua) {
-        this.idDua = idDua;
-    }
-
-    public Integer getIdTiga() {
-        return idTiga;
-    }
-
-    public void setIdTiga(Integer idTiga) {
-        this.idTiga = idTiga;
-    }
-    
-    
-    
     
 }
