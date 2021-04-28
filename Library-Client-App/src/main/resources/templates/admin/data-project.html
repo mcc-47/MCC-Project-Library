@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Data Project</title>
+    <div th:replace="fragments/header-link :: header-link"></div>     
+</head>
+
+<body>
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+    <div class="content-container">
+        <div th:replace="fragments/header :: header"></div>
+
+        <div class="container my-3">
+
+            <h3>Data Project</h3>
+
+
+            <br>
+            <br>
+            <table id="ProjectTable" class="table table-bordered table-striped table-hover-col-sm-3">
+                <thead>
+
+                    <tr>
+                        <td>No</td>
+                        <td>Judul</td>
+                        <td>Deskripsi</td>
+                        <td>ERD</td>
+                        <td>UML</td>
+                        <td>Skema</td>
+                        <td>Link</td>
+                        <td>Trainee List</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+
+                <script th:src="@{/js/admin/data-project.js}"></script>
+                <tbody>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer"></div>                  
+    <script>
+        $(document).ready(function () {
+            var table = $('#TraineeTable').DataTable();
+        });
+    </script>
+
+    <div th:replace="admin/modal-edit-project :: modal-edit-project"></div>
+    <script th:src="@{/js/form-validation.js}"></script>
+
+
+</body>
+</html>

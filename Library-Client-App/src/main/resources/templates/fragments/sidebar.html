@@ -1,0 +1,48 @@
+<div class="sidebar-container" th:fragment="sidebar">
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <li th:class="${#strings.contains(#httpServletRequest.requestURI,'/dashboard')} ? 'menu-item active' : 'menu-item'">
+                            <a th:href="@{/dashboard}" class="menu-link">
+                                <i class="fas fa-tachometer-alt" aria-hidden="true"></i> Dashboard
+                            </a>
+                        </li>
+                      
+                        <div class="sb-sidenav-menu-heading">Contents</div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Data Tables
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+
+                                <li th:class="${#strings.contains(#httpServletRequest.requestURI,'/trainer')} ? 'menu-item active' : 'menu-item'">
+                                    <a th:href="@{/trainer}" class="menu-link">
+                                        <i class="fa fa-folder-open" aria-hidden="true"></i> Data Trainer
+                                    </a>
+                                </li>
+
+                                <li th:class="${#strings.contains(#httpServletRequest.requestURI,'/trainee')} ? 'menu-item active' : 'menu-item'">
+                                    <a th:href="@{/trainee}" class="menu-link">
+                                        <i class="fa fa-folder-open" aria-hidden="true"></i> Data Trainee
+                                    </a>
+                                </li>
+
+                                <li th:class="${#strings.contains(#httpServletRequest.requestURI,'/project')} ? 'menu-item active' : 'menu-item'">
+                                    <a th:href="@{/project}" class="menu-link">
+                                        <i class="fa fa-folder-open" aria-hidden="true"></i> Data Project
+                                    </a>
+                                </li>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+    </div>

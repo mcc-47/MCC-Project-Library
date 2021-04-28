@@ -1,0 +1,88 @@
+<div class="modal-edit-project" th:fragment="modal-edit-project">
+
+    <div class="modal fade" id="update-project" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Trainee</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="projectUpdate" class="needs-validation" novalidate>
+                        <div class="form-group">
+                            <label for="idProject">ID Project</label>
+                            <input type="number" id="idProject" class="form-control" placeholder="ID Project" required>
+                            <div class="invalid-feedback">
+                                Please enter your id project.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="judul">Judul Project</label>
+                            <input type="text" id="judul" class="form-control" placeholder="Judul Project" required> 
+                            <div class="invalid-feedback">
+                                Please enter your judul.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deskripsi">Deskripsi</label>
+                            <input type="text" id="deskripsi" class="form-control" placeholder="Deskripsi" required> 
+                            <div class="invalid-feedback">
+                                Please enter your deskripsi.
+                            </div>
+                        </div>
+                        
+                         <div class="form-group">
+                            <label for="erd">ERD</label>
+                            <input type="text" id="erd" class="form-control" placeholder="ERD" required> 
+                            <div class="invalid-feedback">
+                                Please enter your erd
+                            </div>
+                        </div>
+                        
+                         <div class="form-group">
+                            <<label for="uml">UML</label>
+                            <input type="text" id="uml" class="form-control" placeholder="UML" required> 
+                            <div class="invalid-feedback">
+                                Please enter your uml.
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <<label for="skema">Skema Project</label>
+                            <input type="text" id="skema" class="form-control" placeholder="Skema Project" required> 
+                            <div class="invalid-feedback">
+                                Please enter your skema.
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <<label for="link">Link Full Project</label>
+                            <input type="text" id="link" class="form-control" placeholder="Link Full Project" required> 
+                            <div class="invalid-feedback">
+                                Please enter your link full project.
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <<label for="traineeList">Trainee List</label>
+                            <input type="text" id="traineeList" class="form-control" placeholder="Trainee List" required> 
+                            <div class="invalid-feedback">
+                                Please enter your trainee list.
+                            </div>
+                        </div>
+                            
+                        </div>
+                        <div class="modal-footer border-top-0 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button data-dismiss="modal" class="btn btn-danger col-2">Back</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

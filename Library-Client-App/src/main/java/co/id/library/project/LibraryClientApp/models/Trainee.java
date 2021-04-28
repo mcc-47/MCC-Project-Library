@@ -15,7 +15,6 @@ public class Trainee {
     public Trainee() {
     }
 
-    
     public Trainee(Integer idMcc, String nama, String batch, String email, String jabatan, String status) {
         this.idMcc = idMcc;
         this.nama = nama;

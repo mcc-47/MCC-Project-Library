@@ -11,7 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -25,7 +28,7 @@ public class AuthController {
         Authentication authent = SecurityContextHolder.getContext().getAuthentication();
         if (!(authent instanceof AnonymousAuthenticationToken)) {
             /* The user is logged in :) */
-            return "redirect:/content/dashboard";
+            return "redirect:/dashboard";
         }
 
         AuthRequest auth = new AuthRequest();
@@ -34,7 +37,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String loginProcess(@ModelAttribute("auth") AuthRequest auth) {
+    public String loginProcess(@ModelAttribute AuthRequest auth) {
         String redirectURL = "";
 
         if (authService.loginProcess(auth)) {
@@ -47,6 +50,6 @@ public class AuthController {
 
     @GetMapping("/dashboard")
     public String dashboard() {
-        return "content/dashboard";
+        return "/dashboard";
     }
 }

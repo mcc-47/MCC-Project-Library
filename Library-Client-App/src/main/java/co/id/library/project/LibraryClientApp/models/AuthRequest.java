@@ -10,12 +10,12 @@ import lombok.Data;
 
 @Data
 public class AuthRequest {
-    private String userName;
-    private String userPassword;
+    private String username;
+    private String password;
 
-    public AuthRequest(String userName, String userPassword) {
-        this.userName = userName;
-        this.userPassword = userPassword;
+    public AuthRequest(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public AuthRequest() {

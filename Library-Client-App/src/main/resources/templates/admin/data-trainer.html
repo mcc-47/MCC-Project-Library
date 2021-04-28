@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Data Trainer</title>
+    <div th:replace="fragments/header-link :: header-link"></div>     
+</head>
+
+<body>
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+    <div class="content-container">
+        <div th:replace="fragments/header :: header"></div>
+
+        <div class="container my-3">
+
+            <h3>Data Trainer</h3>
+
+
+            <br>
+            <br>
+            <table id="TrainerTable" class="table table-bordered table-striped table-hover-col-sm-3">
+                <thead>
+
+                    <tr>
+                        <td>No</td>
+                        <td>Nama Trainer</td>
+                        <td>Email</td>
+                        <td>Spesialis</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+
+                <script th:src="@{/js/admin/data-trainer.js}"></script>
+                <tbody>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer"></div>                  
+    <script>
+        $(document).ready(function () {
+            var table = $('#TrainerTable').DataTable();
+        });
+    </script>
+
+    <div th:replace="admin/modal-edit-trainer :: modal-edit-trainer"></div>
+    <script th:src="@{/js/form-validation.js}"></script>
+
+
+</body>
+</html>

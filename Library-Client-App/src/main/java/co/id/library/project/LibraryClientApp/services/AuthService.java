@@ -21,11 +21,9 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class AuthService {
-    
-    @Autowired
+   @Autowired
     private RestTemplate restTemplate;
 
-    @Autowired
     @Value("${api.url}/login")
     private String url;
 
@@ -36,9 +34,9 @@ public class AuthService {
             ResponseEntity<AuthResponse> response = restTemplate.exchange(url, HttpMethod.POST, entity,
                     new ParameterizedTypeReference<AuthResponse>() {
             });
-            /*panggil method untuk set spring security session*/
-            setAuthorization(request.getUserName(), request.getUserPassword(),
-                    response.getBody().getAuthorities());
+
+            /*call method that set spring security session*/
+            setAuthorization(request.getUsername(), request.getPassword(), response.getBody().getAuthorities());
 
             isLoginSuccess = true;
 
@@ -49,7 +47,7 @@ public class AuthService {
         return isLoginSuccess;
     }
 
-    /*Method untuk mengeset spring security session*/
+    /*Method to set spring security session*/
     private void setAuthorization(String userName, String userPassword, List<String> authorities) {
         UsernamePasswordAuthenticationToken authToken
                 = new UsernamePasswordAuthenticationToken(userName, userPassword, getListAuthorities(authorities));
@@ -57,10 +55,11 @@ public class AuthService {
         SecurityContextHolder.getContext().setAuthentication(authToken);
     }
 
-    /*List dari authorities*/
+    /*List of authorities*/
     private List<GrantedAuthority> getListAuthorities(List<String> authorities) {
         return authorities.stream()
                 .map(auth -> new SimpleGrantedAuthority(auth))
                 .collect(Collectors.toList());
+
     }
 }
