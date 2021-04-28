@@ -8,9 +8,11 @@ package co.id.library.project.LibraryServerApp.controllers;
 import co.id.library.project.LibraryServerApp.dto.ProjectDTO;
 import co.id.library.project.LibraryServerApp.dto.ProjectTrainee;
 import co.id.library.project.LibraryServerApp.entities.Project;
+import co.id.library.project.LibraryServerApp.services.NotificationService;
 import co.id.library.project.LibraryServerApp.services.ProjectService;
 import co.id.library.project.LibraryServerApp.services.ProjectTraineeService;
 import java.util.List;
+import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +35,9 @@ public class ProjectController {
     
     @Autowired
     ProjectTraineeService projectTraineeService;
+    
+    @Autowired
+    NotificationService notificationService;
             
     @GetMapping("/get-all")
     public List<ProjectDTO> getProjectDTO(){
@@ -55,7 +60,7 @@ public class ProjectController {
     }
     
     @PostMapping("/trainee")
-    public String createProjectTrainee (@RequestBody ProjectTrainee projectTrainee){
+    public String createProjectTrainee (@RequestBody ProjectTrainee projectTrainee)throws MessagingException{
         return projectTraineeService.registerProject(projectTrainee);
     }
 }

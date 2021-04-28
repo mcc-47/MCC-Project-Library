@@ -11,8 +11,8 @@ import co.id.library.project.LibraryServerApp.entities.Status;
 import co.id.library.project.LibraryServerApp.entities.Trainee;
 import co.id.library.project.LibraryServerApp.repositories.ProjectRepository;
 import co.id.library.project.LibraryServerApp.repositories.TraineeRepository;
-import java.util.ArrayList;
 import java.util.List;
+import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +31,11 @@ public class ProjectTraineeService {
     
     @Autowired
     TraineeRepository traineeRepository;
+    
+    @Autowired
+    NotificationService notificationService;
         
-    public String registerProject (ProjectTrainee projectTrainee){
+    public String registerProject (ProjectTrainee projectTrainee)throws MessagingException{
         projectRepository.save(new Project(
                 projectTrainee.getIdProject(),
                 projectTrainee.getJudul(),
@@ -48,6 +51,8 @@ public class ProjectTraineeService {
             addProject.setIdProject( new Project(projectTrainee.getIdProject()));
             traineeRepository.save(addProject);
         }        
+        Integer trainer = traineeRepository.findById(projectTrainee.getIdMcc().get(0)).get().getEmployee().getIdTrainer().getIdMcc();
+        notificationService.notifRegisJudul(trainer);
         return "Registrasi Project Berhasil";
     }
     
