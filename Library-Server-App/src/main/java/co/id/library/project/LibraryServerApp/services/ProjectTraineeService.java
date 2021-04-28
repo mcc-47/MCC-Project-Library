@@ -5,7 +5,7 @@
  */
 package co.id.library.project.LibraryServerApp.services;
 
-import co.id.library.project.LibraryServerApp.dto.ProjectTraineeDTO;
+import co.id.library.project.LibraryServerApp.dto.ProjectTrainee;
 import co.id.library.project.LibraryServerApp.entities.Project;
 import co.id.library.project.LibraryServerApp.entities.Status;
 import co.id.library.project.LibraryServerApp.entities.Trainee;
@@ -16,53 +16,39 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+/**
+ *
+ * @author ASUS
+ */
 @Service
 public class ProjectTraineeService {
+    ProjectTrainee projectTrainee;
+    
+    Project project;
     
     @Autowired
     ProjectRepository projectRepository;
     
     @Autowired
     TraineeRepository traineeRepository;
-    
-    ProjectTraineeDTO projectTraineeDTO;
-    
-    public Project create(Project project){
-        return projectRepository.save(project);
-    }
-    
-    public String registerProject (ProjectTraineeDTO projectTraineeDTO){
-        List<Trainee> trainee = new ArrayList<>();
-        projectRepository.save(new Project(
-                projectTraineeDTO.getIdProject(),
-                projectTraineeDTO.getJudul(),
-                projectTraineeDTO.getDeskripsi(),
-                projectTraineeDTO.getErd(),
-                projectTraineeDTO.getUml(),
-                projectTraineeDTO.getSkema(),
-                projectTraineeDTO.getLink(),
-                new Status(1,"proses")
-        ));
-        //Trainee addProject = traineeRepository.findById(projectTrainee.getIdSatu()).get();
-//        traineeRepository.save(addProject.setIdPro(projectTrainee.getIdProject()));
         
+    public String registerProject (ProjectTrainee projectTrainee){
+        projectRepository.save(new Project(
+                projectTrainee.getIdProject(),
+                projectTrainee.getJudul(),
+                projectTrainee.getDeskripsi(),
+                projectTrainee.getErd(),
+                projectTrainee.getUml(),
+                projectTrainee.getSkema(),
+                projectTrainee.getLink(),
+                new Status(1)
+        ));
+        for( Integer anggota : projectTrainee.getIdMcc() ){
+            Trainee addProject = traineeRepository.findById(anggota).get();
+            addProject.setIdProject( new Project(projectTrainee.getIdProject()));
+            traineeRepository.save(addProject);
+        }        
         return "Registrasi Project Berhasil";
     }
     
-//    public Trainee update (Integer id, Trainee trainee){
-//        Trainee updateTrainee = traineeRepository.findById(id).get();
-//    }
-    
-//    public Project update (Integer id, Project project){
-//        Project updateProject = projectRepository.findById(id).get();
-//        updateProject.setJudul(project.getJudul());
-//        updateProject.setDeskripsi(project.getDeskripsi());
-//        updateProject.setErd(project.getErd());
-//        updateProject.setUml(project.getUml());
-//        updateProject.setSkema(project.getSkema());
-//        updateProject.setLink(project.getLink());
-//        updateProject.setCurrentStatus(project.getCurrentStatus());
-//        return projectRepository.save(updateProject);
-//    }
 }

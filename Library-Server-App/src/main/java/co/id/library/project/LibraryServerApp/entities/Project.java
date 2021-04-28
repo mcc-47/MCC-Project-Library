@@ -5,6 +5,8 @@
  */
 package co.id.library.project.LibraryServerApp.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -63,10 +65,13 @@ public class Project implements Serializable {
     private String link;
     @JoinColumn(name = "current_status", referencedColumnName = "id_status")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Status currentStatus;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProject", fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<History> historyList;
     @OneToMany(mappedBy = "idProject", fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Trainee> traineeList;
 
     public Project() {
@@ -105,6 +110,8 @@ public class Project implements Serializable {
         this.traineeList = traineeList;
     }
     
+    
+
     public Integer getIdProject() {
         return idProject;
     }

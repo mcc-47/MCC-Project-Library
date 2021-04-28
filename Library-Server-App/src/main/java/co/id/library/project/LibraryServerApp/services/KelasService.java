@@ -9,6 +9,6 @@ package co.id.library.project.LibraryServerApp.services;
  *
  * @author ASUS
  */
-public class TraineeService {
+public class KelasService {
     
 }
