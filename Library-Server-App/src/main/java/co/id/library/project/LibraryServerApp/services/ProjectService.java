@@ -30,6 +30,10 @@ public class ProjectService {
         List<Project> project = projectRepository.findAll();
         List<ProjectDTO> pdds = new ArrayList<>();
         for (Project p : project) {
+            List<String> nama = new ArrayList<>();
+            for (Trainee t : p.getTraineeList()){
+                nama.add(t.getEmployee().getNama());
+            }
             ProjectDTO td = new ProjectDTO(
                     p.getIdProject(),
                     p.getJudul(),
@@ -38,8 +42,8 @@ public class ProjectService {
                     p.getUml(),
                     p.getSkema(),
                     p.getLink(),
-                    p.getTraineeList(),
-                    p.getTraineeList().get(0).getEmployee().getIdTrainer().getIdMcc());
+                    nama,
+                    p.getTraineeList().get(0).getEmployee().getIdTrainer().getNama());
             pdds.add(td);
         }
         

@@ -21,9 +21,14 @@ public class ProjectDTO {
     private String skema;
     private String link;
     private List<Trainee> trainee;
-    private Integer trainer;
+    private List<String> nama;
+    private String trainer;
 
-    public ProjectDTO(Integer idProject, String judul, String deskripsi, String erd, String uml, String skema, String link, List<Trainee> trainee, Integer trainer) {
+    public ProjectDTO(List<Trainee> trainee) {
+        this.trainee = trainee;
+    }
+
+    public ProjectDTO(Integer idProject, String judul, String deskripsi, String erd, String uml, String skema, String link, List<String> nama, String trainer) {
         this.idProject = idProject;
         this.judul = judul;
         this.deskripsi = deskripsi;
@@ -31,9 +36,19 @@ public class ProjectDTO {
         this.uml = uml;
         this.skema = skema;
         this.link = link;
-        this.trainee = trainee;
+        this.nama = nama;
         this.trainer = trainer;
     }
+
+    public List<String> getNama() {
+        return nama;
+    }
+
+    public void setNama(List<String> nama) {
+        this.nama = nama;
+    }
+
+    
 
     public ProjectDTO() {
     }
@@ -79,11 +94,11 @@ public class ProjectDTO {
     }
 
 
-    public Integer getTrainer() {
+    public String getTrainer() {
         return trainer;
     }
 
-    public void setTrainer(Integer trainer) {
+    public void setTrainer(String trainer) {
         this.trainer = trainer;
     }
 
