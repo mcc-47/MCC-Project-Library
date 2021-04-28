@@ -68,7 +68,6 @@ public class Employee implements Serializable {
     private Kelas idKelas;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    
     private User user;
 
     public Employee() {
@@ -76,6 +75,13 @@ public class Employee implements Serializable {
 
     public Employee(Integer idMcc) {
         this.idMcc = idMcc;
+    }
+
+    public Employee(Integer idMcc, String nama, String email, String jabatan) {
+        this.idMcc = idMcc;
+        this.nama = nama;
+        this.email = email;
+        this.jabatan = jabatan;
     }
 
     public Employee(Integer idMcc, String nama, String email, String jabatan, Kelas idKelas) {
@@ -183,6 +189,5 @@ public class Employee implements Serializable {
     public String toString() {
         return "co.id.library.project.LibraryServerApp.entities.Employee[ idMcc=" + idMcc + " ]";
     }
-
     
 }

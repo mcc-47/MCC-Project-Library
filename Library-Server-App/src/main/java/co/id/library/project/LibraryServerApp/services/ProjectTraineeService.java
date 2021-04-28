@@ -5,7 +5,7 @@
  */
 package co.id.library.project.LibraryServerApp.services;
 
-import co.id.library.project.LibraryServerApp.dto.ProjectTraineeDTO;
+import co.id.library.project.LibraryServerApp.dto.ProjectTrainee;
 import co.id.library.project.LibraryServerApp.entities.Project;
 import co.id.library.project.LibraryServerApp.entities.Status;
 import co.id.library.project.LibraryServerApp.entities.Trainee;
@@ -16,10 +16,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+/**
+ *
+ * @author ASUS
+ */
 @Service
 public class ProjectTraineeService {
-    ProjectTraineeDTO projectTraineeDTO;
+    ProjectTrainee projectTrainee;
+    
+    Project project;
     
     @Autowired
     ProjectRepository projectRepository;
@@ -27,7 +32,7 @@ public class ProjectTraineeService {
     @Autowired
     TraineeRepository traineeRepository;
         
-    public String registerProject (ProjectTraineeDTO projectTrainee){
+    public String registerProject (ProjectTrainee projectTrainee){
         projectRepository.save(new Project(
                 projectTrainee.getIdProject(),
                 projectTrainee.getJudul(),
@@ -38,11 +43,12 @@ public class ProjectTraineeService {
                 projectTrainee.getLink(),
                 new Status(1)
         ));
-        for( Integer anggota : projectTraineeDTO.getIdMcc() ){
+        for( Integer anggota : projectTrainee.getIdMcc() ){
             Trainee addProject = traineeRepository.findById(anggota).get();
             addProject.setIdProject( new Project(projectTrainee.getIdProject()));
             traineeRepository.save(addProject);
         }        
         return "Registrasi Project Berhasil";
     }
+    
 }

@@ -5,14 +5,14 @@
  */
 package co.id.library.project.LibraryServerApp.dto;
 
-import co.id.library.project.LibraryServerApp.entities.Trainee;
 import java.util.List;
 
 /**
  *
  * @author ASUS
  */
-public class ProjectDTO {
+public class ProjectTrainee {
+    
     private Integer idProject;
     private String judul;
     private String deskripsi;
@@ -20,24 +20,24 @@ public class ProjectDTO {
     private String uml;
     private String skema;
     private String link;
-    private List<Trainee> trainee;
-    private Integer trainer;
+    private Integer jumlahAnggota;
+    private List<Integer> idMcc;
 
-    public ProjectDTO(Integer idProject, String judul, String deskripsi, String erd, String uml, String skema, String link, List<Trainee> trainee, Integer trainer) {
-        this.idProject = idProject;
-        this.judul = judul;
-        this.deskripsi = deskripsi;
-        this.erd = erd;
-        this.uml = uml;
-        this.skema = skema;
-        this.link = link;
-        this.trainee = trainee;
-        this.trainer = trainer;
+    public ProjectTrainee() {
     }
 
-    public ProjectDTO() {
+    public ProjectTrainee(ProjectTrainee projectTrainee) {
+        this.idProject = projectTrainee.getIdProject();
+        this.judul = projectTrainee.getJudul();
+        this.deskripsi = projectTrainee.getDeskripsi();
+        this.erd = projectTrainee.getErd();
+        this.uml = projectTrainee.getUml();
+        this.skema = projectTrainee.getSkema();
+        this.link = projectTrainee.getLink();
+        this.jumlahAnggota = projectTrainee.getJumlahAnggota();
+        this.idMcc = projectTrainee.getIdMcc();
     }
-    
+
     public Integer getIdProject() {
         return idProject;
     }
@@ -60,31 +60,6 @@ public class ProjectDTO {
 
     public void setDeskripsi(String deskripsi) {
         this.deskripsi = deskripsi;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    public List<Trainee> getTrainee() {
-        return trainee;
-    }
-
-    public void setTrainee(List<Trainee> trainee) {
-        this.trainee = trainee;
-    }
-
-
-    public Integer getTrainer() {
-        return trainer;
-    }
-
-    public void setTrainer(Integer trainer) {
-        this.trainer = trainer;
     }
 
     public String getErd() {
@@ -110,8 +85,30 @@ public class ProjectDTO {
     public void setSkema(String skema) {
         this.skema = skema;
     }
-    
-    
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public Integer getJumlahAnggota() {
+        return jumlahAnggota;
+    }
+
+    public void setJumlahAnggota(Integer jumlahAnggota) {
+        this.jumlahAnggota = jumlahAnggota;
+    }
+
+    public List<Integer> getIdMcc() {
+        return idMcc;
+    }
+
+    public void setIdMcc(List<Integer> idMcc) {
+        this.idMcc = idMcc;
+    }
 
     
     

@@ -1,5 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package co.id.library.project.LibraryServerApp.controllers;
 
+/**
+ *
+ * @author ASUS
+ */
 import co.id.library.project.LibraryServerApp.dto.TraineeDTO;
 import co.id.library.project.LibraryServerApp.entities.Employee;
 import co.id.library.project.LibraryServerApp.repositories.EmployeeRepository;
@@ -34,7 +43,7 @@ public class TraineeController {
     }
 
     //GET ALL
-    @GetMapping("/get-all")
+    @GetMapping
     public List<TraineeDTO> getTraineeDTO() {
         return traineeService.getTrainee();
 
@@ -60,5 +69,3 @@ public class TraineeController {
         return "delete trainee";
     }
 }
-
-

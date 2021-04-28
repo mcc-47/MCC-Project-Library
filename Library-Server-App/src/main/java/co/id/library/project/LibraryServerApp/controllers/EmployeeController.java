@@ -33,10 +33,6 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
     
-    @GetMapping
-    public String hello(){
-        return "bismillah";
-    }
     @GetMapping("/list")
     public List<Employee> showEmployee(){
         return employeeService.listAll();

@@ -5,6 +5,7 @@
  */
 package co.id.library.project.LibraryServerApp.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -26,6 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author ASUS
  */
 @Entity
+@JsonIgnoreProperties("hibernateLazyInitializer")
 @Table(name = "trainee")
 @XmlRootElement
 @NamedQueries({
@@ -49,6 +51,7 @@ public class Trainee implements Serializable {
     @JoinColumn(name = "id_mcc", referencedColumnName = "id_mcc", insertable = false, updatable = false)
     @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Employee employee;
+    
 
     public Trainee() {
     }
@@ -56,12 +59,23 @@ public class Trainee implements Serializable {
     public Trainee(Integer idMcc) {
         this.idMcc = idMcc;
     }
-
+    
     public Trainee(Integer idMcc, String statusMcc) {
         this.idMcc = idMcc;
         this.statusMcc = statusMcc;
     }
 
+    public Trainee(Integer idMcc, String batch, String statusMcc, Project idProject) {
+        this.idMcc = idMcc;
+        this.batch = batch;
+        this.statusMcc = statusMcc;
+        this.idProject = idProject;
+    }
+
+    public Trainee(Project idProject) {
+        this.idProject = idProject;
+    }    
+    
     public Integer getIdMcc() {
         return idMcc;
     }
