@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Apr 2021 pada 19.28
--- Versi server: 10.4.13-MariaDB
--- Versi PHP: 7.2.32
+-- Generation Time: Apr 28, 2021 at 11:47 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `employee`
+-- Table structure for table `employee`
 --
 
 CREATE TABLE `employee` (
@@ -37,7 +37,7 @@ CREATE TABLE `employee` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `employee`
+-- Dumping data for table `employee`
 --
 
 INSERT INTO `employee` (`id_mcc`, `nama`, `email`, `jabatan`, `id_trainer`, `id_kelas`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `employee` (`id_mcc`, `nama`, `email`, `jabatan`, `id_trainer`, `id_
 (5, 'Muhammad Rifqi', 'muhammad.rifqi@mii.co.id', 'trainer', NULL, 2),
 (6, 'Trainer Java', 'trainer.java47@gmail.com', 'trainer', NULL, 1),
 (7, 'Trainer Net', 'trainer.net47@mii.co.id', 'trainer', NULL, 2),
-(8, 'Ikhsan Aja', 'ikhsanaja@gmail.com', 'trainee', 1, 1),
+(8, 'Ikhsan Nur Syahbanu', 'email8@dummy.com', 'developer jr', 1, 1),
 (9, 'Ristia Muhammad Panji Winarman', 'email9@dummy.com', 'developer jr', 1, 1),
 (10, 'Fadel Muhammad Nasution', 'email10@dummy.com', 'developer jr', 4, 2),
 (11, 'Rafi Mufadhan Difany', 'rafimdifany@gmail.com', 'developer jr', 6, 1),
@@ -60,12 +60,13 @@ INSERT INTO `employee` (`id_mcc`, `nama`, `email`, `jabatan`, `id_trainer`, `id_
 (17, 'Zahra Zakiyah Salsabila Kurnia', 'zahrazakiyahsk@gmail.com', 'developer jr', 6, 1),
 (18, 'Aulia Syifa', 'auliasyifa346@gmail.com', 'developer jr', 6, 1),
 (19, 'William Yangjaya', 'email19@dummy.com', 'developer jr', 7, 2),
-(20, 'Arnum Sari Khoirunnisa', 'email20@dummy.com', 'developer jr', 7, 2);
+(20, 'Arnum Sari Khoirunnisa', 'email20@dummy.com', 'developer jr', 7, 2),
+(21, 'admin', 'admin@admin.com', 'admin', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `history`
+-- Table structure for table `history`
 --
 
 CREATE TABLE `history` (
@@ -78,7 +79,7 @@ CREATE TABLE `history` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `history`
+-- Dumping data for table `history`
 --
 
 INSERT INTO `history` (`id_history`, `info`, `waktu`, `pesan`, `id_project`, `id_status`) VALUES
@@ -87,7 +88,7 @@ INSERT INTO `history` (`id_history`, `info`, `waktu`, `pesan`, `id_project`, `id
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kelas`
+-- Table structure for table `kelas`
 --
 
 CREATE TABLE `kelas` (
@@ -96,7 +97,7 @@ CREATE TABLE `kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kelas`
+-- Dumping data for table `kelas`
 --
 
 INSERT INTO `kelas` (`id_kelas`, `nama_kelas`) VALUES
@@ -106,7 +107,7 @@ INSERT INTO `kelas` (`id_kelas`, `nama_kelas`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `privilege`
+-- Table structure for table `privilege`
 --
 
 CREATE TABLE `privilege` (
@@ -115,7 +116,7 @@ CREATE TABLE `privilege` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `privilege`
+-- Dumping data for table `privilege`
 --
 
 INSERT INTO `privilege` (`id_privilege`, `privilege_name`) VALUES
@@ -127,7 +128,7 @@ INSERT INTO `privilege` (`id_privilege`, `privilege_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `project`
+-- Table structure for table `project`
 --
 
 CREATE TABLE `project` (
@@ -142,16 +143,19 @@ CREATE TABLE `project` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `project`
+-- Dumping data for table `project`
 --
 
 INSERT INTO `project` (`id_project`, `judul`, `deskripsi`, `erd`, `uml`, `skema`, `link`, `current_status`) VALUES
-(1, 'Project Dummy', 'Ini adalah sebuah project dummy', 'https://i.ibb.co/Wp19SS0/erd-library-9.png', 'https://i.ibb.co/8dGr5Fb/erd-project-Page-1-3.png', 'https://i.ibb.co/f81SR4w/BPMN-LIBRARY-Page-2-4.png', 'https://github.com/mcc-47/Tugas-2-Springboot/', 1);
+(1, 'Project Dummy', 'Ini adalah sebuah project dummy', 'https://i.ibb.co/Wp19SS0/erd-library-9.png', 'https://i.ibb.co/8dGr5Fb/erd-project-Page-1-3.png', 'https://i.ibb.co/f81SR4w/BPMN-LIBRARY-Page-2-4.png', 'https://github.com/mcc-47/Tugas-2-Springboot/', 1),
+(2, 'Update Project kedua', 'looooreeeemmmm update', 'erd', 'uml', 'skema', 'link', 2),
+(3, 'judul', 'deskripsi x', 'erd', 'uml', 'skema', 'link', 1),
+(4, 'judul 4', 'project 4', 'erd 4', 'uml 4', 'skema 4', 'link 4', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `role`
+-- Table structure for table `role`
 --
 
 CREATE TABLE `role` (
@@ -160,7 +164,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `role`
+-- Dumping data for table `role`
 --
 
 INSERT INTO `role` (`id_role`, `role_name`) VALUES
@@ -171,7 +175,7 @@ INSERT INTO `role` (`id_role`, `role_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `role_privilege`
+-- Table structure for table `role_privilege`
 --
 
 CREATE TABLE `role_privilege` (
@@ -180,7 +184,7 @@ CREATE TABLE `role_privilege` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `role_privilege`
+-- Dumping data for table `role_privilege`
 --
 
 INSERT INTO `role_privilege` (`id_role`, `id_privilege`) VALUES
@@ -197,7 +201,7 @@ INSERT INTO `role_privilege` (`id_role`, `id_privilege`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `status`
+-- Table structure for table `status`
 --
 
 CREATE TABLE `status` (
@@ -206,7 +210,7 @@ CREATE TABLE `status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `status`
+-- Dumping data for table `status`
 --
 
 INSERT INTO `status` (`id_status`, `status`) VALUES
@@ -219,7 +223,7 @@ INSERT INTO `status` (`id_status`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `trainee`
+-- Table structure for table `trainee`
 --
 
 CREATE TABLE `trainee` (
@@ -230,28 +234,28 @@ CREATE TABLE `trainee` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `trainee`
+-- Dumping data for table `trainee`
 --
 
 INSERT INTO `trainee` (`id_mcc`, `batch`, `status_mcc`, `id_project`) VALUES
-(8, 'BATCH - 47', 'trainee', 1),
-(9, 'BATCH - 47', 'trainee', 1),
-(10, 'BATCH - 48', 'trainee', NULL),
-(11, 'BATCH - 47', 'trainee', NULL),
-(12, 'BATCH - 47', 'trainee', NULL),
-(13, 'BATCH - 48', 'trainee', NULL),
-(14, 'BATCH - 48', 'trainee', NULL),
-(15, 'BATCH - 47', 'trainee', NULL),
-(16, 'BATCH - 47', 'trainee', NULL),
-(17, 'BATCH - 47', 'trainee', NULL),
-(18, 'BATCH - 47', 'trainee', NULL),
-(19, 'BATCH - 48', 'trainee', NULL),
-(20, 'BATCH - 48', 'trainee', NULL);
+(8, '47', 'trainee', 1),
+(9, '47', 'trainee', 1),
+(10, '48', 'trainee', NULL),
+(11, '47', 'trainee', NULL),
+(12, '48', 'trainee', 4),
+(13, '48', 'trainee', NULL),
+(14, '48', 'trainee', NULL),
+(15, '47', 'trainee', NULL),
+(16, '47', 'trainee', NULL),
+(17, '47', 'trainee', 3),
+(18, '47', 'trainee', 3),
+(19, '48', 'trainee', 2),
+(20, '48', 'trainee', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -261,7 +265,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`) VALUES
@@ -269,12 +273,13 @@ INSERT INTO `user` (`id_user`, `username`, `password`) VALUES
 (7, 'trainernet', '$2b$10$iDja5lyaBw.tYMJI7isq/OPPe4ga31MW9/NukigfBDVwvqwOSRirS'),
 (11, 'rafi', '$2b$10$wcxqCG4IgNJYJlT.b73dI.ctuTcX/syo75SOIBQmv79Dy53wwxnU2'),
 (17, 'zakiyah', '$2b$10$wRRkqFRvHYr11uN4TFOv4.Y8ccfYSezPhPdOISMIjaqVqDHKS9u8y'),
-(18, 'aulia', '$2b$10$jc300h/zy8Z5GQUoABdoIOsr.iePRi2Q4yApCMDHLq973SNFcKLjC');
+(18, 'aulia', '$2b$10$jc300h/zy8Z5GQUoABdoIOsr.iePRi2Q4yApCMDHLq973SNFcKLjC'),
+(21, 'admin', '$2b$10$aI8fkDwCXvaj080wswTZy.sLieytCfQw8OmCxrIOj/N6VHAC9Twsm');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_role`
+-- Table structure for table `user_role`
 --
 
 CREATE TABLE `user_role` (
@@ -283,11 +288,12 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user_role`
+-- Dumping data for table `user_role`
 --
 
 INSERT INTO `user_role` (`id_user`, `id_role`) VALUES
 (17, 3),
+(21, 1),
 (18, 3),
 (11, 3),
 (6, 2),
@@ -298,7 +304,7 @@ INSERT INTO `user_role` (`id_user`, `id_role`) VALUES
 --
 
 --
--- Indeks untuk tabel `employee`
+-- Indexes for table `employee`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`id_mcc`),
@@ -307,7 +313,7 @@ ALTER TABLE `employee`
   ADD KEY `id_kelas` (`id_kelas`);
 
 --
--- Indeks untuk tabel `history`
+-- Indexes for table `history`
 --
 ALTER TABLE `history`
   ADD PRIMARY KEY (`id_history`),
@@ -315,144 +321,144 @@ ALTER TABLE `history`
   ADD KEY `id_status` (`id_status`);
 
 --
--- Indeks untuk tabel `kelas`
+-- Indexes for table `kelas`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id_kelas`);
 
 --
--- Indeks untuk tabel `privilege`
+-- Indexes for table `privilege`
 --
 ALTER TABLE `privilege`
   ADD PRIMARY KEY (`id_privilege`);
 
 --
--- Indeks untuk tabel `project`
+-- Indexes for table `project`
 --
 ALTER TABLE `project`
   ADD PRIMARY KEY (`id_project`),
   ADD KEY `current_status` (`current_status`);
 
 --
--- Indeks untuk tabel `role`
+-- Indexes for table `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id_role`);
 
 --
--- Indeks untuk tabel `role_privilege`
+-- Indexes for table `role_privilege`
 --
 ALTER TABLE `role_privilege`
   ADD KEY `id_role` (`id_role`),
   ADD KEY `id_privilege` (`id_privilege`);
 
 --
--- Indeks untuk tabel `status`
+-- Indexes for table `status`
 --
 ALTER TABLE `status`
   ADD PRIMARY KEY (`id_status`);
 
 --
--- Indeks untuk tabel `trainee`
+-- Indexes for table `trainee`
 --
 ALTER TABLE `trainee`
   ADD PRIMARY KEY (`id_mcc`),
   ADD KEY `id_project` (`id_project`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indeks untuk tabel `user_role`
+-- Indexes for table `user_role`
 --
 ALTER TABLE `user_role`
   ADD KEY `id_user` (`id_user`),
   ADD KEY `id_role` (`id_role`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `employee`
+-- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
   MODIFY `id_mcc` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `history`
+-- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
   MODIFY `id_history` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `project`
+-- AUTO_INCREMENT for table `project`
 --
 ALTER TABLE `project`
-  MODIFY `id_project` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_project` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `status`
+-- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
   MODIFY `id_status` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `trainee`
+-- AUTO_INCREMENT for table `trainee`
 --
 ALTER TABLE `trainee`
   MODIFY `id_mcc` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `employee`
+-- Constraints for table `employee`
 --
 ALTER TABLE `employee`
   ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`id_trainer`) REFERENCES `employee` (`id_mcc`),
   ADD CONSTRAINT `employee_ibfk_2` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id_kelas`);
 
 --
--- Ketidakleluasaan untuk tabel `history`
+-- Constraints for table `history`
 --
 ALTER TABLE `history`
   ADD CONSTRAINT `history_ibfk_1` FOREIGN KEY (`id_project`) REFERENCES `project` (`id_project`),
   ADD CONSTRAINT `history_ibfk_2` FOREIGN KEY (`id_status`) REFERENCES `status` (`id_status`);
 
 --
--- Ketidakleluasaan untuk tabel `project`
+-- Constraints for table `project`
 --
 ALTER TABLE `project`
   ADD CONSTRAINT `project_ibfk_1` FOREIGN KEY (`current_status`) REFERENCES `status` (`id_status`);
 
 --
--- Ketidakleluasaan untuk tabel `role_privilege`
+-- Constraints for table `role_privilege`
 --
 ALTER TABLE `role_privilege`
   ADD CONSTRAINT `role_privilege_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`),
   ADD CONSTRAINT `role_privilege_ibfk_2` FOREIGN KEY (`id_privilege`) REFERENCES `privilege` (`id_privilege`);
 
 --
--- Ketidakleluasaan untuk tabel `trainee`
+-- Constraints for table `trainee`
 --
 ALTER TABLE `trainee`
   ADD CONSTRAINT `trainee_ibfk_1` FOREIGN KEY (`id_project`) REFERENCES `project` (`id_project`),
   ADD CONSTRAINT `trainee_ibfk_2` FOREIGN KEY (`id_mcc`) REFERENCES `employee` (`id_mcc`);
 
 --
--- Ketidakleluasaan untuk tabel `user`
+-- Constraints for table `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `employee` (`id_mcc`);
 
 --
--- Ketidakleluasaan untuk tabel `user_role`
+-- Constraints for table `user_role`
 --
 ALTER TABLE `user_role`
   ADD CONSTRAINT `user_role_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
