@@ -50,7 +50,7 @@ public class ProjectController {
     }
     
     @PutMapping("{id}")
-    public Project updateProject(@PathVariable Integer id, @RequestBody Project project){
+    public Project updateProject(@PathVariable Integer id, @RequestBody Project project)throws MessagingException{
         return projectService.update(id, project);
     }
     

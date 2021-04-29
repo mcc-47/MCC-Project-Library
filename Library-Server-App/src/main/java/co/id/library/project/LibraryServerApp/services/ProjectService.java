@@ -7,10 +7,14 @@ package co.id.library.project.LibraryServerApp.services;
 
 import co.id.library.project.LibraryServerApp.dto.ProjectDTO;
 import co.id.library.project.LibraryServerApp.entities.Project;
+import co.id.library.project.LibraryServerApp.entities.Status;
 import co.id.library.project.LibraryServerApp.entities.Trainee;
+import co.id.library.project.LibraryServerApp.repositories.EmployeeRepository;
 import co.id.library.project.LibraryServerApp.repositories.ProjectRepository;
+import co.id.library.project.LibraryServerApp.repositories.TraineeRepository;
 import java.util.ArrayList;
 import java.util.List;
+import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +27,15 @@ public class ProjectService {
     
     @Autowired
     ProjectRepository projectRepository;
+    
+    @Autowired
+    TraineeRepository traineeRepository;
+    
+    @Autowired
+    NotificationService notificationService;
+    
+    @Autowired
+    EmployeeRepository employeeRepository;
     
     ProjectDTO projectDTO;
     
@@ -58,7 +71,7 @@ public class ProjectService {
         return projectRepository.save(project);
     }
     
-    public Project update (Integer id, Project project){
+    public Project update (Integer id, Project project)throws MessagingException{
         Project updateProject = projectRepository.findById(id).get();
         updateProject.setJudul(project.getJudul());
         updateProject.setDeskripsi(project.getDeskripsi());
@@ -66,7 +79,11 @@ public class ProjectService {
         updateProject.setUml(project.getUml());
         updateProject.setSkema(project.getSkema());
         updateProject.setLink(project.getLink());
-        updateProject.setCurrentStatus(project.getCurrentStatus());
+        updateProject.setCurrentStatus(new Status(1));
+        
+        Integer trainer = updateProject.getTraineeList().get(0).getEmployee().getIdTrainer().getIdMcc();
+        notificationService.notifUpdateJudul(trainer);
+        
         return projectRepository.save(updateProject);
     }
     

@@ -100,6 +100,16 @@ public class Project implements Serializable {
         this.currentStatus = currentStatus;
     }
 
+    public Project(Integer idProject, String judul, String deskripsi, String erd, String uml, String skema, String link) {
+        this.idProject = idProject;
+        this.judul = judul;
+        this.deskripsi = deskripsi;
+        this.erd = erd;
+        this.uml = uml;
+        this.skema = skema;
+        this.link = link;
+    }
+
     public Project(Integer idProject, String judul, String deskripsi, String erd, String uml, String skema, String link, Status currentStatus, List<Trainee> traineeList) {
         this.idProject = idProject;
         this.judul = judul;
