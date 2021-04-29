@@ -25,7 +25,7 @@ public class TraineeController {
     @GetMapping
     public String getAll(Model model) {
         model.addAttribute("trainee", traineeService.getAll());
-        return "trainee";
+        return "admin/data-trainee";
     }
     
     //GET ALL

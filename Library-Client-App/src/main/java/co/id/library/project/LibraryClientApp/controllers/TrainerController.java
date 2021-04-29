@@ -17,17 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("trainer")
+@RequestMapping("/trainer")
 public class TrainerController {
     @Autowired
     private TrainerService trainerService;
     
     @GetMapping
-    public String getAll(Model model) {
+    public String getAllTrainer(Model model) {
         model.addAttribute("trainer", trainerService.getAll());
-        return "trainer";
+        return "admin/data-trainer";
     }
-    
+  
     //GET ALL
     @GetMapping("/get-all")
     public @ResponseBody List<Trainer> getAllProcess() {

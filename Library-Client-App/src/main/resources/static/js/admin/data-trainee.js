@@ -1,6 +1,6 @@
 let trainee = new Object();
 let table = null;
-let id = 0;
+
 $(document).ready(() => {
     getAll();
     $("#traineeUpdate").submit((e) => {
@@ -34,7 +34,7 @@ function getAll() {
                 data: "jabatan", name: "Jabatan", autoWidth: true
             },
             {
-                data: "statusMcc", name: "Btatus", autoWidth: true
+                data: "status", name: "Btatus", autoWidth: true
             },
             {
                 render: (data, type, row, meta) => {
@@ -75,7 +75,7 @@ function update() {
         batch: $("#batch").val(),
         email: $("#email").val(),
         jabatan: $("#jabatan").val(),
-        statusMcc: $("#statusMcc").val()
+        status: $("#status").val()
 
     };
     let id = $("#idMcc").val();
@@ -118,7 +118,7 @@ function setForm(data) {
     $("#batch").val(data.batch);
     $("#email").val(data.email);
     $("#jabatan").val(data.jabatan);
-    $("#statusMcc").val(data.statusMcc);
+    $("#status").val(data.status);
 }
 
     

@@ -1,6 +1,6 @@
 let trainer = new Object();
 let table = null;
-let id = 0;
+
 $(document).ready(() => {
     getAll();
     $("#trainerUpdate").submit((e) => {
@@ -28,7 +28,7 @@ function getAll() {
                 data: "email", name: "Email", autoWidth: true
             },
             {
-                data: "spesialis", name: "Spesialis", autoWidth: true
+                data: "namaKelas", name: "Keahlian", autoWidth: true
             },
             {
                 render: (data, type, row, meta) => {
@@ -67,7 +67,7 @@ function update() {
         idMcc: $("#idMcc").val(),
         nama: $("#nama").val(),
         email: $("#email").val(),
-        spesialis: $("#spesialis").val()
+        namaKelas: $("#namaKelas").val()
     };
     let id = $("#idMcc").val();
     $.ajax({
@@ -107,7 +107,7 @@ function setForm(data) {
     $("#idMcc").val(data.idMcc);
     $("#nama").val(data.nama);
     $("#email").val(data.email);
-    $("#spesialis").val(data.spesialis);
+    $("#namaKelas").val(data.namaKelas);
 }
 
     

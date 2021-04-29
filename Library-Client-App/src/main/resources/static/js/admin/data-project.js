@@ -37,10 +37,10 @@ function getAll() {
                 data: "skema", name: "Deskripsi", autoWidth: true
             },
             {
-                data: "link", name: "Spesialis", autoWidth: true
+                data: "link", name: "Link Full Project", autoWidth: true
             },
             {
-                data: "traineeList", name: "Spesialis", autoWidth: true
+                data: "traineeList", name: "Keahlian", autoWidth: true
             },
             {
                 render: (data, type, row, meta) => {

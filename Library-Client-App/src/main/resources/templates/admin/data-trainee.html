@@ -18,7 +18,7 @@
 
             <br>
             <br>
-            <table id="TraineeTable" class="table table-bordered table-striped table-hover-col-sm-3">
+            <table id="traineeTable" class="table table-bordered table-striped table-hover-col-sm-3">
                 <thead>
 
                     <tr>
@@ -43,10 +43,11 @@
     <div th:replace="fragments/footer :: footer"></div>                  
     <script>
         $(document).ready(function () {
-            var table = $('#TraineeTable').DataTable();
+            var table = $('#traineeTable').DataTable();
         });
     </script>
-
+    
+     <div th:replace="fragments/dataTable :: dataTable"></div> 
     <div th:replace="admin/modal-edit-trainee :: modal-edit-trainee"></div>
     <script th:src="@{/js/form-validation.js}"></script>
 

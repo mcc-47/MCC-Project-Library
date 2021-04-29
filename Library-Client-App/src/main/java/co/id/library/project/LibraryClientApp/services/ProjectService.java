@@ -36,8 +36,8 @@ public class ProjectService {
     public Project getById(Integer id) {
         return restTemplate.getForEntity(url + id, Project.class).getBody();
     }
-    
-    //CREATE project 
+
+//   //CREATE project 
     public String create(Project project) {
         HttpEntity entity = new HttpEntity(project, RequestFormat.createHeaders());
         ResponseEntity<String> res = restTemplate.exchange(url, HttpMethod.POST, entity,
@@ -45,7 +45,7 @@ public class ProjectService {
         });
         return res.getBody();
     }
-    
+
     //CREATE project trainee
     public String createProjectTrainee(ProjectTrainee projectTrainee) {
         HttpEntity entity = new HttpEntity(projectTrainee, RequestFormat.createHeaders());
@@ -55,14 +55,33 @@ public class ProjectService {
         return res.getBody();
     }
 
-    //UPDATE
+    //UPDATE PROJECT
     public String update(Integer id, Project project) {
         HttpEntity entity = new HttpEntity(project, RequestFormat.createHeaders());
-        ResponseEntity<String> res = restTemplate.exchange(url + id, HttpMethod.PUT, entity,
+        ResponseEntity<String> res = restTemplate.exchange(url + "/" + id, HttpMethod.PUT, entity,
                 new ParameterizedTypeReference<String>() {
         });
         return res.getBody();
     }
 
-   
+    //UPDATE JUDUL
+    public String updateJudul(Integer id, String judul, String deskripsi) {
+        HttpEntity entity = new HttpEntity(RequestFormat.createHeaders());
+        //HttpEntity entity = new HttpEntity(project, RequestFormat.createHeaders());
+        ResponseEntity<String> res = restTemplate.exchange(url + "/update-judul" + id, HttpMethod.PUT, entity,
+                new ParameterizedTypeReference<String>() {
+        });
+        return res.getBody();
+    }
+
+    //UPDATE LINK
+    public String updateLink(Integer id, String erd, String uml, String skema, String link) {
+        HttpEntity entity = new HttpEntity(RequestFormat.createHeaders());
+        //HttpEntity entity = new HttpEntity(project, RequestFormat.createHeaders());
+        ResponseEntity<String> res = restTemplate.exchange(url + "/update-li" + id, HttpMethod.PUT, entity,
+                new ParameterizedTypeReference<String>() {
+        });
+        return res.getBody();
+    }
+
 }
