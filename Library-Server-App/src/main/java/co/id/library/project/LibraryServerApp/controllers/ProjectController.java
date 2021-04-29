@@ -7,6 +7,7 @@ package co.id.library.project.LibraryServerApp.controllers;
 
 import co.id.library.project.LibraryServerApp.dto.ProjectDTO;
 import co.id.library.project.LibraryServerApp.dto.ProjectTrainee;
+import co.id.library.project.LibraryServerApp.dto.SearchTraineeDTO;
 import co.id.library.project.LibraryServerApp.entities.Project;
 import co.id.library.project.LibraryServerApp.services.NotificationService;
 import co.id.library.project.LibraryServerApp.services.ProjectService;
@@ -44,6 +45,11 @@ public class ProjectController {
         return projectService.getProject();
     }
     
+    @GetMapping("/search")
+    public List<SearchTraineeDTO> getSearchProjectDTO(){
+        return projectService.getSearchProject();
+    }
+    
     @GetMapping("{id}")
     public Project getOneProject(@PathVariable Integer id){
         return projectService.getById(id);
@@ -65,13 +71,13 @@ public class ProjectController {
     }
     
     @PutMapping("/validasi-judul/{id}")
-    public Project validasiJudul(@PathVariable Integer id, boolean status)throws MessagingException{
-        return projectService.updateStatusJudul(id, status);
+    public Project validasiJudul(@PathVariable Integer id, boolean status, String pesan)throws MessagingException{
+        return projectService.updateStatusJudul(id, status, pesan);
     }
     
     @PutMapping("/validasi-link/{id}")
-    public Project validasiLink (@PathVariable Integer id, boolean status)throws MessagingException{
-        return projectService.updateStatusLink(id, status);
+    public Project validasiLink (@PathVariable Integer id, boolean status, String pesan)throws MessagingException{
+        return projectService.updateStatusLink(id, status, pesan);
     }
     
     @PostMapping

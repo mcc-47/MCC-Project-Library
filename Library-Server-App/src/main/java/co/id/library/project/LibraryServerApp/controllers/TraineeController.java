@@ -43,7 +43,7 @@ public class TraineeController {
     }
 
     //GET ALL
-    @GetMapping
+    @GetMapping("/get-all")
     public List<TraineeDTO> getTraineeDTO() {
         return traineeService.getTrainee();
 
