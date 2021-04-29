@@ -64,6 +64,11 @@ public class ProjectController {
         return projectService.updateLink(id, erd, uml, skema, link);
     }
     
+    @PutMapping("/validasi/{id}")
+    public Project validasi(@PathVariable Integer id, boolean status)throws MessagingException{
+        return projectService.updateStatus(id, status);
+    }
+    
     @PostMapping
     public Project createProject(@RequestBody Project project){
         return projectService.create(project);

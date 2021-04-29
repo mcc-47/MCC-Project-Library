@@ -31,25 +31,9 @@ public class LoginController {
     @Autowired
     NotificationService notificationService;
     
-    @GetMapping("/login")
+    @PostMapping("/login")
     public AuthDTO login(@RequestBody LoginDTO loginDTO)throws Exception{
         return loginService.loginUserByUserPassword(loginDTO);
     }
     
-    @PostMapping("/sendMail")
-    public String sendMail () throws MessagingException{
-        notificationService.sendEmail(17);
-        return "EMAIL REGISTRASI BERHASIL DIKIRIMKAN";
-    }
-    
-    @PostMapping("send-notif/{id}")
-    public ResponseEntity<?> sendNotif(@PathVariable Integer id) throws MessagingException {
-        if (id == null) {
-            return new ResponseEntity<>("Email notifikasi gagal dikirim. Masukkan id!", HttpStatus.NOT_ACCEPTABLE);
-        }
-        else{
-            notificationService.sendEmail(id);
-            return new ResponseEntity<>("Email notifikasi telah berhasil dikirim!", HttpStatus.ACCEPTED);
-        }
-    }
 }

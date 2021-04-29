@@ -20,11 +20,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
-/**
- *
- * @author ASUS
- */
 @Entity
 @Table(name = "role")
 @XmlRootElement
@@ -40,12 +38,15 @@ public class Role implements Serializable {
     @Basic(optional = false)
     @Column(name = "role_name")
     private String roleName;
+
     @ManyToMany(mappedBy = "roleList", fetch = FetchType.LAZY)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<User> userList;
     @JoinTable(name = "role_privilege", joinColumns = {
         @JoinColumn(name = "id_role", referencedColumnName = "id_role")}, inverseJoinColumns = {
         @JoinColumn(name = "id_privilege", referencedColumnName = "id_privilege")})
     @ManyToMany(fetch = FetchType.LAZY)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Privilege> privilegeList;
 
     public Role() {
@@ -118,5 +119,5 @@ public class Role implements Serializable {
     public String toString() {
         return "co.id.library.project.LibraryServerApp.entities.Role[ idRole=" + idRole + " ]";
     }
-    
+
 }

@@ -52,7 +52,7 @@ public class User implements UserDetails {
     @JoinTable(name = "user_role", joinColumns = {
         @JoinColumn(name = "id_user", referencedColumnName = "id_user")}, inverseJoinColumns = {
         @JoinColumn(name = "id_role", referencedColumnName = "id_role")})
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roleList;
     @JoinColumn(name = "id_user", referencedColumnName = "id_mcc", insertable = false, updatable = false)
     @OneToOne(optional = false, fetch = FetchType.LAZY)
@@ -142,34 +142,33 @@ public class User implements UserDetails {
         Collection<Role> roles = getRoleList();
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
         for (Role r : roles) {
-            authorities.add(new SimpleGrantedAuthority("ROLE_"+r.getRoleName().toUpperCase()));
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + r.getRoleName().toUpperCase()));
             Collection<Privilege> privileges = r.getPrivilegeList();
             for (Privilege p : privileges) {
-                authorities.add(new SimpleGrantedAuthority(p.getPrivilegeName().toUpperCase()));
+                authorities.add(new SimpleGrantedAuthority(p.getPrivilegeName()));
             }
         }
         return authorities;
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
-    
+
 }

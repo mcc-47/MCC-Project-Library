@@ -113,4 +113,27 @@ public class ProjectService {
         return projectRepository.save(updateProject);
     }
     
+    public Project updateStatus (Integer id, boolean status)throws MessagingException{
+        Project updateProject = projectRepository.findById(id).get();
+        if(status == true){
+            updateProject.setCurrentStatus(new Status(3));
+            for (Trainee t : updateProject.getTraineeList()){
+                Integer trainee =t.getEmployee().getIdMcc();
+                notificationService.notifValidasiDiterima(trainee);
+            }
+//            Integer trainee = updateProject.getTraineeList().get(0).getEmployee().getIdMcc();
+        }
+        else{
+            updateProject.setCurrentStatus(new Status(2));
+            for (Trainee t : updateProject.getTraineeList()){
+                Integer trainee =t.getEmployee().getIdMcc();
+                notificationService.notifValidasiDitolak(trainee);
+            }
+//            Integer trainee = updateProject.getTraineeList().get(0).getEmployee().getIdMcc();
+//            notificationService.notifValidasiDitolak(trainee);
+        }
+        
+        return projectRepository.save(updateProject);
+    }
+    
 }
