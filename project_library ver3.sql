@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2021 at 11:47 AM
+-- Generation Time: Apr 29, 2021 at 08:43 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -47,7 +47,7 @@ INSERT INTO `employee` (`id_mcc`, `nama`, `email`, `jabatan`, `id_trainer`, `id_
 (4, 'Naufal Aji Wibowo', 'naufal.wibowo@mii.co.id', 'trainer', NULL, 2),
 (5, 'Muhammad Rifqi', 'muhammad.rifqi@mii.co.id', 'trainer', NULL, 2),
 (6, 'Trainer Java', 'trainer.java47@gmail.com', 'trainer', NULL, 1),
-(7, 'Trainer Net', 'trainer.net47@mii.co.id', 'trainer', NULL, 2),
+(7, 'Trainer Net', 'trainer.net47@gmail.com', 'trainer', NULL, 2),
 (8, 'Ikhsan Nur Syahbanu', 'email8@dummy.com', 'developer jr', 1, 1),
 (9, 'Ristia Muhammad Panji Winarman', 'email9@dummy.com', 'developer jr', 1, 1),
 (10, 'Fadel Muhammad Nasution', 'email10@dummy.com', 'developer jr', 4, 2),
@@ -83,7 +83,9 @@ CREATE TABLE `history` (
 --
 
 INSERT INTO `history` (`id_history`, `info`, `waktu`, `pesan`, `id_project`, `id_status`) VALUES
-(1, 'status_link', '2021-04-26 15:06:04', NULL, 1, 1);
+(1, 'status_link', '2021-04-26 15:06:04', NULL, 1, 1),
+(2, 'status_judul', '2021-04-29 09:23:37', NULL, 1, 1),
+(3, 'status_judul', '2021-04-29 10:20:24', NULL, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -148,9 +150,21 @@ CREATE TABLE `project` (
 
 INSERT INTO `project` (`id_project`, `judul`, `deskripsi`, `erd`, `uml`, `skema`, `link`, `current_status`) VALUES
 (1, 'Project Dummy', 'Ini adalah sebuah project dummy', 'https://i.ibb.co/Wp19SS0/erd-library-9.png', 'https://i.ibb.co/8dGr5Fb/erd-project-Page-1-3.png', 'https://i.ibb.co/f81SR4w/BPMN-LIBRARY-Page-2-4.png', 'https://github.com/mcc-47/Tugas-2-Springboot/', 1),
-(2, 'Update Project kedua', 'looooreeeemmmm update', 'erd', 'uml', 'skema', 'link', 2),
-(3, 'judul', 'deskripsi x', 'erd', 'uml', 'skema', 'link', 1),
-(4, 'judul 4', 'project 4', 'erd 4', 'uml 4', 'skema 4', 'link 4', 1);
+(2, 'Update', 'Update project kirim email ke trainer', 'erd', 'uml', 'skema', 'link', 1),
+(3, 'judul', 'deskripsi x', 'erd', 'uml', 'skema', 'link', 2),
+(4, 'judul 4', 'project 4', 'erd 4', 'uml 4', 'skema 4', 'link 4', 1),
+(5, 'Email Trainer', 'Project kirim email ke trainer', 'erd', 'uml', 'skema', 'link', 1),
+(6, 'trigger history', 'insert project udah pake trigger buat insert ke tabel history', 'erd baru', 'uml baru', 'skema baru', 'link baru', 1);
+
+--
+-- Triggers `project`
+--
+DELIMITER $$
+CREATE TRIGGER `first_history` AFTER INSERT ON `project` FOR EACH ROW BEGIN
+	INSERT INTO `history` (`info`, `waktu`, `pesan`, `id_project`, `id_status`) VALUES ('status_judul', now(), NULL, new.id_project, '1');
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -243,14 +257,14 @@ INSERT INTO `trainee` (`id_mcc`, `batch`, `status_mcc`, `id_project`) VALUES
 (10, '48', 'trainee', NULL),
 (11, '47', 'trainee', NULL),
 (12, '48', 'trainee', 4),
-(13, '48', 'trainee', NULL),
+(13, '48', 'trainee', 5),
 (14, '48', 'trainee', NULL),
 (15, '47', 'trainee', NULL),
 (16, '47', 'trainee', NULL),
 (17, '47', 'trainee', 3),
 (18, '47', 'trainee', 3),
 (19, '48', 'trainee', 2),
-(20, '48', 'trainee', NULL);
+(20, '48', 'trainee', 6);
 
 -- --------------------------------------------------------
 
@@ -393,13 +407,13 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `id_history` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_history` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `project`
 --
 ALTER TABLE `project`
-  MODIFY `id_project` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_project` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `status`
