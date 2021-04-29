@@ -8,6 +8,8 @@ $(document).ready(() => {
         formValidation(update);
     });
 });
+
+
 function getAll() {
     table = $('#trainerTable').DataTable({
         filter: true,

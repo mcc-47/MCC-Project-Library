@@ -2,7 +2,7 @@ package co.id.library.project.LibraryClientApp.services;
 
 import co.id.library.project.LibraryClientApp.config.RequestFormat;
 import co.id.library.project.LibraryClientApp.models.Project;
-import co.id.library.project.LibraryClientApp.models.ProjectTrainee;
+import co.id.library.project.LibraryClientApp.models.SearchProject;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,6 +31,16 @@ public class ProjectService {
                 });
         return response.getBody();
     }
+    
+    //READ SEARCH PROJECT
+    public List<SearchProject> getAllSearch() {
+        ResponseEntity<List<SearchProject>> response = restTemplate
+                .exchange(url + "/search", HttpMethod.GET,
+                        new HttpEntity(RequestFormat.createHeaders()),
+                        new ParameterizedTypeReference<List<SearchProject>>() {
+                });
+        return response.getBody();
+    }
 
     //GET BY ID
     public Project getById(Integer id) {
@@ -47,7 +57,7 @@ public class ProjectService {
     }
 
     //CREATE project trainee
-    public String createProjectTrainee(ProjectTrainee projectTrainee) {
+    public String createProjectTrainee(SearchProject projectTrainee) {
         HttpEntity entity = new HttpEntity(projectTrainee, RequestFormat.createHeaders());
         ResponseEntity<String> res = restTemplate.exchange(url + "/trainee", HttpMethod.POST, entity,
                 new ParameterizedTypeReference<String>() {

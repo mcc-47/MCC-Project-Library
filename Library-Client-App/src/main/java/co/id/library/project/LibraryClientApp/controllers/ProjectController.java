@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package co.id.library.project.LibraryClientApp.controllers;
 
 import co.id.library.project.LibraryClientApp.models.Project;
-import co.id.library.project.LibraryClientApp.models.ProjectTrainee;
+import co.id.library.project.LibraryClientApp.models.SearchProject;
 import co.id.library.project.LibraryClientApp.services.ProjectService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,10 +15,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 
-@RestController
+@Controller
 @RequestMapping("/project")
 public class ProjectController {
 
@@ -31,7 +27,7 @@ public class ProjectController {
     @GetMapping
     public String getAll(Model model) {
         model.addAttribute("project", projectService.getAll());
-        return "trainee/search-project";
+        return "admin/data-project";
     }
     
     //GET ALL
@@ -39,7 +35,20 @@ public class ProjectController {
     public @ResponseBody List<Project> getAllProcess() {
         return projectService.getAll();
     }
-
+    
+    @GetMapping("/search-trainee")
+    public String getAllSearch(Model model) {
+        model.addAttribute("searchProject", projectService.getAllSearch());
+        return "trainee/search-project";
+    }
+    
+    //GET ALL
+    @GetMapping("/search")
+    public @ResponseBody List<SearchProject> getAllSearchProcess() {
+        return projectService.getAllSearch();
+    }
+    
+    
     //GET BY ID
     @GetMapping("/{id}")
     public @ResponseBody
@@ -56,7 +65,7 @@ public class ProjectController {
     
      //CREATE PROJECT TRAINEE
     @PostMapping("/trainee")
-    public @ResponseBody String createProjectTrainee(@RequestBody ProjectTrainee projectTrainee) {
+    public @ResponseBody String createProjectTrainee(@RequestBody SearchProject projectTrainee) {
         System.out.println(projectTrainee);
         return projectService.createProjectTrainee(projectTrainee);
     }

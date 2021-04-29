@@ -6,40 +6,47 @@
     <div th:replace="fragments/header-link :: header-link"></div>     
 </head>
 
-<body>
-    <div th:replace="fragments/sidebar :: sidebar"></div>
-    <div class="content-container">
-        <div th:replace="fragments/header :: header"></div>
+<body class="sb-nav-fixed">
+    <div th:replace="fragments/header :: header"></div>
+    <div id="layoutSidenav">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <div id="layoutSidenav_content">
+            <div class="p-5">
 
-        <div class="container my-3">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        Data Project
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="projectTable" class="table table-bordered table-striped table-hover-col-sm-3">
+                                <thead>
 
-            <h3>Data Project</h3>
+                                    <tr>
+                                        <td>No</td>
+                                        <td>Judul</td>
+                                        <td>Deskripsi</td>
+                                        <td>ERD</td>
+                                        <td>UML</td>
+                                        <td>Skema</td>
+                                        <td>Link</td>
+                                        <td>Nama Trainee</td>
+                                        <td>Trainer</td>
+                                        <td>Action</td>
+                                    </tr>
+                                </thead>
 
+                                <script th:src="@{/js/admin/data-project.js}"></script>
+                                <tbody>
 
-            <br>
-            <br>
-            <table id="projectTable" class="table table-bordered table-striped table-hover-col-sm-3">
-                <thead>
+                                </tbody>
 
-                    <tr>
-                        <td>No</td>
-                        <td>Judul</td>
-                        <td>Deskripsi</td>
-                        <td>ERD</td>
-                        <td>UML</td>
-                        <td>Skema</td>
-                        <td>Link</td>
-                        <td>Trainee List</td>
-                        <td>Action</td>
-                    </tr>
-                </thead>
-
-                <script th:src="@{/js/admin/data-project.js}"></script>
-                <tbody>
-
-                </tbody>
-
-            </table>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div th:replace="fragments/footer :: footer"></div>                  

@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>Data Trainer</title>
+        <title>Data Project - Trainee</title>
     <div th:replace="fragments/header-link :: header-link"></div>     
 </head>
+
 <body class="sb-nav-fixed">
     <div th:replace="fragments/header :: header"></div>
     <div id="layoutSidenav">
         <div th:replace="fragments/sidebar :: sidebar"></div>
         <div id="layoutSidenav_content">
             <div class="p-5">
-                <h3>Data Trainer</h3>
 
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table mr-1"></i>
-                        DataTable Example
+                        Data Project
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="projectTable" class="table table-bordered table-striped table-hover-col-sm-3">
+                            <table id="searchTable" class="table table-bordered table-striped table-hover-col-sm-3">
                                 <thead>
                                     <tr>
+                                        <th>ID Project </th>
                                         <th>Project Name</th>
                                         <th>Batch</th>
                                         <th>Trainee</th>
@@ -37,7 +33,7 @@ and open the template in the editor.
                                     </tr>
                                 </thead>
 
-                                <script th:src="@{/js/trainee/trainee-project.js}"></script>
+                                <script th:src="@{/js/trainee/search-project.js}"></script>
                                 <tbody>
 
                                 </tbody>
@@ -51,15 +47,16 @@ and open the template in the editor.
     </div>
 
 
-    <div th:replace="fragments/footer :: footer"></div>                  
+  <div th:replace="fragments/footer :: footer"></div>                  
     <script>
         $(document).ready(function () {
-            var table = $('#trainerTable').DataTable();
+            var table = $('#searchTable').DataTable();
         });
     </script>
 
     <div th:replace="fragments/dataTable :: dataTable"></div> 
-    <div th:replace="admin/modal-edit-trainer :: modal-edit-trainer"></div>
-    <script th:src="@{/js/form-validation.js}"></script>-->
+    <script th:src="@{/js/form-validation.js}"></script>
+
+
 </body>
 </html>

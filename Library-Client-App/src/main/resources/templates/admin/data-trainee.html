@@ -6,48 +6,55 @@
     <div th:replace="fragments/header-link :: header-link"></div>     
 </head>
 
-<body>
-    <div th:replace="fragments/sidebar :: sidebar"></div>
-    <div class="content-container">
-        <div th:replace="fragments/header :: header"></div>
+<body class="sb-nav-fixed">
+    <div th:replace="fragments/header :: header"></div>
+    <div id="layoutSidenav">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <div id="layoutSidenav_content">
+            <div class="p-5">
 
-        <div class="container my-3">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        Data Trainee
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="traineeTable" class="table table-bordered table-striped table-hover-col-sm-3">
+                                <thead>
 
-            <h3>Data Trainee</h3>
+                                    <tr>
+                                        <td>No</td>
+                                        <td>Nama Trainee</td>
+                                        <td>Batch</td>
+                                        <td>Email</td>
+                                        <td>Jabatan</td>
+                                        <td>Status</td>
+                                        <td>Action</td>
+                                    </tr>
+                                </thead>
 
+                                <script th:src="@{/js/admin/data-trainee.js}"></script>
+                                <tbody>
 
-            <br>
-            <br>
-            <table id="traineeTable" class="table table-bordered table-striped table-hover-col-sm-3">
-                <thead>
+                                </tbody>
 
-                    <tr>
-                        <td>No</td>
-                        <td>Nama Trainee</td>
-                        <td>Batch</td>
-                        <td>Email</td>
-                        <td>Jabatan</td>
-                        <td>Status</td>
-                        <td>Action</td>
-                    </tr>
-                </thead>
-
-                <script th:src="@{/js/admin/data-trainee.js}"></script>
-                <tbody>
-
-                </tbody>
-
-            </table>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
     <div th:replace="fragments/footer :: footer"></div>                  
     <script>
         $(document).ready(function () {
             var table = $('#traineeTable').DataTable();
         });
     </script>
-    
-     <div th:replace="fragments/dataTable :: dataTable"></div> 
+
+    <div th:replace="fragments/dataTable :: dataTable"></div> 
     <div th:replace="admin/modal-edit-trainee :: modal-edit-trainee"></div>
     <script th:src="@{/js/form-validation.js}"></script>
 

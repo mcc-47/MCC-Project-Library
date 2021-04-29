@@ -40,7 +40,10 @@ function getAll() {
                 data: "link", name: "Link Full Project", autoWidth: true
             },
             {
-                data: "traineeList", name: "Keahlian", autoWidth: true
+                data: "nama[, ]", name: "Nama Trainee", autoWidth: true
+            },
+            {
+                data: "trainer", name: "Nama Trainer", autoWidth: true
             },
             {
                 render: (data, type, row, meta) => {
@@ -83,7 +86,8 @@ function update() {
         uml: $("#uml").val(),
         skema: $("#skema").val(),
         link: $("#link").val(),
-        traineeList: $("#traineeList").val()
+            nama: $("#nama[, ]").val(),
+        trainer: $("#trainer").val()
     };
     let id = $("#idProject").val();
     $.ajax({
@@ -127,7 +131,8 @@ function setForm(data) {
     $("#uml").val(data.uml);
     $("#skema").val(data.skema);
     $("#link").val(data.link);
-    $("#traineeList").val(data.traineeList);
+    $("#nama[, ]").val(data.nama);
+    $("#trainer").val(data.trainer);
 }
 
     
