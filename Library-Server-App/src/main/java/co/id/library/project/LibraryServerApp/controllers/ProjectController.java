@@ -54,6 +54,16 @@ public class ProjectController {
         return projectService.update(id, project);
     }
     
+    @PutMapping("/update-judul/{id}")
+    public Project updateJudul(@PathVariable Integer id, String judul, String deskripsi)throws MessagingException{
+        return projectService.updateJudul(id, judul, deskripsi);
+    }
+    
+    @PutMapping("/update-link/{id}")
+    public Project updateLink(@PathVariable Integer id, String erd, String uml, String skema, String link)throws MessagingException{
+        return projectService.updateLink(id, erd, uml, skema, link);
+    }
+    
     @PostMapping
     public Project createProject(@RequestBody Project project){
         return projectService.create(project);

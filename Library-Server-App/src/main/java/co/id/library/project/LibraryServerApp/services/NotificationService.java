@@ -66,7 +66,7 @@ public class NotificationService {
         
     }
     
-    public void notifUpdateJudul (Integer idMcc) throws MessagingException{
+    public void notifUpdateProject (Integer idMcc) throws MessagingException{
         
         Employee employee = employeeRepository.findById(idMcc).get();
         
@@ -77,6 +77,38 @@ public class NotificationService {
         helper.setSubject("Update Project Akhir");
 //        message.setText(String.format("ID: %d, Name: %s, Province %s", employee.getEmployeeId(),employee.getEmployeeName(),province), "UTF-8", "html");
         message.setText(String.format("Update project akhir Saya"), "UTF-8", "html");
+        
+        javaMailSender.send(message);
+        
+    }
+    
+    public void notifUpdateJudul (Integer idMcc) throws MessagingException{
+        
+        Employee employee = employeeRepository.findById(idMcc).get();
+        
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        helper.setFrom(sender);
+        helper.setTo(employee.getEmail());
+        helper.setSubject("Update Judul Project Akhir");
+//        message.setText(String.format("ID: %d, Name: %s, Province %s", employee.getEmployeeId(),employee.getEmployeeName(),province), "UTF-8", "html");
+        message.setText(String.format("Update judul proyek akhir Saya"), "UTF-8", "html");
+        
+        javaMailSender.send(message);
+        
+    }
+    
+    public void notifUpdateLink (Integer idMcc) throws MessagingException{
+        
+        Employee employee = employeeRepository.findById(idMcc).get();
+        
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        helper.setFrom(sender);
+        helper.setTo(employee.getEmail());
+        helper.setSubject("Update Link Project Akhir");
+//        message.setText(String.format("ID: %d, Name: %s, Province %s", employee.getEmployeeId(),employee.getEmployeeName(),province), "UTF-8", "html");
+        message.setText(String.format("Update link project akhir Saya"), "UTF-8", "html");
         
         javaMailSender.send(message);
         

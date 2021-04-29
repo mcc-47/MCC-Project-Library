@@ -82,7 +82,33 @@ public class ProjectService {
         updateProject.setCurrentStatus(new Status(1));
         
         Integer trainer = updateProject.getTraineeList().get(0).getEmployee().getIdTrainer().getIdMcc();
+        notificationService.notifUpdateProject(trainer);
+        
+        return projectRepository.save(updateProject);
+    }
+    
+    public Project updateJudul (Integer id, String judul, String deskripsi)throws MessagingException{
+        Project updateProject = projectRepository.findById(id).get();
+        updateProject.setJudul(judul);
+        updateProject.setDeskripsi(deskripsi);
+        updateProject.setCurrentStatus(new Status(1));
+        
+        Integer trainer = updateProject.getTraineeList().get(0).getEmployee().getIdTrainer().getIdMcc();
         notificationService.notifUpdateJudul(trainer);
+        
+        return projectRepository.save(updateProject);
+    }
+    
+    public Project updateLink (Integer id, String erd, String uml, String skema, String link)throws MessagingException{
+        Project updateProject = projectRepository.findById(id).get();
+        updateProject.setErd(erd);
+        updateProject.setUml(uml);
+        updateProject.setSkema(skema);
+        updateProject.setLink(link);
+        updateProject.setCurrentStatus(new Status(1));
+        
+        Integer trainer = updateProject.getTraineeList().get(0).getEmployee().getIdTrainer().getIdMcc();
+        notificationService.notifUpdateLink(trainer);
         
         return projectRepository.save(updateProject);
     }
