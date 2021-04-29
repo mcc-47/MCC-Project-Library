@@ -6,12 +6,17 @@
 package co.id.library.project.LibraryServerApp.services;
 
 import co.id.library.project.LibraryServerApp.dto.ProjectDTO;
+import co.id.library.project.LibraryServerApp.entities.History;
 import co.id.library.project.LibraryServerApp.entities.Project;
 import co.id.library.project.LibraryServerApp.entities.Status;
 import co.id.library.project.LibraryServerApp.entities.Trainee;
 import co.id.library.project.LibraryServerApp.repositories.EmployeeRepository;
+import co.id.library.project.LibraryServerApp.repositories.HistoryRepository;
 import co.id.library.project.LibraryServerApp.repositories.ProjectRepository;
 import co.id.library.project.LibraryServerApp.repositories.TraineeRepository;
+import java.time.LocalDateTime;
+import static java.time.LocalDateTime.now;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.mail.MessagingException;
@@ -36,6 +41,9 @@ public class ProjectService {
     
     @Autowired
     EmployeeRepository employeeRepository;
+    
+    @Autowired
+    HistoryRepository historyRepository;
     
     ProjectDTO projectDTO;
     
@@ -96,6 +104,13 @@ public class ProjectService {
         Integer trainer = updateProject.getTraineeList().get(0).getEmployee().getIdTrainer().getIdMcc();
         notificationService.notifUpdateJudul(trainer);
         
+        historyRepository.save(new History(
+                "status_judul",
+                java.util.Calendar.getInstance().getTime(),
+                new Project(id),
+                new Status(1)
+        ));
+        
         return projectRepository.save(updateProject);
     }
     
@@ -110,10 +125,17 @@ public class ProjectService {
         Integer trainer = updateProject.getTraineeList().get(0).getEmployee().getIdTrainer().getIdMcc();
         notificationService.notifUpdateLink(trainer);
         
+        historyRepository.save(new History(
+                "status_link",
+                java.util.Calendar.getInstance().getTime(),
+                new Project(id),
+                new Status(1)
+        ));
+        
         return projectRepository.save(updateProject);
     }
     
-    public Project updateStatus (Integer id, boolean status)throws MessagingException{
+    public Project updateStatusJudul (Integer id, boolean status)throws MessagingException{
         Project updateProject = projectRepository.findById(id).get();
         if(status == true){
             updateProject.setCurrentStatus(new Status(3));
@@ -121,7 +143,12 @@ public class ProjectService {
                 Integer trainee =t.getEmployee().getIdMcc();
                 notificationService.notifValidasiDiterima(trainee);
             }
-//            Integer trainee = updateProject.getTraineeList().get(0).getEmployee().getIdMcc();
+            historyRepository.save(new History(
+                "status_judul",
+                java.util.Calendar.getInstance().getTime(),
+                new Project(id),
+                new Status(3)
+        ));
         }
         else{
             updateProject.setCurrentStatus(new Status(2));
@@ -129,8 +156,44 @@ public class ProjectService {
                 Integer trainee =t.getEmployee().getIdMcc();
                 notificationService.notifValidasiDitolak(trainee);
             }
-//            Integer trainee = updateProject.getTraineeList().get(0).getEmployee().getIdMcc();
-//            notificationService.notifValidasiDitolak(trainee);
+            historyRepository.save(new History(
+                "status_judul",
+                java.util.Calendar.getInstance().getTime(),
+                new Project(id),
+                new Status(2)
+        ));
+        }
+        
+        return projectRepository.save(updateProject);
+    }
+    
+    public Project updateStatusLink (Integer id, boolean status)throws MessagingException{
+        Project updateProject = projectRepository.findById(id).get();
+        if(status == true){
+            updateProject.setCurrentStatus(new Status(3));
+            for (Trainee t : updateProject.getTraineeList()){
+                Integer trainee =t.getEmployee().getIdMcc();
+                notificationService.notifValidasiDiterima(trainee);
+            }
+            historyRepository.save(new History(
+                "status_link",
+                java.util.Calendar.getInstance().getTime(),
+                new Project(id),
+                new Status(3)
+            ));
+        }
+        else{
+            updateProject.setCurrentStatus(new Status(2));
+            for (Trainee t : updateProject.getTraineeList()){
+                Integer trainee =t.getEmployee().getIdMcc();
+                notificationService.notifValidasiDitolak(trainee);
+            }
+            historyRepository.save(new History(
+                "status_link",
+                java.util.Calendar.getInstance().getTime(),
+                new Project(id),
+                new Status(2)
+            ));
         }
         
         return projectRepository.save(updateProject);

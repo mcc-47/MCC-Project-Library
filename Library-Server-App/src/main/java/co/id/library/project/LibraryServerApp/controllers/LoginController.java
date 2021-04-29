@@ -28,8 +28,6 @@ public class LoginController {
     
     @Autowired
     LoginService loginService;
-    @Autowired
-    NotificationService notificationService;
     
     @PostMapping("/login")
     public AuthDTO login(@RequestBody LoginDTO loginDTO)throws Exception{

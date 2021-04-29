@@ -71,6 +71,23 @@ public class History implements Serializable {
         this.waktu = waktu;
     }
 
+    public History(String info, Date waktu, String pesan, Project idProject, Status idStatus) {
+        this.info = info;
+        this.waktu = waktu;
+        this.pesan = pesan;
+        this.idProject = idProject;
+        this.idStatus = idStatus;
+    }
+
+    public History(String info, Date waktu, Project idProject, Status idStatus) {
+        this.info = info;
+        this.waktu = waktu;
+        this.idProject = idProject;
+        this.idStatus = idStatus;
+    }
+    
+    
+
     public Integer getIdHistory() {
         return idHistory;
     }

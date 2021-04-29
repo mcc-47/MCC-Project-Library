@@ -64,9 +64,14 @@ public class ProjectController {
         return projectService.updateLink(id, erd, uml, skema, link);
     }
     
-    @PutMapping("/validasi/{id}")
-    public Project validasi(@PathVariable Integer id, boolean status)throws MessagingException{
-        return projectService.updateStatus(id, status);
+    @PutMapping("/validasi-judul/{id}")
+    public Project validasiJudul(@PathVariable Integer id, boolean status)throws MessagingException{
+        return projectService.updateStatusJudul(id, status);
+    }
+    
+    @PutMapping("/validasi-link/{id}")
+    public Project validasiLink (@PathVariable Integer id, boolean status)throws MessagingException{
+        return projectService.updateStatusLink(id, status);
     }
     
     @PostMapping
