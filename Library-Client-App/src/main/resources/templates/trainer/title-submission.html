@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Data Project - Trainee</title>
+    <div th:replace="fragments/header-link :: header-link"></div>     
+</head>
+
+<body class="sb-nav-fixed">
+    <div th:replace="fragments/header :: header"></div>
+    <div id="layoutSidenav">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <div id="layoutSidenav_content">
+            <div class="p-5">
+
+                <div class="container-fluid">
+                    <h1 class="mt-4">Trainer First Page</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">MCC-Project/Trainer/Trainer-First-Page</li>
+                    </ol>
+
+                    <div >
+                        <form class="form-inline mb-3 d-flex justify-content-end">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+
+                    <div class="card bg-secondary text-white mb-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="card-body card-left">
+                                <h5 class="card-title">Project MCC Library</h5>
+                                <p class="card-text">Project ini merupakan project akhir dari program MCC yang dibuat oleh peserta MCC batch ke-47. Project ini dibuat dengan tujuan untuk memudahkan peserta MCC yang akan datang untuk melihat referensi project akhir mereka, dan juga sebagai tempat melakukan penyimpanan seluruh project peserta MCC agar dapat disimpan dengan baik dan aman.</p>
+                            </div>
+                            <div class="card-body card-right text-end">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card bg-secondary text-white mb-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="card-body card-left">
+                                <h5 class="card-title">Project MCC Library</h5>
+                                <p class="card-text">Project ini merupakan project akhir dari program MCC yang dibuat oleh peserta MCC batch ke-47. Project ini dibuat dengan tujuan untuk memudahkan peserta MCC yang akan datang untuk melihat referensi project akhir mereka, dan juga sebagai tempat melakukan penyimpanan seluruh project peserta MCC agar dapat disimpan dengan baik dan aman.</p>
+                            </div>
+                            <div class="card-body card-right text-end">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card bg-secondary text-white mb-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="card-body card-left">
+                                <h5 class="card-title">Project MCC Library</h5>
+                                <p class="card-text">Project ini merupakan project akhir dari program MCC yang dibuat oleh peserta MCC batch ke-47. Project ini dibuat dengan tujuan untuk memudahkan peserta MCC yang akan datang untuk melihat referensi project akhir mereka, dan juga sebagai tempat melakukan penyimpanan seluruh project peserta MCC agar dapat disimpan dengan baik dan aman.</p>
+                            </div>
+                            <div class="card-body card-right text-end">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card bg-secondary text-white mb-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="card-body card-left">
+                                <h5 class="card-title">Project MCC Library</h5>
+                                <p class="card-text">Project ini merupakan project akhir dari program MCC yang dibuat oleh peserta MCC batch ke-47. Project ini dibuat dengan tujuan untuk memudahkan peserta MCC yang akan datang untuk melihat referensi project akhir mereka, dan juga sebagai tempat melakukan penyimpanan seluruh project peserta MCC agar dapat disimpan dengan baik dan aman.</p>
+                            </div>
+                            <div class="card-body card-right text-end">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card bg-secondary text-white mb-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="card-body card-left">
+                                <h5 class="card-title">Project MCC Library</h5>
+                                <p class="card-text">Project ini merupakan project akhir dari program MCC yang dibuat oleh peserta MCC batch ke-47. Project ini dibuat dengan tujuan untuk memudahkan peserta MCC yang akan datang untuk melihat referensi project akhir mereka, dan juga sebagai tempat melakukan penyimpanan seluruh project peserta MCC agar dapat disimpan dengan baik dan aman.</p>
+                            </div>
+                            <div class="card-body card-right text-end">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div th:replace="fragments/footer :: footer"></div>                  
+    <script>
+        $(document).ready(function () {
+            var table = $('#searchTable').DataTable();
+        });
+    </script>
+
+    <div th:replace="fragments/dataTable :: dataTable"></div> 
+    <script th:src="@{/js/form-validation.js}"></script>
+
+
+</body>
+</html>
+
+
+
