@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <head>
+        <title>Data Trainer</title>
+    <div th:replace="fragments/header-link :: header-link"></div>     
+</head>
+<body class="sb-nav-fixed">
+    <div th:replace="fragments/header :: header"></div>
+    <div id="layoutSidenav">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <div id="layoutSidenav_content">
+            <div id="layoutSidenav_content">
+                <div class="p-5">
+                    <div class="container-fluid">
+                        <h1 class="mt-4">Submit Judul Project</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">MCC-Project/Trainee/Submit-Judul</li>
+                        </ol>
+
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Judul Project</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Deskripsi</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Anggota 1</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>Aul</option>
+                                    <option>Rafi</option>
+                                    <option>Zaki</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Anggota 2</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>Aul</option>
+                                    <option>Rafi</option>
+                                    <option>Zaki</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Anggota 3</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>Aul</option>
+                                    <option>Rafi</option>
+                                    <option>Zaki</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-warning">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

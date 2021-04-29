@@ -6,48 +6,93 @@
     <div th:replace="fragments/header-link :: header-link"></div>     
 </head>
 
-<body>
-    <div th:replace="fragments/sidebar :: sidebar"></div>
-    <div class="content-container">
-        <div th:replace="fragments/header :: header"></div>
+<body class="sb-nav-fixed">
+    <div th:replace="fragments/header :: header"></div>
+    <div id="layoutSidenav">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <div id="layoutSidenav_content">
+            <div class="p-5">
+                <h3>Data Trainer</h3>
 
-        <div class="container my-3">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        DataTable Example
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="trainerTable" class="table table-bordered table-striped table-hover-col-sm-3">
+                                <thead>
 
-            <h3>Data Trainer</h3>
+                                    <tr>
+                                        <td>No</td>
+                                        <td>Nama Trainer</td>
+                                        <td>Email</td>
+                                        <td>Keahlian</td>
+                                        <td>Action</td>
+                                    </tr>
+                                </thead>
 
+                                <script th:src="@{/js/admin/data-trainer.js}"></script>
 
-            <br>
-            <br>
-            <table id="trainerTable" class="table table-bordered table-striped table-hover-col-sm-3">
-                <thead>
-
-                    <tr>
-                        <td>No</td>
-                        <td>Nama Trainer</td>
-                        <td>Email</td>
-                        <td>Keahlian</td>
-                        <td>Action</td>
-                    </tr>
-                </thead>
-
-                <script th:src="@{/js/admin/data-trainer.js}"></script>
-                <tbody>
-
-                </tbody>
-
-            </table>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+
     <div th:replace="fragments/footer :: footer"></div>                  
     <script>
         $(document).ready(function () {
             var table = $('#trainerTable').DataTable();
         });
     </script>
-    
-     <div th:replace="fragments/dataTable :: dataTable"></div> 
+
+    <div th:replace="fragments/dataTable :: dataTable"></div> 
     <div th:replace="admin/modal-edit-trainer :: modal-edit-trainer"></div>
-    <script th:src="@{/js/form-validation.js}"></script>
+    <script th:src="@{/js/form-validation.js}"></script>-->
+
+
+
+
+
+
+    <!--    <div th:replace="fragments/header :: header"></div>
+            <div id="layoutSidenav">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+                <h3>Data Trainer</h3>
+                <table id="trainerTable" class="table table-bordered table-striped table-hover-col-sm-3">
+                    <thead>
+    
+                        <tr>
+                            <td>No</td>
+                            <td>Nama Trainer</td>
+                            <td>Email</td>
+                            <td>Keahlian</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+    
+                    <script th:src="@{/js/admin/data-trainer.js}"></script>
+                    <tbody>
+    
+                    </tbody>
+    
+                </table>
+            </div>
+        <div th:replace="fragments/footer :: footer"></div>                  
+        <script>
+            $(document).ready(function () {
+                var table = $('#trainerTable').DataTable();
+            });
+        </script>
+        
+         <div th:replace="fragments/dataTable :: dataTable"></div> 
+        <div th:replace="admin/modal-edit-trainer :: modal-edit-trainer"></div>
+        <script th:src="@{/js/form-validation.js}"></script>-->
 
 
 </body>

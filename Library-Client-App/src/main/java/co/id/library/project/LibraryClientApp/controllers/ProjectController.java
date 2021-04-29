@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("project")
+@RequestMapping("/project")
 public class ProjectController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class ProjectController {
     @GetMapping
     public String getAll(Model model) {
         model.addAttribute("project", projectService.getAll());
-        return "admin/data-project";
+        return "trainee/search-project";
     }
     
     //GET ALL
