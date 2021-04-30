@@ -3,6 +3,7 @@ package co.id.library.project.LibraryClientApp.controllers;
 import co.id.library.project.LibraryClientApp.models.Project;
 import co.id.library.project.LibraryClientApp.models.SearchProject;
 import co.id.library.project.LibraryClientApp.models.SubmitProject;
+import co.id.library.project.LibraryClientApp.models.TitleTrainer;
 import co.id.library.project.LibraryClientApp.services.ProjectService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,19 +24,21 @@ public class ProjectController {
     @Autowired
     ProjectService projectService;
 
+    //mapping untuk data project
     @GetMapping
     public String getAll(Model model) {
         model.addAttribute("project", projectService.getAll());
         return "admin/data-project";
     }
 
-    //GET ALL
     @GetMapping("/get-all")
-    public @ResponseBody List<Project> getAllProcess() {
+    public @ResponseBody
+    List<Project> getAllProcess() {
         System.out.println("ini get all");
         return projectService.getAll();
     }
 
+    //=========mapping untuk search trainee==============
     @GetMapping("/search-trainee")
     public String getAllSearch(Model model) {
         model.addAttribute("searchProject", projectService.getAllSearch());
@@ -43,20 +46,44 @@ public class ProjectController {
         return "trainee/search-project";
     }
 
-    //GET ALL
     @GetMapping("/cari")
     public @ResponseBody
     List<SearchProject> getAllSearchProcess() {
         System.out.println("cetakaja");
         return projectService.getAllSearch();
     }
+    //====================================
+
+    //------mapping untuk title submission (trainer) -------------------
+    @GetMapping("/title-submission")
+    public String getTitleSubmission(Model model, Integer id) {
+        model.addAttribute("titleSubmission", projectService.getTitleTrainer(id));
+        System.out.println("cetak search project");
+        return "trainer/title-submission";
+    }
+
+    @GetMapping("/title")
+    public @ResponseBody
+    List<TitleTrainer> getTitle(Integer id) {
+        System.out.println("cetakaja");
+        return projectService.getTitleTrainer(id);
+    }
+    //-------------------------------------------------------
     
-//    //maping untuk judul project
-//    @GetMapping("/judul")
-//    public String getJudul(Model model) {
-//        //model.addAttribute("project", projectService.getAll());
-//        return "trainee/submit-judul";
-//    }
+    //********* mapping untuk full project (trainer) ****************
+    @GetMapping("/project-submission")
+    public String getProjectSubmission(Model model, Integer id) {
+        model.addAttribute("titleSubmission", projectService.getProjectTrainer(id));
+        System.out.println("cetak search project");
+        return "trainer/project-submission";
+    }
+
+    @GetMapping("/full")
+    public @ResponseBody
+    List<Project> getProject(Integer id) {
+        System.out.println("cetakaja");
+        return projectService.getProjectTrainer(id);
+    }
 
     //GET BY ID
     @GetMapping("/{id}")
@@ -67,7 +94,8 @@ public class ProjectController {
 
     //CREATE PROJECT
     @PostMapping
-    public @ResponseBody String create(@RequestBody Project project) {
+    public @ResponseBody
+    String create(@RequestBody Project project) {
         System.out.println(project);
         return projectService.create(project);
     }
@@ -104,7 +132,7 @@ public class ProjectController {
         return projectService.updateLink(id, erd, uml, skema, link);
 
     }
-    
+
 //    //VALIDASI JUDUL
 //    @PutMapping("/validasi-judul/{id}")
 //    public @ResponseBody
@@ -120,5 +148,4 @@ public class ProjectController {
 //        return projectService.validasiLink(id, status, pesan);
 //
 //    }
-
 }

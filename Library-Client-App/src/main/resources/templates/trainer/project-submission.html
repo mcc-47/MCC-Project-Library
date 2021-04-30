@@ -20,19 +20,20 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="titleSubmission" class="table table-bordered table-striped table-hover-col-sm-3 w-100">
+                            <table id="projectSubmission" class="table table-bordered table-striped table-hover-col-sm-3 w-100">
                                 <thead>
 
                                     <tr>
                                         <td>No</td>
                                         <td>Judul Project</td>
-                                        <td>Deskripsi</td>
+                                        <td>ERD</td>
+                                        <td>Link Project</td>
                                         <td>Aksi</td>
                                         
                                     </tr>
                                 </thead>
 
-                                <script th:src="@{/js/trainer/title-submission.js}"></script>
+                                <script th:src="@{/js/trainer/project-submission.js}"></script>
                                 <tbody>
 
                                 </tbody>
@@ -47,11 +48,11 @@
     <div th:replace="fragments/footer :: footer"></div>                  
     <script>
         $(document).ready(function () {
-            var table = $('#titleSubmission').DataTable();
+            var table = $('#projectSubmission').DataTable();
         });
     </script>
     <div th:replace="fragments/dataTable :: dataTable"></div> 
-    <div th:replace="trainer/modal-detail-title :: modal-detail-title"></div>
+    <div th:replace="trainer/modal-detail-project :: modal-detail-project"></div>
 
 
 </body>

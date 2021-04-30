@@ -4,6 +4,7 @@ import co.id.library.project.LibraryClientApp.config.RequestFormat;
 import co.id.library.project.LibraryClientApp.models.Project;
 import co.id.library.project.LibraryClientApp.models.SearchProject;
 import co.id.library.project.LibraryClientApp.models.SubmitProject;
+import co.id.library.project.LibraryClientApp.models.TitleTrainer;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -39,6 +40,26 @@ public class ProjectService {
                 .exchange(url + "/search", HttpMethod.GET,
                         new HttpEntity(RequestFormat.createHeaders()),
                         new ParameterizedTypeReference<List<SearchProject>>() {
+                });
+        return response.getBody();
+    }
+    
+     //READ title submission trainer
+    public List<TitleTrainer> getTitleTrainer(Integer id) {
+        ResponseEntity<List<TitleTrainer>> response = restTemplate
+                .exchange(url + "/title" + id, HttpMethod.GET,
+                        new HttpEntity(RequestFormat.createHeaders()),
+                        new ParameterizedTypeReference<List<TitleTrainer>>() {
+                });
+        return response.getBody();
+    }
+    
+    //READ full project submission trainer
+    public List<Project> getProjectTrainer(Integer id) {
+        ResponseEntity<List<Project>> response = restTemplate
+                .exchange(url + "/project" + id, HttpMethod.GET,
+                        new HttpEntity(RequestFormat.createHeaders()),
+                        new ParameterizedTypeReference<List<Project>>() {
                 });
         return response.getBody();
     }
