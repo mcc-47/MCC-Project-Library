@@ -7,6 +7,20 @@ $(document).ready(() => {
         e.preventDefault();
         formValidation(update);
     });
+//    var t = $('#example').DataTable({
+//        "columnDefs": [{
+//                "searchable": false,
+//                "orderable": false,
+//                "targets": 0
+//            }],
+//        "order": [[1, 'asc']]
+//    });
+//
+//    t.on('order.dt search.dt', function () {
+//        t.column(0, {search: 'applied', order: 'applied'}).nodes().each(function (cell, i) {
+//            cell.innerHTML = i + 1;
+//        });
+//    }).draw();
 });
 function getAll() {
     table = $('#traineeTable').DataTable({
@@ -19,7 +33,10 @@ function getAll() {
         },
         columns: [
             {
-                data: "idMcc", name: "ID MCC", autoWidth: true
+                data: "id", name: "No", autoWidth: true,
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                }
             },
             {
                 data: "nama", name: "Nama Trainee", autoWidth: true
@@ -45,11 +62,12 @@ function getAll() {
                             data-target="#update-trainee"
                             onclick="getById('${row.idMcc}')">
                             
-                            <i class='fas fa-sm fa-pencil-alt'></i> Update
+                            <i class='fas fa-sm fa-pencil-alt'></i> 
                         </button>
                         <button class='btn btn-sm btn-danger' onclick="deleteById('${row.idMcc}')">
-                            <i class='fas fa-sm fa-trash'></i> Delete
+                            <i class='fas fa-sm fa-trash'></i> 
                         </button>
+                    
                     `;
                 }
             }
@@ -95,15 +113,30 @@ function update() {
     });
 }
 
-function deleteById(id) {
+//function deleteById(id) {
+//
+//    questionAlert("Are you sure?", "Do you want to delete this data?", function () {
+//        $.ajax({
+//            url: `/trainee/${id}`,
+//            type: 'DELETE',
+//            success: (res) => {
+//                table.ajax.reload();
+//                successAlert("Trainee sucess deleted");
+//            },
+//            error: (err) => {
+//                errorAlert("Trainee failed deleted");
+//            }
+//        });
+//    });
+//}
 
-    questionAlert("Are you sure?", "Do you want to delete this data?", function () {
+function deleteById(id) {
+    questionAlert("Are you sure?", "Do you want to delete this data?", () => {
         $.ajax({
             url: `/trainee/${id}`,
             type: 'DELETE',
             success: (res) => {
-                table.ajax.reload();
-                successAlert("Trainee sucess deleted");
+                successAlert("Trainee success deleted");
             },
             error: (err) => {
                 errorAlert("Trainee failed deleted");

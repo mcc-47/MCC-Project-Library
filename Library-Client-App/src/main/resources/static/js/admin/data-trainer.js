@@ -21,7 +21,10 @@ function getAll() {
         },
         columns: [
             {
-                data: "idMcc", name: "ID MCC", autoWidth: true
+                data: "id", name: "No", autoWidth: true,
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                }
             },
             {
                 data: "nama", name: "Nama Trainer", autoWidth: true
@@ -41,10 +44,10 @@ function getAll() {
                             data-target="#update-trainer"
                             onclick="getById('${row.idMcc}')">
                             
-                            <i class='fas fa-sm fa-pencil-alt'></i> Update
+                            <i class='fas fa-sm fa-pencil-alt'></i>
                         </button>
                         <button class='btn btn-sm btn-danger' onclick="deleteById('${row.idMcc}')">
-                            <i class='fas fa-sm fa-trash'></i> Delete
+                            <i class='fas fa-sm fa-trash'></i>
                         </button>
                     `;
                 }
@@ -80,7 +83,7 @@ function update() {
         success: (res) => {
             table.ajax.reload();
             successAlert("Trainer Updated");
-            $("#form-update").modal("hide");
+            $("#update-trainer").modal("hide");
         },
         error: (err) => {
             errorAlert("Trainer failed updated");

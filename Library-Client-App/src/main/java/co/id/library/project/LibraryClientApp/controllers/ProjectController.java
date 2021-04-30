@@ -2,6 +2,7 @@ package co.id.library.project.LibraryClientApp.controllers;
 
 import co.id.library.project.LibraryClientApp.models.Project;
 import co.id.library.project.LibraryClientApp.models.SearchProject;
+import co.id.library.project.LibraryClientApp.models.SubmitProject;
 import co.id.library.project.LibraryClientApp.services.ProjectService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,7 @@ public class ProjectController {
 
     //GET ALL
     @GetMapping("/get-all")
-    public @ResponseBody
-    List<Project> getAllProcess() {
+    public @ResponseBody List<Project> getAllProcess() {
         System.out.println("ini get all");
         return projectService.getAll();
     }
@@ -51,12 +51,12 @@ public class ProjectController {
         return projectService.getAllSearch();
     }
     
-    //maping untuk judul project
-    @GetMapping("/judul")
-    public String getJudul(Model model) {
-        //model.addAttribute("project", projectService.getAll());
-        return "trainee/submit-judul";
-    }
+//    //maping untuk judul project
+//    @GetMapping("/judul")
+//    public String getJudul(Model model) {
+//        //model.addAttribute("project", projectService.getAll());
+//        return "trainee/submit-judul";
+//    }
 
     //GET BY ID
     @GetMapping("/{id}")
@@ -67,8 +67,7 @@ public class ProjectController {
 
     //CREATE PROJECT
     @PostMapping
-    public @ResponseBody
-    String create(@RequestBody Project project) {
+    public @ResponseBody String create(@RequestBody Project project) {
         System.out.println(project);
         return projectService.create(project);
     }
@@ -76,9 +75,9 @@ public class ProjectController {
     //CREATE PROJECT TRAINEE
     @PostMapping("/trainee")
     public @ResponseBody
-    String createProjectTrainee(@RequestBody SearchProject projectTrainee) {
-        System.out.println(projectTrainee);
-        return projectService.createProjectTrainee(projectTrainee);
+    String createProjectTrainee(@RequestBody SubmitProject submitProject) {
+        System.out.println(submitProject);
+        return projectService.createProjectTrainee(submitProject);
     }
 
     //UPDATE PROJECT
@@ -105,5 +104,21 @@ public class ProjectController {
         return projectService.updateLink(id, erd, uml, skema, link);
 
     }
+    
+//    //VALIDASI JUDUL
+//    @PutMapping("/validasi-judul/{id}")
+//    public @ResponseBody
+//    String validasiJudul(@PathVariable("id") Integer id, boolean status, String pesan) {
+//        return projectService.validasiJudul(id, status, pesan);
+//
+//    }
+//    
+//    //VALIDASI LINK
+//    @PutMapping("/validasi-judul/{id}")
+//    public @ResponseBody
+//    String validasiLink(@PathVariable("id") Integer id, boolean status, String pesan) {
+//        return projectService.validasiLink(id, status, pesan);
+//
+//    }
 
 }

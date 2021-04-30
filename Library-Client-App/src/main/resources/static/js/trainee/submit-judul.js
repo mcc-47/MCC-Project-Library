@@ -44,20 +44,19 @@ create();
 //}
 
         function create() {
-//        project = {
-//        idProject : $("#idProject").val(),
-//                judul : $("#judul").val(),
-//                deskripsi : $("#deskripsi").val(),
-//                idMcc1 : $("#idMcc").val(),
-//                idMcc2 : $("#idMcc[1]").val(),
-//                idMcc3 : $("#idMcc[2]").val()
-//        };
-                project = {
-                idProject : $("#idProject").val(),
-                        judul : $("#judul").val(),
-                        deskripsi : $("#deskripsi").val(),
-                        mcc : [ $("#idMcc1").val().$("#idMcc2").val(), $("#idMcc3").val() ]
-                        };
+        project = {
+        idProject : $("#idProject").val(),
+                judul : $("#judul").val(),
+                deskripsi : $("#deskripsi").val(),
+                idMcc : $("#idMcc").val()
+                
+        };
+//                project = {
+//                idProject : $("#idProject").val(),
+//                        judul : $("#judul").val(),
+//                        deskripsi : $("#deskripsi").val(),
+//                        idMcc : [ $("#idMcc1").val(), $("#idMcc2").val(), $("#idMcc3").val() ]
+//                        };
         $.ajax({
         url: "/project/trainee",
                 type: 'POST',
@@ -67,6 +66,7 @@ create();
         table.ajax.reload();
                 successAlert("Title Project Created");
                 $("#create-judul").modal("hide");
+                console.log("cetak");
         },
                 error: (err) => {
         errorAlert("Title Project failed created");
