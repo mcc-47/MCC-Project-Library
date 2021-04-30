@@ -87,6 +87,6 @@ public class ProjectController {
     
     @PostMapping("/trainee")
     public String createProjectTrainee (@RequestBody ProjectTrainee projectTrainee)throws MessagingException{
-        return projectTraineeService.registerProject(projectTrainee);
+        return projectTraineeService.registerJudul(projectTrainee);
     }
 }

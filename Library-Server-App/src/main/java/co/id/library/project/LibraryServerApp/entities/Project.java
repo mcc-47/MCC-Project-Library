@@ -121,6 +121,12 @@ public class Project implements Serializable {
         this.currentStatus = currentStatus;
         this.traineeList = traineeList;
     }
+
+    public Project(String judul, String deskripsi, Status currentStatus) {
+        this.judul = judul;
+        this.deskripsi = deskripsi;
+        this.currentStatus = currentStatus;
+    }
     
     
 

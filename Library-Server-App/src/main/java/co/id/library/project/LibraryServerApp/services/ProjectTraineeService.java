@@ -35,15 +35,31 @@ public class ProjectTraineeService {
     @Autowired
     NotificationService notificationService;
         
-    public String registerProject (ProjectTrainee projectTrainee)throws MessagingException{
+//    public String registerProject (ProjectTrainee projectTrainee)throws MessagingException{
+//        projectRepository.save(new Project(
+//                projectTrainee.getIdProject(),
+//                projectTrainee.getJudul(),
+//                projectTrainee.getDeskripsi(),
+//                projectTrainee.getErd(),
+//                projectTrainee.getUml(),
+//                projectTrainee.getSkema(),
+//                projectTrainee.getLink(),
+//                new Status(1)
+//        ));
+//        for( Integer anggota : projectTrainee.getIdMcc() ){
+//            Trainee addProject = traineeRepository.findById(anggota).get();
+//            addProject.setIdProject( new Project(projectTrainee.getIdProject()));
+//            traineeRepository.save(addProject);
+//        }        
+//        Integer trainer = traineeRepository.findById(projectTrainee.getIdMcc().get(0)).get().getEmployee().getIdTrainer().getIdMcc();
+//        notificationService.notifRegisJudul(trainer);
+//        return "Registrasi Project Berhasil";
+//    }
+    
+    public String registerJudul (ProjectTrainee projectTrainee)throws MessagingException{
         projectRepository.save(new Project(
-                projectTrainee.getIdProject(),
                 projectTrainee.getJudul(),
                 projectTrainee.getDeskripsi(),
-                projectTrainee.getErd(),
-                projectTrainee.getUml(),
-                projectTrainee.getSkema(),
-                projectTrainee.getLink(),
                 new Status(1)
         ));
         for( Integer anggota : projectTrainee.getIdMcc() ){
@@ -53,7 +69,7 @@ public class ProjectTraineeService {
         }        
         Integer trainer = traineeRepository.findById(projectTrainee.getIdMcc().get(0)).get().getEmployee().getIdTrainer().getIdMcc();
         notificationService.notifRegisJudul(trainer);
-        return "Registrasi Project Berhasil";
+        return "Registrasi Judul Berhasil";
     }
     
 }

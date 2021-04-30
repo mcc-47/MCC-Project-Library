@@ -26,16 +26,22 @@ public class ProjectTrainee {
     public ProjectTrainee() {
     }
 
-    public ProjectTrainee(ProjectTrainee projectTrainee) {
-        this.idProject = projectTrainee.getIdProject();
-        this.judul = projectTrainee.getJudul();
-        this.deskripsi = projectTrainee.getDeskripsi();
-        this.erd = projectTrainee.getErd();
-        this.uml = projectTrainee.getUml();
-        this.skema = projectTrainee.getSkema();
-        this.link = projectTrainee.getLink();
-        this.jumlahAnggota = projectTrainee.getJumlahAnggota();
-        this.idMcc = projectTrainee.getIdMcc();
+//    public ProjectTrainee(ProjectTrainee projectTrainee) {
+//        this.idProject = projectTrainee.getIdProject();
+//        this.judul = projectTrainee.getJudul();
+//        this.deskripsi = projectTrainee.getDeskripsi();
+//        this.erd = projectTrainee.getErd();
+//        this.uml = projectTrainee.getUml();
+//        this.skema = projectTrainee.getSkema();
+//        this.link = projectTrainee.getLink();
+//        this.jumlahAnggota = projectTrainee.getJumlahAnggota();
+//        this.idMcc = projectTrainee.getIdMcc();
+//    }
+
+    public ProjectTrainee(String judul, String deskripsi, List<Integer> idMcc) {
+        this.judul = judul;
+        this.deskripsi = deskripsi;
+        this.idMcc = idMcc;
     }
 
     public Integer getIdProject() {
