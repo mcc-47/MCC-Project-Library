@@ -5,6 +5,7 @@
  */
 package co.id.library.project.LibraryServerApp.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -53,9 +54,11 @@ public class History implements Serializable {
     private String pesan;
     @JoinColumn(name = "id_project", referencedColumnName = "id_project")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Project idProject;
     @JoinColumn(name = "id_status", referencedColumnName = "id_status")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Status idStatus;
 
     public History() {
