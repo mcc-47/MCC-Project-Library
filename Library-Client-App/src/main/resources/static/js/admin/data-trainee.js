@@ -87,7 +87,7 @@ function update() {
         success: (res) => {
             table.ajax.reload();
             successAlert("Trainee Updated");
-            $("#form-update").modal("hide");
+            $("#update-trainee").modal("hide");
         },
         error: (err) => {
             errorAlert("Trainee failed updated");

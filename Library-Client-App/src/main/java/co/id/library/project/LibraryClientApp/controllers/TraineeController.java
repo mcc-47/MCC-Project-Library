@@ -31,6 +31,7 @@ public class TraineeController {
     //GET ALL
     @GetMapping("/get-all")
     public @ResponseBody List<Trainee> getAllProcess() {
+        System.out.println("cetak trainee");
         return traineeService.getAll();
     }
     

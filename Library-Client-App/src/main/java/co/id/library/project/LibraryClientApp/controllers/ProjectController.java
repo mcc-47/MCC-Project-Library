@@ -1,4 +1,3 @@
-
 package co.id.library.project.LibraryClientApp.controllers;
 
 import co.id.library.project.LibraryClientApp.models.Project;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 @Controller
 @RequestMapping("/project")
 public class ProjectController {
@@ -29,26 +27,37 @@ public class ProjectController {
         model.addAttribute("project", projectService.getAll());
         return "admin/data-project";
     }
-    
+
     //GET ALL
     @GetMapping("/get-all")
-    public @ResponseBody List<Project> getAllProcess() {
+    public @ResponseBody
+    List<Project> getAllProcess() {
+        System.out.println("ini get all");
         return projectService.getAll();
     }
-    
+
     @GetMapping("/search-trainee")
     public String getAllSearch(Model model) {
         model.addAttribute("searchProject", projectService.getAllSearch());
+        System.out.println("cetak search project");
         return "trainee/search-project";
     }
-    
+
     //GET ALL
-    @GetMapping("/search")
-    public @ResponseBody List<SearchProject> getAllSearchProcess() {
+    @GetMapping("/cari")
+    public @ResponseBody
+    List<SearchProject> getAllSearchProcess() {
+        System.out.println("cetakaja");
         return projectService.getAllSearch();
     }
     
-    
+    //maping untuk judul project
+    @GetMapping("/judul")
+    public String getJudul(Model model) {
+        //model.addAttribute("project", projectService.getAll());
+        return "trainee/submit-judul";
+    }
+
     //GET BY ID
     @GetMapping("/{id}")
     public @ResponseBody
@@ -58,36 +67,41 @@ public class ProjectController {
 
     //CREATE PROJECT
     @PostMapping
-    public @ResponseBody String create(@RequestBody Project project) {
+    public @ResponseBody
+    String create(@RequestBody Project project) {
         System.out.println(project);
         return projectService.create(project);
     }
-    
-     //CREATE PROJECT TRAINEE
+
+    //CREATE PROJECT TRAINEE
     @PostMapping("/trainee")
-    public @ResponseBody String createProjectTrainee(@RequestBody SearchProject projectTrainee) {
+    public @ResponseBody
+    String createProjectTrainee(@RequestBody SearchProject projectTrainee) {
         System.out.println(projectTrainee);
         return projectService.createProjectTrainee(projectTrainee);
     }
 
     //UPDATE PROJECT
     @PutMapping("/{id}")
-    public @ResponseBody String update(@PathVariable("id") Integer id, @RequestBody Project project) {
+    public @ResponseBody
+    String update(@PathVariable("id") Integer id, @RequestBody Project project) {
         System.out.println(project);
         return projectService.update(id, project);
 
     }
-    
+
     //UPDATE JUDUL
     @PutMapping("/update-judul/{id}")
-    public @ResponseBody String updateJudul(@PathVariable("id") Integer id, String judul, String deskripsi) {
+    public @ResponseBody
+    String updateJudul(@PathVariable("id") Integer id, String judul, String deskripsi) {
         return projectService.updateJudul(id, judul, deskripsi);
 
     }
-    
+
     //UPDATE LINK
     @PutMapping("/update-link/{id}")
-    public @ResponseBody String updateLink(@PathVariable("id") Integer id, String erd, String uml, String skema, String link) {
+    public @ResponseBody
+    String updateLink(@PathVariable("id") Integer id, String erd, String uml, String skema, String link) {
         return projectService.updateLink(id, erd, uml, skema, link);
 
     }

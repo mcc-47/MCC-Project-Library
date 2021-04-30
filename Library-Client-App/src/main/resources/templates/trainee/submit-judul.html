@@ -1,77 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
     <head>
-    <head>
-        <title>Data Trainer</title>
+        <title>Submit Judul - Trainee</title>
     <div th:replace="fragments/header-link :: header-link"></div>     
 </head>
+
 <body class="sb-nav-fixed">
     <div th:replace="fragments/header :: header"></div>
     <div id="layoutSidenav">
         <div th:replace="fragments/sidebar :: sidebar"></div>
         <div id="layoutSidenav_content">
-            <div id="layoutSidenav_content">
-                <div class="p-5">
-                    <div class="container-fluid">
-                        <h1 class="mt-4">Submit Judul Project</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">MCC-Project/Trainee/Submit-Judul</li>
-                        </ol>
+            <div class="p-5">
 
-                        <form>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Judul Project</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Deskripsi</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Anggota 1</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Aul</option>
-                                    <option>Rafi</option>
-                                    <option>Zaki</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Anggota 2</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Aul</option>
-                                    <option>Rafi</option>
-                                    <option>Zaki</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Anggota 3</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Aul</option>
-                                    <option>Rafi</option>
-                                    <option>Zaki</option>
-                                </select>
-                            </div>
-                            <button class="btn btn-warning">Submit</button>
-                        </form>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        Submit Judul Project
                     </div>
-                </div>
-            </div>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create-judul"
+                                    sec:authorize="hasAuthority('create')"> 
+                                <i class="fas fa-plus" aria-hidden="true"></i> Submit Judul Project
+                            </button>
+
+                            <script th:src="@{/js/trainee/submit-judul.js}"></script>
+                            <tbody>
+
+                            </tbody>
+
                         </div>
                     </div>
                 </div>
-            </footer>
+            </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
+    <div th:replace="fragments/footer :: footer"></div>                  
+
+    <div th:replace="trainee/modal-add-judul :: modal-add-judul"></div>
+    <div th:replace="fragments/dataTable :: dataTable"></div> 
+
+
 </body>
 </html>

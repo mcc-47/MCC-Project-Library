@@ -1,93 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <head>
-        <title>Data Trainer</title>
+        <title>Submit Full Project - Trainee</title>
     <div th:replace="fragments/header-link :: header-link"></div>     
 </head>
 <body class="sb-nav-fixed">
     <div th:replace="fragments/header :: header"></div>
     <div id="layoutSidenav">
-        <div th:replace="fragments/sid ebar :: sidebar"></div>
+        <div th:replace="fragments/sidebar :: sidebar"></div>
         <div id="layoutSidenav_content">
             <div id="layoutSidenav_content">
                 <div class="p-5">
                     <div class="container-fluid">
-                        <h1 class="mt-4">Submit Judul Project</h1>
+                        <h1 class="mt-4">Submit Full Project</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">MCC-Project/Trainee/Submit-Judul</li>
+                            <li class="breadcrumb-item active">MCC-Project/Trainee/Submit-Full-Project</li>
                         </ol>
 
-                        <form>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Judul Project</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        <div class="modal fade" id="update-project" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header border-bottom-0">
+                                        <h5 class="modal-title" id="exampleModalLabel">Update Full Project</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form id="submitProject" class="needs-validation" novalidate>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="judul">Judul Project</label>
+                                                <input type="text" id="judul" class="form-control" placeholder="Judul Project" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter your title.
+                                                </div><br>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="deskripsi">Deskripsi</label>
+                                                <input type="text" id="deskripsi" class="form-control" placeholder="Deskripsi" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter your deskripsi.
+                                                </div><br>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlInput1">Anggota 1</label>
+                                                <select class="form-control" id="idMcc" required>
+                                                    <option value="" selected>--Pilih Anggota 1--</option>
+                                                    <option th:each="id:${idMcc}" th:value="${id.idMcc}" th:text="${id.nama}" required></option>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Please select your member 1.
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlInput2">Anggota 2</label>
+                                                <select class="form-control" id="idMcc" required>
+                                                    <option value="" selected>--Pilih Anggota 2--</option>
+                                                    <option th:each="id:${idMcc}" th:value="${id.idMcc}" th:text="${id.nama}" required></option>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Please select your member 2.
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlInput3">Anggota 3</label>
+                                                <select class="form-control" id="idMcc" required>
+                                                    <option value="" selected>--Pilih Anggota 3--</option>
+                                                    <option th:each="id:${idMcc}" th:value="${id.idMcc}" th:text="${id.nama}" required></option>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Please select your member 1.
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="erd">ERD</label>
+                                                <input type="text" id="erd" class="form-control" placeholder="ERD" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter your erd.
+                                                </div><br>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="uml">UML</label>
+                                                <input type="text" id="uml" class="form-control" placeholder="UML" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter your uml.
+                                                </div><br>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="judul">Skema</label>
+                                                <input type="text" id="skema" class="form-control" placeholder="Skema" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter your schema.
+                                                </div><br>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="link">Link</label>
+                                                <input type="text" id="link" class="form-control" placeholder="Link" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter your link.
+                                                </div><br>
+                                            </div>
+
+                                            <div class="modal-footer border-top-0 d-flex justify-content-center">
+                                                <button type="submit" class="btn btn-success">Submit</button>
+                                                <button data-dismiss="modal" class="btn btn-danger col-2">Back</button>
+                                            </div>
+
+                                    </form>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Deskripsi</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Anggota 1</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Aul</option>
-                                    <option>Rafi</option>
-                                    <option>Zaki</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Anggota 2</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Aul</option>
-                                    <option>Rafi</option>
-                                    <option>Zaki</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Anggota 3</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Aul</option>
-                                    <option>Rafi</option>
-                                    <option>Zaki</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">ERD</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">UML</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Schema</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Link</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                            </div>
-                            <button class="btn btn-warning">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
                         </div>
                     </div>
                 </div>
-            </footer>
+            </div>
         </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
+        <div th:replace="fragments/footer :: footer"></div>                  
+<!--        <script>
+            $(document).ready(function () {
+                var table = $('#submitProject').DataTable();
+            });
+        </script>
+        <div th:replace="fragments/dataTable :: dataTable"></div> -->
+        <script th:src="@{/js/form-validation.js}"></script>
+
 </body>
 </html>
+

@@ -19,8 +19,9 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="searchTable" class="table table-bordered table-striped table-hover-col-sm-3">
+                            <table id="cariTabel" class="table table-bordered table-striped table-hover-col-sm-3">
                                 <thead>
+
                                     <tr>
                                         <th>ID Project </th>
                                         <th>Project Name</th>
@@ -44,19 +45,15 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
-  <div th:replace="fragments/footer :: footer"></div>                  
+    <div th:replace="fragments/footer :: footer"></div>                  
     <script>
         $(document).ready(function () {
-            var table = $('#searchTable').DataTable();
+            var table = $('#cariTabel').DataTable();
         });
     </script>
-
     <div th:replace="fragments/dataTable :: dataTable"></div> 
-    <script th:src="@{/js/form-validation.js}"></script>
 
 
 </body>
 </html>
+

@@ -1,12 +1,16 @@
-let search_project = new Object();
+let searchProject = new Object();
 let table = null;
 
+$(document).ready(() => {
+    getAll();
+});
+
 function getAll() {
-    table = $('#searchTable').DataTable({
+    table = $('#cariTabel').DataTable({
         filter: true,
         orderMulti: true,
         ajax: {
-            url: "/project/search",
+            url: "/project/cari",
             datatype: "json",
             dataSrc: ""
         },
@@ -21,7 +25,7 @@ function getAll() {
                 data: "batch", name: "Batch", autoWidth: true
             },
             {
-                data: "nama[, ]", name: "Nama Trainee", autoWidth: true
+                data: "nama", name: "Nama Trainee", autoWidth: true
             },
             {
                 data: "trainer", name: "Nama Trainer", autoWidth: true
@@ -35,23 +39,7 @@ function getAll() {
             {
                 data: "link", name: "Link Full Project", autoWidth: true
             },
-//            {
-//                render: (data, type, row, meta) => {
-//                    return `
-//                        <button 
-//                            class='btn btn-sm btn-primary'
-//                            data-toggle="modal" 
-//                            data-target="#update-project"
-//                            onclick="getById('${row.idProject}')">
-//                            
-//                            <i class='fas fa-sm fa-pencil-alt'></i> Update
-//                        </button>
-//                        <button class='btn btn-sm btn-danger' onclick="deleteById('${row.idProject}')">
-//                            <i class='fas fa-sm fa-trash'></i> Delete
-//                        </button>
-//                    `;
-//                }
-//           }
+            
         ]
     });
 }
