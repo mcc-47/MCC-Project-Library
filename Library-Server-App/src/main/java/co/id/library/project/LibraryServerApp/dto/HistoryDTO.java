@@ -14,6 +14,7 @@ import java.util.Date;
 public class HistoryDTO {
     
     private Integer idHistory;
+    private Integer idProject;
     private String info;
     private Date waktu;
     private String pesan;
@@ -22,8 +23,9 @@ public class HistoryDTO {
     public HistoryDTO() {
     }
 
-    public HistoryDTO(Integer idHistory, String info, Date waktu, String pesan, String status) {
+    public HistoryDTO(Integer idHistory, Integer idProject, String info, Date waktu, String pesan, String status) {
         this.idHistory = idHistory;
+        this.idProject = idProject;
         this.info = info;
         this.waktu = waktu;
         this.pesan = pesan;
@@ -36,6 +38,14 @@ public class HistoryDTO {
 
     public void setIdHistory(Integer idHistory) {
         this.idHistory = idHistory;
+    }
+
+    public Integer getIdProject() {
+        return idProject;
+    }
+
+    public void setIdProject(Integer idProject) {
+        this.idProject = idProject;
     }
 
     public String getInfo() {
@@ -69,6 +79,8 @@ public class HistoryDTO {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    
     
     
 }

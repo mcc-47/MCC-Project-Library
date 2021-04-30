@@ -6,11 +6,12 @@
 package co.id.library.project.LibraryServerApp.services;
 
 import co.id.library.project.LibraryServerApp.dto.HistoryDTO;
-import co.id.library.project.LibraryServerApp.dto.TraineeDTO;
 import co.id.library.project.LibraryServerApp.entities.Employee;
 import co.id.library.project.LibraryServerApp.entities.History;
 import co.id.library.project.LibraryServerApp.entities.Project;
+import co.id.library.project.LibraryServerApp.repositories.EmployeeRepository;
 import co.id.library.project.LibraryServerApp.repositories.HistoryRepository;
+import co.id.library.project.LibraryServerApp.repositories.ProjectRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,11 @@ public class HistoryService {
     @Autowired
     HistoryRepository historyRepository;
     
-//    public List<History> getHistoryByIdProject(Project idProject){
-//        return historyRepository.findAllByIdProject(idProject);
-//    }
+    @Autowired
+    EmployeeRepository employeeRepository;
+    
+    @Autowired
+    ProjectRepository projectRepository;
     
     public List<HistoryDTO> getHistoryByIdProject(Project idProject) {
         List<History> history = historyRepository.findAllByIdProject(idProject);
@@ -37,6 +40,27 @@ public class HistoryService {
             if (e.getIdProject() != null) {
                 HistoryDTO td = new HistoryDTO(
                         e.getIdHistory(),
+                        e.getIdProject().getIdProject(),
+                        e.getInfo(),
+                        e.getWaktu(),
+                        e.getPesan(),
+                        e.getIdStatus().getStatus()
+                );
+                pdds.add(td);
+            }
+        }
+        return pdds;
+    }
+    
+    public List<HistoryDTO> getHistoryByIdMcc(Integer idMcc) {
+        Project idProject = employeeRepository.findById(idMcc).get().getTrainee().getIdProject();
+        List<History> history = historyRepository.findAllByIdProject(idProject);
+        List<HistoryDTO> pdds = new ArrayList<>();
+        for (History e : history) {
+            if (e.getIdProject() != null) {
+                HistoryDTO td = new HistoryDTO(
+                        e.getIdHistory(),
+                        e.getIdProject().getIdProject(),
                         e.getInfo(),
                         e.getWaktu(),
                         e.getPesan(),
@@ -55,6 +79,7 @@ public class HistoryService {
             if (e.getIdProject() != null) {
                 HistoryDTO td = new HistoryDTO(
                         e.getIdHistory(),
+                        e.getIdProject().getIdProject(),
                         e.getInfo(),
                         e.getWaktu(),
                         e.getPesan(),
