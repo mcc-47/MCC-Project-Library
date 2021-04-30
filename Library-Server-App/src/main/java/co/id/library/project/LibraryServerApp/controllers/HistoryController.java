@@ -33,12 +33,12 @@ public class HistoryController {
     }
     
     @GetMapping("employee/{id}")
-    public List<HistoryDTO> getHistoryByIdProject(@PathVariable Integer id){
+    public List<HistoryDTO> getHistoryByIdMcc(@PathVariable Integer id){
         return historyService.getHistoryByIdMcc(id);
     }
     
     @GetMapping("/get-all")
-    public List<HistoryDTO> getHistoryByIdProject(){
+    public List<HistoryDTO> getAllHistory(){
         return historyService.getAllHistory();
     }
 }

@@ -5,51 +5,30 @@
  */
 package co.id.library.project.LibraryServerApp.dto;
 
+import java.util.List;
+
 /**
  *
  * @author ASUS
  */
-
-import java.util.List;
-
-public class SearchTraineeDTO {
-     private Integer idProject;
+public class GetJudulDTO {
+    private Integer idProject;
     private String judul;
     private String batch;
     private List<String> nama;
     private String trainer;
     private String deskripsi;
-    private String skema;
-    private String link;
 
-    public SearchTraineeDTO(Integer idProject, String judul, String batch, List<String> nama, String deskripsi) {
-        this.idProject = idProject;
-        this.judul = judul;
-        this.batch = batch;
-        this.nama = nama;
-        this.deskripsi = deskripsi;
-    }
-    
-    public SearchTraineeDTO(Integer idProject, String judul, String batch, List<String> nama, 
-            String trainer, String deskripsi, String skema, String link) {
+    public GetJudulDTO(Integer idProject, String judul, String batch, List<String> nama, String trainer, String deskripsi) {
         this.idProject = idProject;
         this.judul = judul;
         this.batch = batch;
         this.nama = nama;
         this.trainer = trainer;
         this.deskripsi = deskripsi;
-        this.skema = skema;
-        this.link = link;
     }
 
-    public SearchTraineeDTO() {
-    }
-
-    
-    
-
-    public SearchTraineeDTO(Integer idProject, String judul, List<String> nama, String nama0, String deskripsi, String skema, String link) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public GetJudulDTO() {
     }
 
     public Integer getIdProject() {
@@ -99,22 +78,6 @@ public class SearchTraineeDTO {
     public void setDeskripsi(String deskripsi) {
         this.deskripsi = deskripsi;
     }
-
-    public String getSkema() {
-        return skema;
-    }
-
-    public void setSkema(String skema) {
-        this.skema = skema;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
+    
     
 }

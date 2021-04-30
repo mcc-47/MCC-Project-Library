@@ -5,7 +5,9 @@
  */
 package co.id.library.project.LibraryServerApp.services;
 
+import co.id.library.project.LibraryServerApp.dto.GetJudulDTO;
 import co.id.library.project.LibraryServerApp.dto.ProjectDTO;
+import co.id.library.project.LibraryServerApp.dto.ProjectTrainee;
 import co.id.library.project.LibraryServerApp.dto.SearchTraineeDTO;
 import co.id.library.project.LibraryServerApp.entities.History;
 import co.id.library.project.LibraryServerApp.entities.Project;
@@ -15,9 +17,6 @@ import co.id.library.project.LibraryServerApp.repositories.EmployeeRepository;
 import co.id.library.project.LibraryServerApp.repositories.HistoryRepository;
 import co.id.library.project.LibraryServerApp.repositories.ProjectRepository;
 import co.id.library.project.LibraryServerApp.repositories.TraineeRepository;
-import java.time.LocalDateTime;
-import static java.time.LocalDateTime.now;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.mail.MessagingException;
@@ -48,6 +47,7 @@ public class ProjectService {
     
     ProjectDTO projectDTO;
     SearchTraineeDTO searchTraineeDTO;
+    ProjectTrainee projectTrainee;
     
     public List<ProjectDTO> getProject() {
         List<Project> project = projectRepository.findAll();
@@ -99,6 +99,44 @@ public class ProjectService {
     
     public Project getById(Integer idProject){
         return projectRepository.findById(idProject).get();
+    }
+    
+    public GetJudulDTO getByIdMcc(Integer idMcc){
+        Integer idProject = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
+        Project e = projectRepository.findById(idProject).get();
+        List<String> nama = new ArrayList<>();
+            for (Trainee t : e.getTraineeList()){
+                nama.add(t.getEmployee().getNama());
+            }
+        GetJudulDTO td = new GetJudulDTO(
+                        e.getIdProject(),
+                        e.getJudul(),
+                        e.getTraineeList().get(0).getBatch(),
+                        nama,
+                        e.getTraineeList().get(0).getEmployee().getIdTrainer().getNama(),
+                        e.getDeskripsi()
+                );
+        return td;
+    }
+    
+    public ProjectDTO getProjectByIdMcc(Integer idMcc){
+        Integer idProject = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
+        Project p = projectRepository.findById(idProject).get();
+        List<String> nama = new ArrayList<>();
+            for (Trainee t : p.getTraineeList()){
+                nama.add(t.getEmployee().getNama());
+            }
+        ProjectDTO td = new ProjectDTO(
+                    p.getIdProject(),
+                    p.getJudul(),
+                    p.getDeskripsi(),
+                    p.getErd(),
+                    p.getUml(),
+                    p.getSkema(),
+                    p.getLink(),
+                    nama,
+                    p.getTraineeList().get(0).getEmployee().getIdTrainer().getNama());
+        return td;
     }
     
     public Project create(Project project){

@@ -5,6 +5,7 @@
  */
 package co.id.library.project.LibraryServerApp.controllers;
 
+import co.id.library.project.LibraryServerApp.dto.GetJudulDTO;
 import co.id.library.project.LibraryServerApp.dto.ProjectDTO;
 import co.id.library.project.LibraryServerApp.dto.ProjectTrainee;
 import co.id.library.project.LibraryServerApp.dto.SearchTraineeDTO;
@@ -53,6 +54,16 @@ public class ProjectController {
     @GetMapping("{id}")
     public Project getOneProject(@PathVariable Integer id){
         return projectService.getById(id);
+    }
+    
+    @GetMapping("/judul/{id}")
+    public GetJudulDTO getJudulByIdMcc(@PathVariable Integer id){
+        return projectService.getByIdMcc(id);
+    }
+    
+    @GetMapping("/project/{id}")
+    public ProjectDTO getProjectByIdMcc(@PathVariable Integer id){
+        return projectService.getProjectByIdMcc(id);
     }
     
     @PutMapping("{id}")
