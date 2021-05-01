@@ -78,7 +78,7 @@ public class ProjectTraineeService {
         
         if(projectTrainee.getIdMccDua() != 0){
             Trainee addProjectDua = traineeRepository.findById(projectTrainee.getIdMccDua()).get();
-            addProjectSatu.setIdProject( new Project(projectRepository.findAll().get(projectRepository.findAll().size()-1).getIdProject()));
+            addProjectDua.setIdProject( new Project(projectRepository.findAll().get(projectRepository.findAll().size()-1).getIdProject()));
             traineeRepository.save(addProjectDua);
         }else{
            
@@ -86,7 +86,7 @@ public class ProjectTraineeService {
         
         if(projectTrainee.getIdMccTiga() != 0){
             Trainee addProjectTiga = traineeRepository.findById(projectTrainee.getIdMccTiga()).get();
-            addProjectSatu.setIdProject( new Project(projectRepository.findAll().get(projectRepository.findAll().size()-1).getIdProject()));
+            addProjectTiga.setIdProject( new Project(projectRepository.findAll().get(projectRepository.findAll().size()-1).getIdProject()));
             traineeRepository.save(addProjectTiga);
         }else{
             

@@ -51,6 +51,11 @@ public class ProjectController {
         return projectService.getSearchProject();
     }
     
+    @GetMapping("/get-all-judul")
+    public List<GetJudulDTO> getJudulDTO(){
+        return projectService.getAllJudul();
+    }
+    
     @GetMapping("{id}")
     public Project getOneProject(@PathVariable Integer id){
         return projectService.getById(id);

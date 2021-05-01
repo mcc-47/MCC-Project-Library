@@ -97,6 +97,29 @@ public class ProjectService {
         return pdds;
     }
     
+    public List<GetJudulDTO> getAllJudul(){
+//        Integer idProject = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
+//        Project e = projectRepository.findById(idProject).get();
+        List<Project> project = projectRepository.findAll();
+        List<GetJudulDTO> pdds = new ArrayList<>();
+        for (Project e : project) {
+            List<String> nama = new ArrayList<>();
+                for (Trainee t : e.getTraineeList()){
+                    nama.add(t.getEmployee().getNama());
+                }
+            GetJudulDTO td = new GetJudulDTO(
+                            e.getIdProject(),
+                            e.getJudul(),
+                            e.getTraineeList().get(0).getBatch(),
+                            nama,
+                            e.getTraineeList().get(0).getEmployee().getIdTrainer().getNama(),
+                            e.getDeskripsi()
+                    );
+            pdds.add(td);
+        }
+        return pdds;
+    }
+    
     public Project getById(Integer idProject){
         return projectRepository.findById(idProject).get();
     }
