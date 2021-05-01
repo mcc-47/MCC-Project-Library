@@ -4,7 +4,6 @@ import co.id.library.project.LibraryClientApp.config.RequestFormat;
 import co.id.library.project.LibraryClientApp.models.Project;
 import co.id.library.project.LibraryClientApp.models.SearchProject;
 import co.id.library.project.LibraryClientApp.models.SubmitProject;
-import co.id.library.project.LibraryClientApp.models.TitleTrainer;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -43,26 +42,6 @@ public class ProjectService {
                 });
         return response.getBody();
     }
-    
-    //get all title submission trainer
-    public List<TitleTrainer> getTitleTrainer() {
-        ResponseEntity<List<TitleTrainer>> response = restTemplate
-                .exchange(url + "/get-all-judul", HttpMethod.GET,
-                        new HttpEntity(RequestFormat.createHeaders()),
-                        new ParameterizedTypeReference<List<TitleTrainer>>() {
-                });
-        return response.getBody();
-    }
-    
-    //READ full project submission trainer
-    public List<Project> getProjectTrainer(Integer id) {
-        ResponseEntity<List<Project>> response = restTemplate
-                .exchange(url + "/project" + id, HttpMethod.GET,
-                        new HttpEntity(RequestFormat.createHeaders()),
-                        new ParameterizedTypeReference<List<Project>>() {
-                });
-        return response.getBody();
-    }
 
     //GET BY ID
     public Project getById(Integer id) {
@@ -79,19 +58,18 @@ public class ProjectService {
     }
 
     //CREATE project trainee
-    public String createProjectTrainee(SubmitProject submitProject) {
-        HttpEntity entity = new HttpEntity(submitProject, RequestFormat.createHeaders());
+    public String createProjectTrainee(SubmitProject projectTrainee) {
+        HttpEntity entity = new HttpEntity(projectTrainee, RequestFormat.createHeaders());
         ResponseEntity<String> res = restTemplate.exchange(url + "/trainee", HttpMethod.POST, entity,
                 new ParameterizedTypeReference<String>() {
         });
-        System.out.println(res.getBody());
         return res.getBody();
     }
 
     //UPDATE PROJECT
     public String update(Integer id, Project project) {
         HttpEntity entity = new HttpEntity(project, RequestFormat.createHeaders());
-        ResponseEntity<String> res = restTemplate.exchange(url + id, HttpMethod.PUT, entity,
+        ResponseEntity<String> res = restTemplate.exchange(url + "/" + id, HttpMethod.PUT, entity,
                 new ParameterizedTypeReference<String>() {
         });
         return res.getBody();
@@ -111,27 +89,7 @@ public class ProjectService {
     public String updateLink(Integer id, String erd, String uml, String skema, String link) {
         HttpEntity entity = new HttpEntity(RequestFormat.createHeaders());
         //HttpEntity entity = new HttpEntity(project, RequestFormat.createHeaders());
-        ResponseEntity<String> res = restTemplate.exchange(url + "/update-link" + id, HttpMethod.PUT, entity,
-                new ParameterizedTypeReference<String>() {
-        });
-        return res.getBody();
-    }
-    
-    //VALIDASI JUDUL
-    public String validasiJudul(Integer id, boolean status, String pesan) {
-        HttpEntity entity = new HttpEntity(RequestFormat.createHeaders());
-        //HttpEntity entity = new HttpEntity(project, RequestFormat.createHeaders());
-        ResponseEntity<String> res = restTemplate.exchange(url + "/validasi-judul" + id, HttpMethod.PUT, entity,
-                new ParameterizedTypeReference<String>() {
-        });
-        return res.getBody();
-    }
-    
-    //VALIDASI LINK
-    public String validasiLink(Integer id, boolean status, String pesan) {
-        HttpEntity entity = new HttpEntity(RequestFormat.createHeaders());
-        //HttpEntity entity = new HttpEntity(project, RequestFormat.createHeaders());
-        ResponseEntity<String> res = restTemplate.exchange(url + "/validasi-link" + id, HttpMethod.PUT, entity,
+        ResponseEntity<String> res = restTemplate.exchange(url + "/update-li" + id, HttpMethod.PUT, entity,
                 new ParameterizedTypeReference<String>() {
         });
         return res.getBody();

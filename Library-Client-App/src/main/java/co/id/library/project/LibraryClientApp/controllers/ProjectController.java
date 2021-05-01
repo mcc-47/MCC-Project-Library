@@ -3,7 +3,6 @@ package co.id.library.project.LibraryClientApp.controllers;
 import co.id.library.project.LibraryClientApp.models.Project;
 import co.id.library.project.LibraryClientApp.models.SearchProject;
 import co.id.library.project.LibraryClientApp.models.SubmitProject;
-import co.id.library.project.LibraryClientApp.models.TitleTrainer;
 import co.id.library.project.LibraryClientApp.services.ProjectService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +23,13 @@ public class ProjectController {
     @Autowired
     ProjectService projectService;
 
-    //mapping untuk data project
     @GetMapping
     public String getAll(Model model) {
         model.addAttribute("project", projectService.getAll());
         return "admin/data-project";
     }
 
+    //GET ALL
     @GetMapping("/get-all")
     public @ResponseBody
     List<Project> getAllProcess() {
@@ -38,52 +37,27 @@ public class ProjectController {
         return projectService.getAll();
     }
 
-    //=========mapping untuk search trainee==============
     @GetMapping("/search-trainee")
     public String getAllSearch(Model model) {
         model.addAttribute("searchProject", projectService.getAllSearch());
-        System.out.println("cetak search project");
+//        System.out.println("cetak search project");
         return "trainee/search-project";
     }
 
+    //GET ALL
     @GetMapping("/cari")
     public @ResponseBody
     List<SearchProject> getAllSearchProcess() {
         System.out.println("cetakaja");
         return projectService.getAllSearch();
     }
-    //====================================
-
-    //------mapping untuk title submission (trainer) -------------------
-    @GetMapping("/title-submission")
-    public String getTitleSubmission(Model model) {
-        model.addAttribute("titleSubmission", projectService.getTitleTrainer());
-        System.out.println("cetak search project");
-        return "trainer/title-submission";
-    }
-
-    @GetMapping("/title")
-    public @ResponseBody
-    List<TitleTrainer> getTitle() {
-        System.out.println("cetakaja");
-        return projectService.getTitleTrainer();
-    }
-    //-------------------------------------------------------
     
-    //===============mapping untuk full project submission (trainer)==============
-    @GetMapping("/project-submission")
-    public String getProjectSubmission(Model model) {
-        model.addAttribute("project", projectService.getAll());
-        return "trainer/project-submission";
+    //maping untuk judul project
+    @GetMapping("/judul")
+    public String getJudul(Model model) {
+        //model.addAttribute("project", projectService.getAll());
+        return "trainee/submit-judul";
     }
-
-    @GetMapping("/full-project")
-    public @ResponseBody
-    List<Project> getFullProject() {
-        System.out.println("ini get all");
-        return projectService.getAll();
-    }
-    //===============================================================================
 
     //GET BY ID
     @GetMapping("/{id}")
@@ -91,7 +65,6 @@ public class ProjectController {
     Project getById(@PathVariable("id") Integer id) {
         return projectService.getById(id);
     }
-
 
     //CREATE PROJECT
     @PostMapping
@@ -104,9 +77,9 @@ public class ProjectController {
     //CREATE PROJECT TRAINEE
     @PostMapping("/trainee")
     public @ResponseBody
-    String createProjectTrainee(@RequestBody SubmitProject submitProject) {
-        System.out.println(submitProject);
-        return projectService.createProjectTrainee(submitProject);
+    String createProjectTrainee(@RequestBody SubmitProject projectTrainee) {
+        System.out.println(projectTrainee);
+        return projectService.createProjectTrainee(projectTrainee);
     }
 
     //UPDATE PROJECT
@@ -134,19 +107,4 @@ public class ProjectController {
 
     }
 
-//    //VALIDASI JUDUL
-//    @PutMapping("/validasi-judul/{id}")
-//    public @ResponseBody
-//    String validasiJudul(@PathVariable("id") Integer id, boolean status, String pesan) {
-//        return projectService.validasiJudul(id, status, pesan);
-//
-//    }
-//    
-//    //VALIDASI LINK
-//    @PutMapping("/validasi-judul/{id}")
-//    public @ResponseBody
-//    String validasiLink(@PathVariable("id") Integer id, boolean status, String pesan) {
-//        return projectService.validasiLink(id, status, pesan);
-//
-//    }
 }

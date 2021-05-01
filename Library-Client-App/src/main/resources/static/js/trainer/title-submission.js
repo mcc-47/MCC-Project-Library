@@ -55,7 +55,6 @@ function getAll() {
                                 <option value="2">Ditolak</option>
                             </select>
                             
-
                     `;
                 }
             }
@@ -110,4 +109,3 @@ function setForm(data) {
     $("#nama[, ]").val(data.nama);
     $("#trainer").val(data.trainer);
 }
-

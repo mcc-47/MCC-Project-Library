@@ -21,10 +21,7 @@ function getAll() {
         },
         columns: [
             {
-                data: "id", name: "No", autoWidth: true,
-                render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
-                }
+                data: "idMcc", name: "ID MCC", autoWidth: true
             },
             {
                 data: "nama", name: "Nama Trainer", autoWidth: true
@@ -57,7 +54,7 @@ function getAll() {
 }
 
 function getById(id) {
-    this.idMcc = id;
+    this.idTrainer = id;
     $.ajax({
         url: `/trainer/${id}`,
         type: 'GET',
@@ -74,7 +71,7 @@ function update() {
         email: $("#email").val(),
         namaKelas: $("#namaKelas").val()
     };
-    let id = $("#idMcc").val();
+    let id = $("#idTrainer").val();
     $.ajax({
         url: `/trainer/${id}`,
         type: 'PUT',
@@ -83,7 +80,7 @@ function update() {
         success: (res) => {
             table.ajax.reload();
             successAlert("Trainer Updated");
-            $("#update-trainer").modal("hide");
+            $("#form-update").modal("hide");
         },
         error: (err) => {
             errorAlert("Trainer failed updated");

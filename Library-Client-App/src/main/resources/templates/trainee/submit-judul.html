@@ -1,4 +1,89 @@
 <!DOCTYPE html>
+<html lang="en">
+    <head>
+    <div th:replace="fragments/header-link :: header-link"></div>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+
+<body class="">
+    <div class="wrapper">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <div class="main-panel" id="main-panel">
+            <!-- Navbar -->
+            <div th:replace="fragments/header :: header"></div>
+            <!-- End Navbar -->
+            <div class="panel-header panel-header-lg">
+                <h1 class="text-white text-center">Submit Project MCC</h1>
+                <!--<h4 class="text-white text-center">MCC Project is stored here</h4>-->
+            </div>
+            <div class="content">
+                <div class="col-md">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="title">Submit Project Metrodata Coding Camp</h5>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-5 pr-1">
+                                        <div class="form-group">
+                                            <label>Requester</label>
+                                            <input type="text" class="form-control" disabled="" placeholder="Requester"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7 px-1">
+                                        <div class="form-group">
+                                            <label>Project Title</label>
+                                            <input type="text" class="form-control" placeholder="Title Project"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md">
+                                        <div class="form-group">
+                                            <label for="id_select2"> Members </label>
+
+                                            <select class="js-select2 form-control" id="id_select2" multiple="multiple">
+                                                <option>Aulia</option>
+                                                <option>Rafi</option>
+                                                <option>Zakiyah</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Deskripsi Project</label>
+                                            <textarea rows="4" cols="80" class="form-control" placeholder="Deskripsi Project" ></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-round btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/footer :: footer"></div>
+        </div>
+    </div>
+    <!--   Core JS Files   -->
+    <script>
+        $(document).ready(function () {
+            var table = $('#traineeTable').DataTable();
+        });
+    </script>
+    <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script> 
+    <div th:replace="fragments/jsTemplate :: jsTemplate"></div>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(".js-select2").select2();
+    </script>
+</body>
+</html>
+
+<!--<!DOCTYPE html>
 
 <html>
     <head>
@@ -26,11 +111,54 @@
                             </button>
 
                             <script th:src="@{/js/trainee/submit-judul.js}"></script>
-                            <tbody>
-
-                            </tbody>
 
                         </div>
+                        <form id="submitJudul" class="needs-validation" novalidate>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="judul">Judul</label>
+                            <input type="text" id="judul" class="form-control" placeholder="Judul Project" required>
+                            <div class="invalid-feedback">
+                                Please enter your judul.
+                            </div><br>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deskripsi">Deskripsi</label>
+                            <input type="text" id="deskripsi" class="form-control" placeholder="Deskripsi" required>
+                            <div class="invalid-feedback">
+                                Please enter your deskripsi.
+                            </div><br>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="idMcc1">Nama Anggota 1</label>
+                            <input type="number" id="idMcc1" class="form-control" placeholder="Anggota 1" required>
+                            <div class="invalid-feedback">
+                                Please enter your deskripsi.
+                            </div><br>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="idMcc2">Nama Anggota 2</label>
+                            <input type="number" id="idMcc2" class="form-control" placeholder="Anggota 1">
+                            <div class="invalid-feedback">
+                                Please enter your deskripsi.
+                            </div><br>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="idMcc3">Nama Anggota 3</label>
+                            <input type="number" id="idMcc3" class="form-control" placeholder="Anggota 1">
+                            <div class="invalid-feedback">
+                                Please enter your deskripsi.
+                            </div><br>
+                        </div>
+
+                        <div class="modal-footer border-top-0 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                </form>
                     </div>
                 </div>
             </div>
@@ -43,4 +171,4 @@
 
 
 </body>
-</html>
+</html>-->

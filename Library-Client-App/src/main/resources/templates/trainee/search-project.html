@@ -1,4 +1,76 @@
 <!DOCTYPE html>
+<html lang="en">
+    <head>
+    <div th:replace="fragments/header-link :: header-link"></div>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"></link>
+</head>
+
+<body class="">
+    <div class="wrapper">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <div class="main-panel" id="main-panel">
+            <!-- Navbar -->
+            <div th:replace="fragments/header :: header"></div>
+            <!-- End Navbar -->
+            <div class="panel-header panel-header-lg">
+                <h1 class="text-white text-center">Search Project MCC</h1>
+                <!--<h4 class="text-white text-center">MCC Project is stored here</h4>-->
+            </div>
+            <div class="content">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        Data Trainee
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="cariTabel" class="table table-bordered table-striped table-hover-col-sm-3">
+                                <thead>
+
+                                    <tr>
+                                        <td>No</td>
+                                        <td>Judul</td>
+                                        <td>Batch</td>
+                                        <td>Nama Trainee</td>
+                                        <td>Nama Trainer</td>
+                                        <td>Deskripsi</td>
+                                        <td>Link Project</td>
+                                    </tr>
+                                </thead>
+
+
+                                <tbody>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/footer :: footer"></div>
+        </div>
+    </div>
+    <div th:replace="fragments/jsTemplate :: jsTemplate"></div>
+    <!--DataTable Script-->
+    <script th:src="@{/js/trainee/search-project.js}"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
 <html>
     <head>
         <title>Data Project - Trainee</title>
@@ -23,7 +95,7 @@
                                 <thead>
 
                                     <tr>
-                                        <th>No</th>
+                                        <th>ID Project </th>
                                         <th>Project Name</th>
                                         <th>Batch</th>
                                         <th>Trainee</th>
@@ -55,5 +127,5 @@
 
 
 </body>
-</html>
+</html>-->
 

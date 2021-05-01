@@ -35,6 +35,12 @@ public class TrainerController {
         return trainerService.getAll();
     }
     
+    @GetMapping("/title-submission")
+    public String getTitleSubmission(Model model) {
+        model.addAttribute("trainer", trainerService.getAll());
+        return "trainer/title-submission";
+    }
+    
     //GET BY ID
     @GetMapping("/{id}")
     public @ResponseBody Trainer getById(@PathVariable("id") Integer id) {

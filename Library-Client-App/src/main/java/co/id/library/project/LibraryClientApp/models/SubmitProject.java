@@ -5,17 +5,22 @@
  */
 package co.id.library.project.LibraryClientApp.models;
 
-import java.util.List;
 import lombok.Data;
 
+/**
+ *
+ * @author ROG
+ */
 @Data
 public class SubmitProject {
-
     private String judul;
     private String deskripsi;
     private Integer idMccSatu;
     private Integer idMccDua;
     private Integer idMccTiga;
+
+    public SubmitProject() {
+    }
 
     public SubmitProject(String judul, String deskripsi, Integer idMccSatu, Integer idMccDua, Integer idMccTiga) {
         this.judul = judul;
@@ -24,9 +29,7 @@ public class SubmitProject {
         this.idMccDua = idMccDua;
         this.idMccTiga = idMccTiga;
     }
-
-    public SubmitProject() {
-    }
     
     
 }
+

@@ -15,6 +15,9 @@ public class SearchProject {
     private String skema;
     private String link;
 
+    public SearchProject() {
+    }
+    
     public SearchProject(Integer idProject, String judul, String batch, List<String> nama, 
             String trainer, String deskripsi, String skema, String link) {
         this.idProject = idProject;
@@ -26,11 +29,5 @@ public class SearchProject {
         this.skema = skema;
         this.link = link;
     }
-
-    public SearchProject() {
-    }
-   
-  
-    
     
 }

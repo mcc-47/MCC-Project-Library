@@ -1,6 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    <div th:replace="fragments/header-link :: header-link"></div> 
+    <!--<style rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />-->
+</head>
+
+<body class="">
+    <div class="wrapper">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <div class="main-panel" id="main-panel">
+            <!-- Navbar -->
+            <div th:replace="fragments/header :: header"></div>
+            <!-- End Navbar -->
+            <div class="panel-header panel-header-lg">
+                <h1 class="text-white text-center">Project Library Metrodata Coding Camp</h1>
+                <h4 class="text-white text-center">MCC Project is stored here</h4>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <h5 class="card-category">Global Sales</h5>
+                                <h4 class="card-title">Submit Project Title</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="lineChartExample"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <h5 class="card-category">2018 Sales</h5>
+                                <h4 class="card-title">Submit Final Project</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/footer :: footer"></div>
+        </div>
+    </div>
+    <!--   Core JS Files   -->
+    <div th:replace="fragments/jsTemplate :: jsTemplate"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+    <head>
 
     <title>Dashboard - Admin</title>
     <div th:replace="fragments/header-link :: header-link"></div>
@@ -54,4 +117,4 @@
 </div>
 <div th:replace="fragments/footer :: footer"></div>
 </body>
-</html>
+</html>-->
