@@ -139,6 +139,26 @@ public class ProjectService {
         return td;
     }
     
+//    public ProjectDTO getProjectByIdTrainer(Integer idMcc){
+//        Integer idProject = employeeRepository.findById(idMcc).get().getEmployeeList().get(0).getTrainee().getIdProject().getIdProject();
+//        Project p = projectRepository.findById(idProject).get();
+//        List<String> nama = new ArrayList<>();
+//            for (Trainee t : p.getTraineeList()){
+//                nama.add(t.getEmployee().getNama());
+//            }
+//        ProjectDTO td = new ProjectDTO(
+//                    p.getIdProject(),
+//                    p.getJudul(),
+//                    p.getDeskripsi(),
+//                    p.getErd(),
+//                    p.getUml(),
+//                    p.getSkema(),
+//                    p.getLink(),
+//                    nama,
+//                    p.getTraineeList().get(0).getEmployee().getIdTrainer().getNama());
+//        return td;
+//    }
+    
     public Project create(Project project){
         return projectRepository.save(project);
     }

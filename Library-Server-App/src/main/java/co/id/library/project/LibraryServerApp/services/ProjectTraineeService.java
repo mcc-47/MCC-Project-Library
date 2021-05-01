@@ -11,7 +11,7 @@ import co.id.library.project.LibraryServerApp.entities.Status;
 import co.id.library.project.LibraryServerApp.entities.Trainee;
 import co.id.library.project.LibraryServerApp.repositories.ProjectRepository;
 import co.id.library.project.LibraryServerApp.repositories.TraineeRepository;
-import java.util.List;
+import java.sql.ResultSet;
 import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,12 +62,37 @@ public class ProjectTraineeService {
                 projectTrainee.getDeskripsi(),
                 new Status(1)
         ));
-        for( Integer anggota : projectTrainee.getIdMcc() ){
-            Trainee addProject = traineeRepository.findById(anggota).get();
-            addProject.setIdProject( new Project(projectTrainee.getIdProject()));
-            traineeRepository.save(addProject);
-        }        
-        Integer trainer = traineeRepository.findById(projectTrainee.getIdMcc().get(0)).get().getEmployee().getIdTrainer().getIdMcc();
+//        for( Integer anggota : projectTrainee.getIdMcc() ){
+//            if(anggota != null){
+//            Trainee addProject = traineeRepository.findById(anggota).get();
+//                addProject.setIdProject( new Project(projectTrainee.getIdProject()));
+////                Project project;
+////                addProject.setIdProject( new Project(project.getIdProject()));
+//                traineeRepository.save(addProject);
+//            }
+//        }        
+//        Integer trainer = traineeRepository.findById(projectTrainee.getIdMcc().get(0)).get().getEmployee().getIdTrainer().getIdMcc();
+        Trainee addProjectSatu = traineeRepository.findById(projectTrainee.getIdMccSatu()).get();
+        addProjectSatu.setIdProject( new Project(projectRepository.findAll().get(projectRepository.findAll().size()-1).getIdProject()));
+        traineeRepository.save(addProjectSatu);
+        
+        if(projectTrainee.getIdMccDua() != 0){
+            Trainee addProjectDua = traineeRepository.findById(projectTrainee.getIdMccDua()).get();
+            addProjectSatu.setIdProject( new Project(projectRepository.findAll().get(projectRepository.findAll().size()-1).getIdProject()));
+            traineeRepository.save(addProjectDua);
+        }else{
+           
+        }
+        
+        if(projectTrainee.getIdMccTiga() != 0){
+            Trainee addProjectTiga = traineeRepository.findById(projectTrainee.getIdMccTiga()).get();
+            addProjectSatu.setIdProject( new Project(projectRepository.findAll().get(projectRepository.findAll().size()-1).getIdProject()));
+            traineeRepository.save(addProjectTiga);
+        }else{
+            
+        }
+        Integer trainer = traineeRepository.findById(projectTrainee.getIdMccSatu()).get().getEmployee().getIdTrainer().getIdMcc();
+        
         notificationService.notifRegisJudul(trainer);
         return "Registrasi Judul Berhasil";
     }
