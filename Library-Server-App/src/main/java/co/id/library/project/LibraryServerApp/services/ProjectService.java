@@ -202,7 +202,9 @@ public class ProjectService {
         return projectRepository.save(updateProject);
     }
     
-    public Project updateJudul (Integer id, String judul, String deskripsi)throws MessagingException{
+    public Project updateJudul (Integer idMcc, String judul, String deskripsi)throws MessagingException{
+//        Project updateProject = projectRepository.findById(id).get();
+        Integer id = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
         Project updateProject = projectRepository.findById(id).get();
         updateProject.setJudul(judul);
         updateProject.setDeskripsi(deskripsi);
@@ -221,7 +223,8 @@ public class ProjectService {
         return projectRepository.save(updateProject);
     }
     
-    public Project updateLink (Integer id, String erd, String uml, String skema, String link)throws MessagingException{
+    public Project updateLink (Integer idMcc, String erd, String uml, String skema, String link)throws MessagingException{
+        Integer id = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
         Project updateProject = projectRepository.findById(id).get();
         updateProject.setErd(erd);
         updateProject.setUml(uml);
@@ -242,7 +245,8 @@ public class ProjectService {
         return projectRepository.save(updateProject);
     }
     
-    public Project updateStatusJudul (Integer id, boolean status, String pesan)throws MessagingException{
+    public Project updateStatusJudul (Integer idMcc, boolean status, String pesan)throws MessagingException{
+        Integer id = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
         Project updateProject = projectRepository.findById(id).get();
         if(status == true){
             updateProject.setCurrentStatus(new Status(4));
@@ -283,7 +287,8 @@ public class ProjectService {
         return projectRepository.save(updateProject);
     }
     
-    public Project updateStatusLink (Integer id, boolean status, String pesan)throws MessagingException{
+    public Project updateStatusLink (Integer idMcc, boolean status, String pesan)throws MessagingException{
+        Integer id = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
         Project updateProject = projectRepository.findById(id).get();
         if(status == true){
             updateProject.setCurrentStatus(new Status(5));

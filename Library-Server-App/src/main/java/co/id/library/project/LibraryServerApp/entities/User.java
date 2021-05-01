@@ -79,14 +79,17 @@ public class User implements UserDetails {
         this.idUser = idUser;
     }
 
+    @Override
     public String getUsername() {
-        return username;
+        return this.idUser.toString();
+//        return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
 
+    @Override
     public String getPassword() {
         return password;
     }

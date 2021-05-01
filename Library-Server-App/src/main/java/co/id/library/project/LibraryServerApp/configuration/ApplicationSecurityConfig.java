@@ -50,6 +50,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter{
 //                .antMatchers("/login","/registrationMail","/loginuser").permitAll()
 ////                .antMatchers("/**/","/logout").authenticated()
                 .antMatchers("/login","/**").permitAll()
+                .antMatchers("/project/search","/project/get-one").authenticated()
+                .antMatchers("/project/**").authenticated()
                 .and()
                 .logout().disable()
                 .formLogin().disable()

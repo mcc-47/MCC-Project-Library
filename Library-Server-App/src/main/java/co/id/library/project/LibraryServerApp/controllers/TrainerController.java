@@ -17,6 +17,7 @@ import co.id.library.project.LibraryServerApp.services.TrainerService;
 import java.util.List;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,27 +49,27 @@ public class TrainerController {
      
     //READ
     @GetMapping("/get-all")
-    public List<TrainerDTO> getTrainerDTO(){
+    public List<TrainerDTO> getTrainerDTO(Authentication auth){
         return trainerService.getTrainer();
 
     }
 
    //GET BY ID
     @GetMapping("/{id}")
-    public Employee getOneTrainer(@PathVariable Integer id) {
+    public Employee getOneTrainer(Authentication auth, @PathVariable Integer id) {
         return trainerService.getById(id);
     }
     
     //UPDATE
     @PutMapping("/{id}")
-    public Employee updateTrainer(@PathVariable Integer id,
+    public Employee updateTrainer(Authentication auth, @PathVariable Integer id,
             @RequestBody Employee employee) throws Exception {
         return trainerService.update(id, employee);
     }
     
     //DELETE
      @DeleteMapping("/{id}")
-    public String deleteTrainer(@PathVariable Integer id){
+    public String deleteTrainer(Authentication auth, @PathVariable Integer id){
         trainerService.delete(id);
         return "delete trainee";
     }

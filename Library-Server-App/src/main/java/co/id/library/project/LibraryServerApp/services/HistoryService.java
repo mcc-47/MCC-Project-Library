@@ -33,7 +33,8 @@ public class HistoryService {
     @Autowired
     ProjectRepository projectRepository;
     
-    public List<HistoryDTO> getHistoryByIdProject(Project idProject) {
+    public List<HistoryDTO> getHistoryByIdProject(Integer idMcc) {
+        Project idProject = employeeRepository.findById(idMcc).get().getTrainee().getIdProject();
         List<History> history = historyRepository.findAllByIdProject(idProject);
         List<HistoryDTO> pdds = new ArrayList<>();
         for (History e : history) {

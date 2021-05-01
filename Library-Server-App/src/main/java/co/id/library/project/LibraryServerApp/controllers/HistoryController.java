@@ -11,6 +11,7 @@ import co.id.library.project.LibraryServerApp.entities.Project;
 import co.id.library.project.LibraryServerApp.services.HistoryService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,18 +28,18 @@ public class HistoryController {
     @Autowired
     HistoryService historyService;
     
-    @GetMapping("{id}")
-    public List<HistoryDTO> getHistoryByIdProject(@PathVariable Project id){
-        return historyService.getHistoryByIdProject(id);
+    @GetMapping("/project")
+    public List<HistoryDTO> getHistoryByIdProject(Authentication auth){
+        return historyService.getHistoryByIdProject(Integer.parseInt(auth.getName()));
     }
     
-    @GetMapping("employee/{id}")
-    public List<HistoryDTO> getHistoryByIdMcc(@PathVariable Integer id){
-        return historyService.getHistoryByIdMcc(id);
+    @GetMapping("employee")
+    public List<HistoryDTO> getHistoryByIdMcc(Authentication auth){
+        return historyService.getHistoryByIdMcc(Integer.parseInt(auth.getName()));
     }
     
     @GetMapping("/get-all")
-    public List<HistoryDTO> getAllHistory(){
+    public List<HistoryDTO> getAllHistory(Authentication auth){
         return historyService.getAllHistory();
     }
 }
