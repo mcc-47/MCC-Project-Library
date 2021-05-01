@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>Data Project</title>
+        <title>Project Submission - Trainer</title>
     <div th:replace="fragments/header-link :: header-link"></div>     
 </head>
 
@@ -16,7 +16,7 @@
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table mr-1"></i>
-                        Data Project
+                        List Full Project
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -28,6 +28,7 @@
                                         <td>Judul Project</td>
                                         <td>ERD</td>
                                         <td>Link Project</td>
+                                        <td>Nama Trainer</td>
                                         <td>Aksi</td>
                                         
                                     </tr>
@@ -52,7 +53,7 @@
         });
     </script>
     <div th:replace="fragments/dataTable :: dataTable"></div> 
-    <div th:replace="trainer/modal-detail-project :: modal-detail-project"></div>
+    <div th:replace="trainer/modal-detail-full :: modal-detail-full"></div>
 
 
 </body>

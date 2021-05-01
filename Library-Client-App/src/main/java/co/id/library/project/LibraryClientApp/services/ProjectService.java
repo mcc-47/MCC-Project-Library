@@ -44,10 +44,10 @@ public class ProjectService {
         return response.getBody();
     }
     
-     //READ title submission trainer
-    public List<TitleTrainer> getTitleTrainer(Integer id) {
+    //get all title submission trainer
+    public List<TitleTrainer> getTitleTrainer() {
         ResponseEntity<List<TitleTrainer>> response = restTemplate
-                .exchange(url + "/title" + id, HttpMethod.GET,
+                .exchange(url + "/get-all-judul", HttpMethod.GET,
                         new HttpEntity(RequestFormat.createHeaders()),
                         new ParameterizedTypeReference<List<TitleTrainer>>() {
                 });

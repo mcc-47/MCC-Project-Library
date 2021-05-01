@@ -10,29 +10,23 @@ import lombok.Data;
 
 @Data
 public class SubmitProject {
-    private Integer idProject;
-    private String judul;
-    //private List<Integer> idMcc;
-    private Integer idMcc;
-    private String deskripsi;
 
-//    public SubmitProject(Integer idProject, String judul, List<Integer> idMcc, String deskripsi) {
-//        this.idProject = idProject;
-//        this.judul = judul;
-//        this.idMcc = idMcc;
-//        this.deskripsi = deskripsi;
-//    }
+    private String judul;
+    private String deskripsi;
+    private Integer idMccSatu;
+    private Integer idMccDua;
+    private Integer idMccTiga;
+
+    public SubmitProject(String judul, String deskripsi, Integer idMccSatu, Integer idMccDua, Integer idMccTiga) {
+        this.judul = judul;
+        this.deskripsi = deskripsi;
+        this.idMccSatu = idMccSatu;
+        this.idMccDua = idMccDua;
+        this.idMccTiga = idMccTiga;
+    }
 
     public SubmitProject() {
     }
-
-    public SubmitProject(Integer idProject, String judul, Integer idMcc, String deskripsi) {
-        this.idProject = idProject;
-        this.judul = judul;
-        this.idMcc = idMcc;
-        this.deskripsi = deskripsi;
-    }
-    
     
     
 }

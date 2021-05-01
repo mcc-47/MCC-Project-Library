@@ -1,6 +1,6 @@
-<div class="modal-detail-title" th:fragment="modal-detail-title">
+<div class="modal-detail-full" th:fragment="modal-detail-full">
 
-    <div class="modal fade" id="form-update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="full-project" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header border-bottom-0">
@@ -10,10 +10,28 @@
                     </button>
                 </div>
                  <div class="modal-body">
-                    <form id="detailTitle">
+                    <form id="detailProject">
                         <div class="form-group">
                             <label for="idProject">ID Project</label>
                             <input type="number" id="idProject" class="form-control" placeholder="ID Project">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="batch">Batch</label>
+                            <input type="text" id="batch" class="form-control" placeholder="Batch"> 
+                            
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="nama">Nama Trainee</label>
+                            <input type="text" id="nama" class="form-control" placeholder="Nama Trainee"> 
+                            
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="trainer">Nama Trainer</label>
+                            <input type="text" id="trainer" class="form-control" placeholder="Nama Trainer"> 
+                            
                         </div>
                         
                         <div class="form-group">
@@ -23,23 +41,23 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="deskripsi">Deskripsi</label>
-                            <input type="text" id="deskripsi" class="form-control" placeholder="Deskripsi"> 
+                            <label for="erd">ERD</label>
+                            <input type="text" id="erd" class="form-control" placeholder="ERD"> 
                         </div>
                         
                          <div class="form-group">
-                            <label for="batch">Batch</label>
-                            <input type="text" id="batch" class="form-control" placeholder="ERD"> 
+                            <label for="uml">UML</label>
+                            <input type="text" id="uml" class="form-control" placeholder="UML"> 
                         </div>
                         
                          <div class="form-group">
-                            <label for="nama">Nama Trainee</label>
-                            <input type="text" id="nama" class="form-control" placeholder="UML"> 
+                            <label for="skema">Skema</label>
+                            <input type="text" id="skema" class="form-control" placeholder="Skema"> 
                         </div>
                         
                         <div class="form-group">
-                            <label for="trainer">Nama Trainer</label>
-                            <input type="text" id="trainer" class="form-control" placeholder="Nama Trainer" required> 
+                            <label for="link">Full Link Project</label>
+                            <input type="text" id="link" class="form-control" placeholder="Link Project" required> 
                             
                         </div>
                         

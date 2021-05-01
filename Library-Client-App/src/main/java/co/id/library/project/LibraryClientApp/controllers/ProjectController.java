@@ -56,34 +56,34 @@ public class ProjectController {
 
     //------mapping untuk title submission (trainer) -------------------
     @GetMapping("/title-submission")
-    public String getTitleSubmission(Model model, Integer id) {
-        model.addAttribute("titleSubmission", projectService.getTitleTrainer(id));
+    public String getTitleSubmission(Model model) {
+        model.addAttribute("titleSubmission", projectService.getTitleTrainer());
         System.out.println("cetak search project");
         return "trainer/title-submission";
     }
 
     @GetMapping("/title")
     public @ResponseBody
-    List<TitleTrainer> getTitle(Integer id) {
+    List<TitleTrainer> getTitle() {
         System.out.println("cetakaja");
-        return projectService.getTitleTrainer(id);
+        return projectService.getTitleTrainer();
     }
     //-------------------------------------------------------
     
-    //********* mapping untuk full project (trainer) ****************
+    //===============mapping untuk full project submission (trainer)==============
     @GetMapping("/project-submission")
-    public String getProjectSubmission(Model model, Integer id) {
-        model.addAttribute("titleSubmission", projectService.getProjectTrainer(id));
-        System.out.println("cetak search project");
+    public String getProjectSubmission(Model model) {
+        model.addAttribute("project", projectService.getAll());
         return "trainer/project-submission";
     }
 
-    @GetMapping("/full")
+    @GetMapping("/full-project")
     public @ResponseBody
-    List<Project> getProject(Integer id) {
-        System.out.println("cetakaja");
-        return projectService.getProjectTrainer(id);
+    List<Project> getFullProject() {
+        System.out.println("ini get all");
+        return projectService.getAll();
     }
+    //===============================================================================
 
     //GET BY ID
     @GetMapping("/{id}")
@@ -91,6 +91,7 @@ public class ProjectController {
     Project getById(@PathVariable("id") Integer id) {
         return projectService.getById(id);
     }
+
 
     //CREATE PROJECT
     @PostMapping
