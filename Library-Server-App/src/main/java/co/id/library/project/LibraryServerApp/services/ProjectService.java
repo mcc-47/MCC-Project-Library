@@ -124,6 +124,23 @@ public class ProjectService {
         return projectRepository.findById(idProject).get();
     }
     
+    public GetJudulDTO getByIdProject(Integer idProject){
+        Project e = projectRepository.findById(idProject).get();
+        List<String> nama = new ArrayList<>();
+            for (Trainee t : e.getTraineeList()){
+                nama.add(t.getEmployee().getNama());
+            }
+        GetJudulDTO td = new GetJudulDTO(
+                        e.getIdProject(),
+                        e.getJudul(),
+                        e.getTraineeList().get(0).getBatch(),
+                        nama,
+                        e.getTraineeList().get(0).getEmployee().getIdTrainer().getNama(),
+                        e.getDeskripsi()
+                );
+        return td;
+    }
+    
     public GetJudulDTO getByIdMcc(Integer idMcc){
         Integer idProject = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
         Project e = projectRepository.findById(idProject).get();

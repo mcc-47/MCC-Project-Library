@@ -62,9 +62,13 @@ public class ProjectController {
 //    public Project getOneProject(@PathVariable Integer id){
 //        return projectService.getById(id);
 //    }
-    @GetMapping("/get-one")
-    public Project getOneProject(Authentication auth){
-        return projectService.getById(Integer.parseInt(auth.getName()));
+//    @GetMapping("/get-one")
+//    public Project getOneProject(Authentication auth){
+//        return projectService.getById(Integer.parseInt(auth.getName()));
+//    }
+    @GetMapping("{id}")
+    public GetJudulDTO getOneProject(Authentication auth, @PathVariable("id") Integer id){
+        return projectService.getByIdProject(id);
     }
     
 //    @GetMapping("/judul/{id}")
