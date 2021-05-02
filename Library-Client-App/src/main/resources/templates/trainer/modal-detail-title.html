@@ -1,0 +1,55 @@
+<div class="modal-detail-title" th:fragment="modal-detail-title">
+
+    <div class="modal fade" id="update-title" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Project</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                 <div class="modal-body">
+                    <form id="detailTitle">
+                        <div class="form-group">
+                            <label for="idProject">ID Project</label>
+                            <input type="number" id="idProject" class="form-control" placeholder="ID Project">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="judul1">Judul Project</label>
+                            <input type="text" id="judul1" class="form-control" placeholder="Judul Project" readonly="readonly"> 
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deskripsi1">Deskripsi</label>
+                            <input type="text" id="deskripsi1" class="form-control" placeholder="Deskripsi" readonly="readonly"> 
+                        </div>
+                        
+                         <div class="form-group">
+                            <label for="batch">Batch</label>
+                            <input type="text" id="batch" class="form-control" placeholder="ERD"> 
+                        </div>
+                        
+                         <div class="form-group">
+                            <label for="nama">Nama Trainee</label>
+                            <input type="text" id="nama" class="form-control" placeholder="UML"> 
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="trainer1">Nama Trainer</label>
+                            <input type="text" id="trainer1" class="form-control" placeholder="Nama Trainer" required readonly="readonly"> 
+                            
+                        </div>
+                        
+                            
+                        </div>
+                        <div class="modal-footer border-top-0 d-flex justify-content-center">
+                            <button data-dismiss="modal" class="btn btn-danger col-2">Back</button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>

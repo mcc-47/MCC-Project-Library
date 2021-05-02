@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <title> List Judul Project </title>
     <div th:replace="fragments/header-link :: header-link"></div> 
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"></link>
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"></link>
 </head>
 
 <body class="">
@@ -13,105 +15,45 @@
             <div th:replace="fragments/header :: header"></div>
             <!-- End Navbar -->
             <div class="panel-header panel-header-lg">
-                <h1 class="text-white text-center">Project Library Metrodata Coding Camp</h1>
-                <h4 class="text-white text-center">MCC Project is stored here</h4>
+                <h1 class="text-white text-center">List Judul Project</h1>
+                <!--<h4 class="text-white text-center">MCC Project is stored here</h4>-->
             </div>
             <div class="content">
-                <div class="row">
-                    <div class="col">
-                        <div class="card card-chart p-3">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-table mr-1"></i>
-                                    Data Project
-                                    List Judul Project
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table id="titleSubmission" class="table table-bordered table-striped table-hover-col-sm-3 w-100">
-                                            <thead>
-                                                <tr>
-                                                    <td>No</td>
-                                                    <td>Judul Project</td>
-                                                    <td>Deskripsi</td>
-                                                    <td>Nama Trainer</td>
-                                                    <td>Aksi</td>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        List Judul Project
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="titleSubmission" class="table table-bordered table-striped table-hover-col-sm-3">
+                                <thead>
 
-                                                </tr>
-                                            </thead>
+                                    <tr>
+                                       <td>No</td>
+                                        <td>Judul Project</td>
+                                        <td>Deskripsi</td>
+                                        <td>Nama Trainer</td>
+                                        <td>Aksi</td>
+                                    </tr>
+                                </thead>
 
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
+                                
+
+                            </table>
                         </div>
                     </div>
-                </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="modal-detail-project" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="detailTitle">
-                                    <div class="form-group">
-                                        <label for="idProject">ID Project</label>
-                                        <input type="number" id="idProject" class="form-control" placeholder="ID Project">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="judul">Judul Project</label>
-                                        <input type="text" id="judul" class="form-control" placeholder="Judul Project"> 
-
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="deskripsi">Deskripsi</label>
-                                        <input type="text" id="deskripsi" class="form-control" placeholder="Deskripsi"> 
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="batch">Batch</label>
-                                        <input type="text" id="batch" class="form-control" placeholder="ERD"> 
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="nama">Nama Trainee</label>
-                                        <input type="text" id="nama" class="form-control" placeholder="UML"> 
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="trainer">Nama Trainer</label>
-                                        <input type="text" id="trainer" class="form-control" placeholder="Nama Trainer" required> 
-
-                                    </div>
-
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                            </form>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
+            <div th:replace="fragments/footer :: footer"></div>
         </div>
-        <div th:replace="fragments/footer :: footer"></div>
     </div>
-</div>
-<!--   Core JS Files   -->
-<div th:replace="fragments/jsTemplate :: jsTemplate"></div>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script> 
-<script th:src="@{/js/trainer/title-submission.js}"></script>
+    <!--   Core JS Files   -->
+    <div th:replace="fragments/jsTemplate :: jsTemplate"></div>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script> 
+    <script th:src="@{/js/trainer/title-submission.js}"></script>
+    <div th:replace="trainer/modal-detail-title :: modal-detail-title"></div>
 </body>
 </html>
+

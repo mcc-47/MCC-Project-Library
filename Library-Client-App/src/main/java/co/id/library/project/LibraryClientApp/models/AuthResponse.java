@@ -17,6 +17,10 @@ public class AuthResponse {
         this.authorities = authorities;
     }
 
+    public AuthResponse(String userName) {
+        this.userName = userName;
+    }
+
     public AuthResponse() {
     }
 

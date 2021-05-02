@@ -1,10 +1,12 @@
 package co.id.library.project.LibraryClientApp.services;
 
 import co.id.library.project.LibraryClientApp.config.RequestFormat;
+import co.id.library.project.LibraryClientApp.models.AuthResponse;
 import co.id.library.project.LibraryClientApp.models.Project;
 import co.id.library.project.LibraryClientApp.models.SearchProject;
 import co.id.library.project.LibraryClientApp.models.SubmitProject;
 import co.id.library.project.LibraryClientApp.models.TitleTrainer;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +14,8 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -54,14 +58,20 @@ public class ProjectService {
         return response.getBody();
     }
     
-    //READ full project submission trainer
-    public List<Project> getProjectTrainer(Integer id) {
-        ResponseEntity<List<Project>> response = restTemplate
-                .exchange(url + "/project" + id, HttpMethod.GET,
-                        new HttpEntity(RequestFormat.createHeaders()),
-                        new ParameterizedTypeReference<List<Project>>() {
+    //get project berdasarkan yang input data
+    public List<Project> getProjectTrainee() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        AuthResponse a = new AuthResponse(auth.getName());
+        HttpEntity entity = new HttpEntity(a, RequestFormat.createHeaders());
+        ResponseEntity<Project> response = restTemplate
+                .exchange(url + "/project", HttpMethod.POST,
+                        entity,
+                        new ParameterizedTypeReference<Project>() {
                 });
-        return response.getBody();
+        List<Project> lala = new ArrayList<>();
+        lala.add(response.getBody());
+        System.out.println("cetak get project");
+        return lala;
     }
 
     //GET BY ID
