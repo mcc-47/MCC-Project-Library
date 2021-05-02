@@ -199,29 +199,29 @@ public class ProjectService {
 //        return td;
 //    }
     
-    public Project create(Project project){
-        return projectRepository.save(project);
-    }
+//    public Project create(Project project){
+//        return projectRepository.save(project);
+//    }
     
-    public Project update (Integer id, Project project)throws MessagingException{
-        Project updateProject = projectRepository.findById(id).get();
-        updateProject.setJudul(project.getJudul());
-        updateProject.setDeskripsi(project.getDeskripsi());
-        updateProject.setErd(project.getErd());
-        updateProject.setUml(project.getUml());
-        updateProject.setSkema(project.getSkema());
-        updateProject.setLink(project.getLink());
-        updateProject.setCurrentStatus(new Status(1));
-        
-        Integer trainer = updateProject.getTraineeList().get(0).getEmployee().getIdTrainer().getIdMcc();
-        notificationService.notifUpdateProject(trainer);
-        
-        return projectRepository.save(updateProject);
-    }
-    
-    public Project updateJudul (Integer idMcc, String judul, String deskripsi)throws MessagingException{
+//    public Project update (Integer id, Project project)throws MessagingException{
 //        Project updateProject = projectRepository.findById(id).get();
-        Integer id = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
+//        updateProject.setJudul(project.getJudul());
+//        updateProject.setDeskripsi(project.getDeskripsi());
+//        updateProject.setErd(project.getErd());
+//        updateProject.setUml(project.getUml());
+//        updateProject.setSkema(project.getSkema());
+//        updateProject.setLink(project.getLink());
+//        updateProject.setCurrentStatus(new Status(1));
+//        
+//        Integer trainer = updateProject.getTraineeList().get(0).getEmployee().getIdTrainer().getIdMcc();
+//        notificationService.notifUpdateProject(trainer);
+//        
+//        return projectRepository.save(updateProject);
+//    }
+    
+    public Project updateJudul (Integer id, String judul, String deskripsi)throws MessagingException{
+//        Project updateProject = projectRepository.findById(id).get();
+//        Integer id = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
         Project updateProject = projectRepository.findById(id).get();
         updateProject.setJudul(judul);
         updateProject.setDeskripsi(deskripsi);
@@ -240,8 +240,8 @@ public class ProjectService {
         return projectRepository.save(updateProject);
     }
     
-    public Project updateLink (Integer idMcc, String erd, String uml, String skema, String link)throws MessagingException{
-        Integer id = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
+    public Project updateLink (Integer id, String erd, String uml, String skema, String link)throws MessagingException{
+//        Integer id = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
         Project updateProject = projectRepository.findById(id).get();
         updateProject.setErd(erd);
         updateProject.setUml(uml);
@@ -262,8 +262,8 @@ public class ProjectService {
         return projectRepository.save(updateProject);
     }
     
-    public Project updateStatusJudul (Integer idMcc, boolean status, String pesan)throws MessagingException{
-        Integer id = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
+    public Project updateStatusJudul (Integer id, boolean status, String pesan)throws MessagingException{
+//        Integer id = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
         Project updateProject = projectRepository.findById(id).get();
         if(status == true){
             updateProject.setCurrentStatus(new Status(4));
@@ -304,8 +304,8 @@ public class ProjectService {
         return projectRepository.save(updateProject);
     }
     
-    public Project updateStatusLink (Integer idMcc, boolean status, String pesan)throws MessagingException{
-        Integer id = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
+    public Project updateStatusLink (Integer id, boolean status, String pesan)throws MessagingException{
+//        Integer id = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
         Project updateProject = projectRepository.findById(id).get();
         if(status == true){
             updateProject.setCurrentStatus(new Status(5));

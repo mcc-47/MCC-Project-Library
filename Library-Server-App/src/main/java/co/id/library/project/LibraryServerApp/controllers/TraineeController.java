@@ -45,27 +45,27 @@ public class TraineeController {
 
     //GET ALL
     @GetMapping("/get-all")
-    public List<TraineeDTO> getTraineeDTO(Authentication auth) {
+    public List<TraineeDTO> getTraineeDTO() {
         return traineeService.getTrainee();
 
     }
     
     //GET BY ID
     @GetMapping("/{id}")
-    public Employee getOneTrainee(Authentication auth, @PathVariable Integer id) {
+    public Employee getOneTrainee(@PathVariable Integer id) {
         return traineeService.getById(id);
     }
     
     //UPDATE
     @PutMapping("/{id}")
-    public Employee updateTrainee(Authentication auth, @PathVariable Integer id,
+    public Employee updateTrainee(@PathVariable Integer id,
             @RequestBody Employee employee) throws Exception {
         return traineeService.update(id, employee);
     }
     
     //DELETE
      @DeleteMapping("/{id}")
-    public String deleteTrainee(Authentication auth, @PathVariable Integer id){
+    public String deleteTrainee(@PathVariable Integer id){
         traineeService.delete(id);
         return "delete trainee";
     }

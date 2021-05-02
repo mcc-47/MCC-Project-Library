@@ -49,27 +49,27 @@ public class TrainerController {
      
     //READ
     @GetMapping("/get-all")
-    public List<TrainerDTO> getTrainerDTO(Authentication auth){
+    public List<TrainerDTO> getTrainerDTO(){
         return trainerService.getTrainer();
 
     }
 
    //GET BY ID
     @GetMapping("/{id}")
-    public Employee getOneTrainer(Authentication auth, @PathVariable Integer id) {
+    public Employee getOneTrainer(@PathVariable Integer id) {
         return trainerService.getById(id);
     }
     
     //UPDATE
     @PutMapping("/{id}")
-    public Employee updateTrainer(Authentication auth, @PathVariable Integer id,
+    public Employee updateTrainer(@PathVariable Integer id,
             @RequestBody Employee employee) throws Exception {
         return trainerService.update(id, employee);
     }
     
     //DELETE
      @DeleteMapping("/{id}")
-    public String deleteTrainer(Authentication auth, @PathVariable Integer id){
+    public String deleteTrainer(@PathVariable Integer id){
         trainerService.delete(id);
         return "delete trainee";
     }

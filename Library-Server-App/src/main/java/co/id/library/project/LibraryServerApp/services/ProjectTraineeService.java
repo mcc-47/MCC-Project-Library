@@ -57,6 +57,7 @@ public class ProjectTraineeService {
 //    }
     
     public String registerJudul (ProjectTrainee projectTrainee)throws MessagingException{
+        System.out.println(projectTrainee.getJudul());
         projectRepository.save(new Project(
                 projectTrainee.getJudul(),
                 projectTrainee.getDeskripsi(),
