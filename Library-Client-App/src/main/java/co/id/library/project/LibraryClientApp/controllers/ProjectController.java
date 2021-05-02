@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -92,29 +91,29 @@ public class ProjectController {
     Project getById(@PathVariable("id") Integer id) {
         return projectService.getById(id);
     }
-    
 
+
+    //CREATE PROJECT
     @PostMapping
     public @ResponseBody
     String create(@RequestBody Project project) {
         System.out.println(project);
         return projectService.create(project);
     }
-    
-    //############CREATE PROJECT trainee ###############
+
+    //CREATE PROJECT TRAINEE
     @PostMapping("/trainee")
     public @ResponseBody
     String createProjectTrainee(@RequestBody SubmitProject submitProject) {
-        System.out.println("telah diproses");
+        System.out.println(submitProject);
         return projectService.createProjectTrainee(submitProject);
     }
     
     @GetMapping("/coba")
     public String getSubmit() {
-        System.out.println("ini mau submit judul");
+        System.out.println("ini get all");
         return "/trainee/submit-judul";
     }
-    //####################################
 
     //UPDATE PROJECT
     @PutMapping("/{id}")
@@ -122,7 +121,6 @@ public class ProjectController {
     String update(@PathVariable("id") Integer id, @RequestBody Project project) {
         System.out.println(project);
         return projectService.update(id, project);
-
     }
 
     //UPDATE JUDUL

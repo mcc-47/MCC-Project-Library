@@ -35,13 +35,6 @@ public class TraineeController {
         return traineeService.getAll();
     }
     
-    //GET HISTORY PROJECT
-    @GetMapping("/project-history")
-    public String getProjectHistory(Model model) {
-        model.addAttribute("trainee", traineeService.getAll());
-        return "trainee/trainee-project-history";
-    }
-    
     //GET BY ID
     @GetMapping("/{id}")
     public @ResponseBody Trainee getById(@PathVariable("id") Integer id) {

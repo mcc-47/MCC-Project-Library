@@ -16,10 +16,7 @@ function getAll() {
         },
         columns: [
             {
-                data: "id", name: "No", autoWidth: true,
-                render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
-                }
+                data: "idProject", name: "ID Project", autoWidth: true
             },
             {
                 data: "judul", name: "Judul", autoWidth: true
@@ -37,21 +34,10 @@ function getAll() {
                 data: "deskripsi", name: "Deskripsi", autoWidth: true
             },
             {
-                data: "skema", name: "Skema", autoWidth: true,
-               
-                fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-                    if (oData.skema) {
-                        $(nTd).html("<a target='_blank' href=' " + oData.skema + "'>" + "click here" + "</a>");
-                    }
-                }
+                data: "skema", name: "Deskripsi", autoWidth: true
             },
             {
-                data: "link", name: "Link Full Project", autoWidth: true,
-                fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-                    if (oData.link) {
-                        $(nTd).html("<a target='_blank' href=' " + oData.link + "'>" + "click here" + "</a>");
-                    }
-                }
+                data: "link", name: "Link Full Project", autoWidth: true
             },
             
         ]

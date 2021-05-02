@@ -5,9 +5,8 @@ $(document).ready(() => {
     getAll();
     $("#traineeUpdate").submit((e) => {
         e.preventDefault();
-        formValidation(update);
+        update();
     });
-
 });
 function getAll() {
     table = $('#traineeTable').DataTable({
@@ -20,10 +19,7 @@ function getAll() {
         },
         columns: [
             {
-                data: "id", name: "No", autoWidth: true,
-                render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
-                }
+                data: "idMcc", name: "ID MCC", autoWidth: true
             },
             {
                 data: "nama", name: "Nama Trainee", autoWidth: true
@@ -46,15 +42,14 @@ function getAll() {
                         <button 
                             class='btn btn-sm btn-primary'
                             data-toggle="modal" 
-                            data-target="#update-trainee"
+                            data-target="#modalEditTrainee"
                             onclick="getById('${row.idMcc}')">
                             
-                            <i class='fas fa-sm fa-pencil-alt'></i> 
+                            <i class='fas fa-sm fa-pencil-alt'></i>
                         </button>
-                        <button class='btn btn-sm btn-danger' onclick="deleteById('${row.idMcc}')">
-                            <i class='fas fa-sm fa-trash'></i> 
+                        <button class='btn btn-sm btn-danger'  onclick="deleteById('${row.idMcc}')">
+                            <i class='fas fa-sm fa-trash'></i>
                         </button>
-                    
                     `;
                 }
             }
@@ -69,6 +64,7 @@ function getById(id) {
         type: 'GET',
         success: (res) => {
             setForm(res);
+            console.log(res);
         }
     });
 }
@@ -92,7 +88,8 @@ function update() {
         success: (res) => {
             table.ajax.reload();
             successAlert("Trainee Updated");
-            $("#update-trainee").modal("hide");
+            $('#update-trainee').modal('hide')
+            console.log(res);
         },
         error: (err) => {
             errorAlert("Trainee failed updated");
@@ -100,30 +97,15 @@ function update() {
     });
 }
 
-//function deleteById(id) {
-//
-//    questionAlert("Are you sure?", "Do you want to delete this data?", function () {
-//        $.ajax({
-//            url: `/trainee/${id}`,
-//            type: 'DELETE',
-//            success: (res) => {
-//                table.ajax.reload();
-//                successAlert("Trainee sucess deleted");
-//            },
-//            error: (err) => {
-//                errorAlert("Trainee failed deleted");
-//            }
-//        });
-//    });
-//}
-
 function deleteById(id) {
-    questionAlert("Are you sure?", "Do you want to delete this data?", () => {
+
+    questionAlert("Are you sure?", "Do you want to delete this data?", function () {
         $.ajax({
             url: `/trainee/${id}`,
             type: 'DELETE',
             success: (res) => {
-                successAlert("Trainee success deleted");
+                table.ajax.reload();
+                successAlert("Trainee sucess deleted");
             },
             error: (err) => {
                 errorAlert("Trainee failed deleted");

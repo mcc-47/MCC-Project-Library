@@ -39,7 +39,7 @@ public class TraineeService {
     //UPDATE
     public String update(Integer id, Trainee trainee) {
         HttpEntity entity = new HttpEntity(trainee, RequestFormat.createHeaders());
-        ResponseEntity<String> res = restTemplate.exchange(url + "/" + id, HttpMethod.PUT, entity,
+        ResponseEntity<String> res = restTemplate.exchange(url + id, HttpMethod.PUT, entity,
                 new ParameterizedTypeReference<String>() {
         });
         return res.getBody();
@@ -48,7 +48,7 @@ public class TraineeService {
     //DELETE
     public String delete(Integer id) {
         HttpEntity entity = new HttpEntity(id, RequestFormat.createHeaders());
-        ResponseEntity<String> res = restTemplate.exchange(url + "/" + id, HttpMethod.DELETE, entity,
+        ResponseEntity<String> res = restTemplate.exchange(url + id, HttpMethod.DELETE, entity,
                 new ParameterizedTypeReference<String>() {
         });
         return res.getBody();
