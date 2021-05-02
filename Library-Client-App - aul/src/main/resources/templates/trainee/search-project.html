@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Data Project - Trainee</title>
+    <div th:replace="fragments/header-link :: header-link"></div>     
+</head>
+
+<body class="sb-nav-fixed">
+    <div th:replace="fragments/header :: header"></div>
+    <div id="layoutSidenav">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <div id="layoutSidenav_content">
+            <div class="p-5">
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        Data Project
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="cariTabel" class="table table-bordered table-striped table-hover-col-sm-3">
+                                <thead>
+
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Project Name</th>
+                                        <th>Batch</th>
+                                        <th>Trainee</th>
+                                        <th>Trainer</th>
+                                        <th>Description</th>
+                                        <th>Schema</th>
+                                        <th>Link Github</th>
+                                    </tr>
+                                </thead>
+
+                                <script th:src="@{/js/trainee/search-project.js}"></script>
+                                <tbody>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div th:replace="fragments/footer :: footer"></div>                  
+    <script>
+        $(document).ready(function () {
+            var table = $('#cariTabel').DataTable();
+        });
+    </script>
+    <div th:replace="fragments/dataTable :: dataTable"></div> 
+
+
+</body>
+</html>
+

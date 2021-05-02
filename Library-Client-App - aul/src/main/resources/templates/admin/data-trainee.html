@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Data Trainee</title>
+    <div th:replace="fragments/header-link :: header-link"></div>     
+</head>
+
+<body class="sb-nav-fixed">
+    <div th:replace="fragments/header :: header"></div>
+    <div id="layoutSidenav">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <div id="layoutSidenav_content">
+            <div class="p-5">
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        Data Trainee
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="traineeTable" class="table table-bordered table-striped table-hover-col-sm-3">
+                                <thead>
+
+                                    <tr>
+                                        <td>No</td>
+                                        <td>Nama Trainee</td>
+                                        <td>Email</td>
+                                        <td>Jabatan</td>
+                                        <td>Batch</td>
+                                        <td>Status</td>
+                                        <td>Action</td>
+                                    </tr>
+                                </thead>
+
+                                <script th:src="@{/js/admin/data-trainee.js}"></script>
+                                <tbody>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>                  
+    <script>
+        $(document).ready(function () {
+            var table = $('#traineeTable').DataTable();
+        });
+    </script>
+
+    <div th:replace="fragments/dataTable :: dataTable"></div> 
+    <div th:replace="admin/modal-edit-trainee :: modal-edit-trainee"></div>
+    <script th:src="@{/js/form-validation.js}"></script>
+     <script th:src="@{/js/sweet-alert.js}"></script>
+
+
+</body>
+</html>

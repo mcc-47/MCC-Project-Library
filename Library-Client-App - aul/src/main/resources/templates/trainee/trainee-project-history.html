@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Data Project - Trainee</title>
+    <div th:replace="fragments/header-link :: header-link"></div>     
+</head>
+
+<body class="sb-nav-fixed">
+    <div th:replace="fragments/header :: header"></div>
+    <div id="layoutSidenav">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <div id="layoutSidenav_content">
+            <div class="p-5">
+
+                <div class="container mt-5 mb-5">
+                    <div class="row">
+                        <h4>Project History</h4>
+                        <ul class="timeline">
+                            <li>
+                                <a target="_blank" href="">Project Library <span class="text-warning">(Title Submission)</span></a>
+                                <a href="#" class="float-right">21 March, 2014</a>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
+                                <h6 class="text-danger">Ditolak</h6>
+                                <hr>
+                            </li>
+                            <li>
+                                <a href="#">Project Social Chat <span class="text-warning">(Title Submission)</span></a>
+                                <a href="#" class="float-right">4 March, 2014</a>
+                                <p>Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...</p>
+                                <h6 class="text-success">Diterima</h6>
+                                <hr>
+                            </li>
+                            <li>
+                                <a href="#">Project Social Chat</a>
+                                <a href="#" class="float-right">1 April, 2014</a>
+                                <p>Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nulla odio, tincidunt vitae nunc vitae, mollis pharetra velit. Sed nec tempor nibh...</p>
+                                <h6 class="text-primary">Diproses</h6>
+                                <hr>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>  
+    <script th:src="@{/js/form-validation.js}"></script>
+
+
+</body>
+</html>
