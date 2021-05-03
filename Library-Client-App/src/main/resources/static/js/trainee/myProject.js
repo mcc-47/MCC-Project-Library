@@ -3,6 +3,7 @@ let table = null;
 
 $(document).ready(() => {
     getAll();
+    console.log(getAll);
 });
 
 function getAll() {

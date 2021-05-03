@@ -1,5 +1,4 @@
 <div class="modal-add-judul" th:fragment="modal-add-judul">
-
     <div class="modal fade" id="create-judul" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -28,61 +27,28 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="idMcc1">Nama Trainee</label>
+                            <label for="idMccSatu">Id Anggota 1</label>
                             <input type="number" id="idMccSatu" class="form-control" placeholder="Anggota 1" required>
                             <div class="invalid-feedback">
-                                Please enter your nama.
+                                Please enter your deskripsi.
                             </div><br>
                         </div>
                         
                         <div class="form-group">
-                            <label for="idMcc2">Nama Anggota 2</label>
-                            <input type="number" id="idMccDua" class="form-control" placeholder="Anggota 1">
+                            <label for="idMccDua">Id Anggota 2</label>
+                            <input type="number" id="idMccDua" class="form-control" placeholder="Anggota 2">
                             <div class="invalid-feedback">
                                 Please enter your deskripsi.
                             </div><br>
                         </div>
                         
                         <div class="form-group">
-                            <label for="idMcc3">Nama Anggota 3</label>
-                            <input type="number" id="idMccTiga" class="form-control" placeholder="Anggota 1">
+                            <label for="idMccTiga">Id Anggota 3</label>
+                            <input type="number" id="idMccTiga" class="form-control" placeholder="Anggota 3">
                             <div class="invalid-feedback">
                                 Please enter your deskripsi.
                             </div><br>
                         </div>
-
-<!--                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Anggota 1</label>
-                            <select class="form-control" id="idMcc" required>
-                                <option value="" selected>--Pilih Anggota 1--</option>
-                                <option th:each="idMcc:${trainee}" th:value="${idMcc.idMcc}" th:text="${idMcc.nama}" required></option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select your member 1.
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleFormControlInput2">Anggota 2</label>
-                            <select class="form-control" id="idMcc" required>
-                                <option value="" selected>--Pilih Anggota 2--</option>
-                                <option th:each="idMcc:${trainee}" th:value="${idMcc.idMcc}" th:text="${idMcc.nama}" required></option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select your member 2.
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleFormControlInput3">Anggota 3</label>
-                            <select class="form-control" id="idMcc" required>
-                                <option value="" selected>--Pilih Anggota 3--</option>
-                                <option th:each="idMcc:${trainee}" th:value="${idMcc.idMcc}" th:text="${idMcc.nama}" required></option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select your member 1.
-                            </div>
-                        </div>-->
 
                         <div class="modal-footer border-top-0 d-flex justify-content-center">
                             <button type="submit" class="btn btn-success">Submit</button>
@@ -92,4 +58,5 @@
             </div>
         </div>
     </div>
-
+    </div>
+</div>

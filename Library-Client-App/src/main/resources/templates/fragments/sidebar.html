@@ -6,9 +6,27 @@
         <div class="sidebar-wrapper" id="sidebar-wrapper">
             <ul class="nav">
                 <li class="active">
-                    <a href="#">
+                    <a th:href="@{/dashboard}">
                         <i class="fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/trainee}">
+                        <i class="fas fa-table"></i>
+                        <p>Data Trainee</p>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/trainer}">
+                        <i class="fas fa-table"></i>
+                        <p>Data Trainer</p>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/project}">
+                        <i class="fas fa-table"></i>
+                        <p>Data Project</p>
                     </a>
                 </li>
                 <li>
