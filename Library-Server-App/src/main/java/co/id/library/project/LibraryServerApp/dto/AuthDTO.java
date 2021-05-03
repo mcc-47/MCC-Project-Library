@@ -23,6 +23,10 @@ public class AuthDTO {
         this.authorities = authorities;
     }
 
+    public AuthDTO(String userName) {
+        this.userName = userName;
+    }
+
     public AuthDTO() {
     }
 
