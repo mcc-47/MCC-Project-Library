@@ -79,7 +79,6 @@ function getById(id) {
 
 function create() {
     validasi = {
-        idProject: $(projectData.idProject),
         status: $("#statusApproved").val(),
         pesan: $("#pesan").val()
     };
@@ -88,9 +87,9 @@ function create() {
 
     $.ajax({
         url: `/project/validasi-judul/${projectData.idProject}`,
-        type: 'POST',
+        type: 'PUT',
         contentType: 'application/json',
-        data: JSON.stringify(project),
+        data: JSON.stringify(validasi),
         success: (res) => {
             table.ajax.reload();
             successAlert("Project Created");
@@ -111,9 +110,9 @@ function rejectTitle() {
 
     $.ajax({
         url: `/project/validasi-judul/${projectData.idProject}`,
-        type: 'POST',
+        type: 'PUT',
         contentType: 'application/json',
-        data: JSON.stringify(project),
+        data: JSON.stringify(validasi),
         success: (res) => {
             table.ajax.reload();
             successAlert("Project Created");

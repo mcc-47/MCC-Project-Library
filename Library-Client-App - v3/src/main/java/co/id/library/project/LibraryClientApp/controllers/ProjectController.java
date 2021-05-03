@@ -52,7 +52,7 @@ public class ProjectController {
     @GetMapping("/cari")
     public @ResponseBody
     List<SearchProject> getAllSearchProcess() {
-        System.out.println("cetakaja");
+        System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
         return projectService.getAllSearch();
     }
     //====================================
@@ -172,17 +172,18 @@ public class ProjectController {
   
 
     //VALIDASI JUDUL
-    @PutMapping("/validasi-link/{id}")
+    @PutMapping("/validasi-judul/{id}")
     public @ResponseBody
-    Validasi validasiJudul(@PathVariable("id") Integer id, Validasi validasi) {
+    Validasi validasiJudul(@PathVariable("id") Integer id, @RequestBody Validasi validasi) {
+        System.out.println("ini sout validasi" + validasi);
         return projectService.validasiJudul(id, validasi);
 
     }
 //    
     //VALIDASI LINK
-    @PutMapping("/validasi-judul/{id}")
+    @PutMapping("/validasi-link/{id}")
     public @ResponseBody
-    Validasi validasiLink(@PathVariable("id") Integer id, Validasi validasi) {
+    Validasi validasiLink(@PathVariable("id") Integer id, @RequestBody Validasi validasi) {
         System.out.println("stringggggggggg aja");
         return projectService.validasiLink(id, validasi);
 

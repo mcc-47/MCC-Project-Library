@@ -1,6 +1,8 @@
 let myProject = new Object();
 let table = null;
 let projectData = new Object();
+let projectDataJudul = new Object();
+let idJudul = "";
 
 $(document).ready(() => {
     getAll();
@@ -171,7 +173,8 @@ function getByIdJudul(id) {
         type: 'GET',
         success: (res) => {
             console.log(res);
-            projectData = res;
+            projectDataJudul = res;
+            idJudul = id;
             setFormJudul(res);
         }
     });
@@ -179,16 +182,14 @@ function getByIdJudul(id) {
 
 function updateJudul() {
     project = {
-        judul: $("#judul").val(),
-        deskripsi: $("#deskripsi").val(),
-        idProject: projectData.idProject
+        judul: $("#judul1").val(),
+        deskripsi: $("#deskripsi1").val(),
+        idProject: idJudul
     };
-    console.log(projectData.idProject);
+    console.log(idJudul);
    
-    let id = $("#idProject").val();
-    
     $.ajax({
-        url: `/project/update-judul/${projectData.idProject}`,
+        url: `/project/update-judul/${idJudul}`,
         type: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify(project),
@@ -205,8 +206,8 @@ function updateJudul() {
 }
 
 function setFormJudul(lala) {
-    $("#nama").val(lala.nama);
-    $("#trainer").val(lala.trainer);
-     $("#judul").val(lala.judul);
-    $("#deskripsi").val(lala.deskripsi);
+    $("#nama1").val(lala.nama);
+    $("#trainer1").val(lala.trainer);
+     $("#judul1").val(lala.judul);
+    $("#deskripsi1").val(lala.deskripsi);
 }

@@ -1,16 +1,16 @@
-let project = new Object();
+let title = new Object();
 let table = null;
 let validasi = new Object();
 let projectData = new Object() ;
 
-
 $(document).ready(() => {
     getAll();
-
-    $("#detailProject").submit((e) => {
+    
+    $("#detailTitle").submit((e) => {
         e.preventDefault();
-        formValidation(create);
+        validationForm(create);
     });
+
 });
 
 function getAll() {
@@ -73,9 +73,6 @@ function getAll() {
             {
                 data: "nama", name: "Nama Trainee", autoWidth: true
             },
-             {
-                data: "batch", name: "Batch", autoWidth: true
-            },
             {
                 render: (data, type, row, meta) => {
                     return `
@@ -100,14 +97,14 @@ function getById(id) {
         url: `/project/${id}`,
         type: 'GET',
         success: (res) => {
-            setForm(res);
+            console.log(res);
+            projectData = res;
         }
     });
 }
 
 function create() {
     validasi = {
-        idProject: $(projectData.idProject),
         status: $("#statusApproved").val(),
         pesan: $("#pesan").val()
     };
@@ -116,13 +113,13 @@ function create() {
 
     $.ajax({
         url: `/project/validasi-link/${projectData.idProject}`,
-        type: 'POST',
+        type: 'PUT',
         contentType: 'application/json',
-        data: JSON.stringify(project),
+        data: JSON.stringify(validasi),
         success: (res) => {
             table.ajax.reload();
             successAlert("Project Created");
-            $("#full-project").modal("hide");
+            $("#pesan-project").modal("hide");
         },
         error: (err) => {
             errorAlert("Project failed created");
@@ -138,10 +135,10 @@ function rejectTitle() {
     console.log(validasi.status);
 
     $.ajax({
-        url: `/project/validasi-judul/${projectData.idProject}`,
-        type: 'POST',
+        url: `/project/validasi-link/${projectData.idProject}`,
+        type: 'PUT',
         contentType: 'application/json',
-        data: JSON.stringify(project),
+        data: JSON.stringify(validasi),
         success: (res) => {
             table.ajax.reload();
             successAlert("Project Created");

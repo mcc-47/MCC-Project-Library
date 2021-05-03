@@ -37,6 +37,7 @@ public class ProjectService {
                         new HttpEntity(RequestFormat.createHeaders()),
                         new ParameterizedTypeReference<List<Project>>() {
                 });
+        System.out.println(response.getBody());
         return response.getBody();
     }
 
@@ -47,7 +48,9 @@ public class ProjectService {
                         new HttpEntity(RequestFormat.createHeaders()),
                         new ParameterizedTypeReference<List<SearchProject>>() {
                 });
+        System.out.println("cobain errornya si validasi status");
         return response.getBody();
+       
     }
 
     //get all title submission trainer
@@ -119,7 +122,7 @@ public class ProjectService {
    
     //UPDATE JUDUL
     public JudulTrainee updateJudul(Integer id, JudulTrainee judulTrainee) {
-        HttpEntity entity = new HttpEntity(RequestFormat.createHeaders());
+        HttpEntity entity = new HttpEntity(judulTrainee, RequestFormat.createHeaders());
         //HttpEntity entity = new HttpEntity(project, RequestFormat.createHeaders());
         ResponseEntity<JudulTrainee> res = restTemplate.exchange(url + "/update-judul/" + id, HttpMethod.PUT, entity,
                 new ParameterizedTypeReference<JudulTrainee>() {
@@ -143,17 +146,19 @@ public class ProjectService {
     
     //VALIDASI JUDUL
     public Validasi validasiJudul(Integer id, Validasi validasi) {
-        HttpEntity entity = new HttpEntity(RequestFormat.createHeaders());
+        HttpEntity entity = new HttpEntity(validasi, RequestFormat.createHeaders());
         //HttpEntity entity = new HttpEntity(project, RequestFormat.createHeaders());
         ResponseEntity<Validasi> res = restTemplate.exchange(url + "/validasi-judul/" + id, HttpMethod.PUT, entity,
                 new ParameterizedTypeReference<Validasi>() {
         });
+        System.out.println(id);
+        System.out.println(validasi);
         return res.getBody();
     }
     
     //VALIDASI LINK
     public Validasi validasiLink(Integer id, Validasi validasi) {
-        HttpEntity entity = new HttpEntity(RequestFormat.createHeaders());
+        HttpEntity entity = new HttpEntity(validasi, RequestFormat.createHeaders());
         //HttpEntity entity = new HttpEntity(project, RequestFormat.createHeaders());
         ResponseEntity<Validasi> res = restTemplate.exchange(url + "/validasi-link/" + id, HttpMethod.PUT, entity,
                 new ParameterizedTypeReference<Validasi>() {
