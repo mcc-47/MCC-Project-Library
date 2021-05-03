@@ -103,7 +103,7 @@ public class ProjectService {
     //UPDATE PROJECT
     public String update(Integer id, Project project) {
         HttpEntity entity = new HttpEntity(project, RequestFormat.createHeaders());
-        ResponseEntity<String> res = restTemplate.exchange(url + "/" + id, HttpMethod.PUT, entity,
+        ResponseEntity<String> res = restTemplate.exchange(url + id, HttpMethod.PUT, entity,
                 new ParameterizedTypeReference<String>() {
         });
         return res.getBody();
@@ -120,13 +120,14 @@ public class ProjectService {
     }
 
     //UPDATE LINK
-    public String updateLink(Integer id, String erd, String uml, String skema, String link) {
-        HttpEntity entity = new HttpEntity(RequestFormat.createHeaders());
+    public Project updateLink(Integer id, Project project) {
+        HttpEntity entity = new HttpEntity(project, RequestFormat.createHeaders());
         //HttpEntity entity = new HttpEntity(project, RequestFormat.createHeaders());
         System.out.println("cetak update link");
-        ResponseEntity<String> res = restTemplate.exchange(url + "/update-link" + id, HttpMethod.PUT, entity,
-                new ParameterizedTypeReference<String>() {
+        ResponseEntity<Project> res = restTemplate.exchange(url + "/update-link", HttpMethod.PUT, entity,
+                new ParameterizedTypeReference<Project>() {
         });
+        System.out.println(res.getBody());
         return res.getBody();
     }
     
@@ -134,7 +135,7 @@ public class ProjectService {
     public String validasiJudul(Integer id, boolean status, String pesan) {
         HttpEntity entity = new HttpEntity(RequestFormat.createHeaders());
         //HttpEntity entity = new HttpEntity(project, RequestFormat.createHeaders());
-        ResponseEntity<String> res = restTemplate.exchange(url + "/validasi-judul" + id, HttpMethod.PUT, entity,
+        ResponseEntity<String> res = restTemplate.exchange(url + "/validasi-judul/" + id, HttpMethod.PUT, entity,
                 new ParameterizedTypeReference<String>() {
         });
         return res.getBody();

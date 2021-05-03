@@ -97,8 +97,9 @@ public class ProjectController {
     //UPDATE LINK
     @PutMapping("/update-link/{id}")
     public @ResponseBody
-    String updateLink(@PathVariable("id") Integer id, String erd, String uml, String skema, String link) {
-        return projectService.updateLink(id, erd, uml, skema, link);
+    Project updateLink(@PathVariable("id") Integer id, @RequestBody Project project) {
+        System.out.println("Sebelum Return dungs");
+        return projectService.updateLink(id, project);
 
     }
     
@@ -110,7 +111,7 @@ public class ProjectController {
         return projectService.create(project);
     }
     
-    //############CREATE PROJECT TRAINEE ###############
+    //############CREATE PROJECT trainee ###############
     @PostMapping("/trainee")
     public @ResponseBody
     String createProjectTrainee(@RequestBody SubmitProject submitProject) {

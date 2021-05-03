@@ -2,7 +2,6 @@ let myHistory = new Object();
 let table = null;
 
 $(document).ready(() => {
-
     getAll();
 });
 
@@ -10,13 +9,11 @@ function getAll() {
     table = $('#myHistory').DataTable({
         filter: true,
         orderMulti: true,
-
         ajax: {
             url: "/history/trainee",
             datatype: "json",
             dataSrc: ""
         },
-
         columns: [
             {
                 data: "id", name: "No", autoWidth: true,
@@ -28,20 +25,21 @@ function getAll() {
                 data: "idProject", name: "Project", autoWidth: true
             },
             {
-                data: "info", name: "Info", autoWidth: true
+                data: "info", name: "Batch", autoWidth: true
             },
             {
-                data: "waktu", name: "Waktu", autoWidth: true
+                data: "waktu", name: "Nama Trainee", autoWidth: true,
+                render: function (data) {
+                    return moment(data).format('ddd, MMMM Do, YYYY');
+                }
             },
             {
-                data: "pesan", name: "Pesan", autoWidth: true
+                data: "pesan", name: "Nama Trainer", autoWidth: true
             },
             {
-                data: "status", name: "Status", autoWidth: true
+                data: "status", name: "Deskripsi", autoWidth: true
             }
-
+            
         ]
-
-
     });
 }

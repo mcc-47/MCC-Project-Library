@@ -1,5 +1,6 @@
 let myProject = new Object();
 let table = null;
+let projectData = new Object();
 
 $(document).ready(() => {
     getAll();
@@ -7,7 +8,6 @@ $(document).ready(() => {
     
     $("#myProjectUpdate").submit((e) => {
         e.preventDefault();
-        console.log(update);
         validationForm(update);
     });
 });
@@ -102,6 +102,7 @@ function getById(id) {
         type: 'GET',
         success: (res) => {
             console.log(res);
+            projectData = res;
             setForm(res);
         }
     });
@@ -112,23 +113,27 @@ function update() {
         erd: $("#erd").val(),
         uml: $("#uml").val(),
         skema: $("#skema").val(),
-        link: $("#link").val()
-
+        link: $("#link").val(),
+        idProject: projectData.idProject
     };
-    console.log(project);
+    
+    console.log(projectData.idProject);
+   
     let id = $("#idProject").val();
+    
     $.ajax({
-        url: `/project/update-link/${id}`,
+        url: `/project/update-link/${projectData.idProject}`,
         type: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify(project),
         success: (res) => {
-            table.ajax.reload();
-            successAlert("Trainee Updated");
+             console.log(project);
+            console.log(res);
             $("#update-my-project").modal("hide");
         },
         error: (err) => {
             errorAlert("Trainee failed updated");
+            console.log("update error");
         }
     });
 }
