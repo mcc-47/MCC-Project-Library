@@ -227,10 +227,10 @@ public class ProjectService {
         return projectRepository.save(updateProject);
     }
     
-    public Project updateJudul (Integer idMcc, Project project)throws MessagingException{
-//        Project updateProject = projectRepository.findById(id).get();
-        Integer id = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
+    public Project updateJudul (Integer id, Project project)throws MessagingException{
         Project updateProject = projectRepository.findById(id).get();
+//        Integer id = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
+//        Project updateProject = projectRepository.findById(id).get();
         updateProject.setJudul(project.getJudul());
         updateProject.setDeskripsi(project.getDeskripsi());
         updateProject.setCurrentStatus(new Status(1));

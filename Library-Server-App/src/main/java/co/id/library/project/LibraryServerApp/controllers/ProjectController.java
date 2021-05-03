@@ -99,18 +99,18 @@ public class ProjectController {
 //    public Project updateProject(@PathVariable Integer id, @RequestBody Project project)throws MessagingException{
 //        return projectService.update(id, project);
 //    }
-//    @PutMapping("/update-judul/{id}")
-//    public Project updateJudul(@PathVariable Integer id, String judul, String deskripsi)throws MessagingException{
-//        return projectService.updateJudul(id, judul, deskripsi);
-//    }
-    @PutMapping("/update-judul")
-    public Project updateJudul(Authentication auth, @RequestBody Project project) throws MessagingException {
-        System.out.println(auth.getName());
-        System.out.println(project.getJudul());
-        System.out.println(project.getDeskripsi());
-        return projectService.updateJudul(Integer.parseInt(auth.getName()), project);
+    @PutMapping("/update-judul/{id}")
+    public Project updateJudul(@PathVariable Integer id, @RequestBody Project project)throws MessagingException{
+        return projectService.updateJudul(id, project);
     }
-    
+//    @PutMapping("/update-judul")
+//    public Project updateJudul(Authentication auth, @RequestBody Project project) throws MessagingException {
+//        System.out.println(auth.getName());
+//        System.out.println(project.getJudul());
+//        System.out.println(project.getDeskripsi());
+//        return projectService.updateJudul(Integer.parseInt(auth.getName()), project);
+//    }
+//    
     
     @PutMapping("/update-link")
     public Project updateLink(Authentication auth, @RequestBody Project project) throws MessagingException {
@@ -128,7 +128,7 @@ public class ProjectController {
 //    }
 
     @PutMapping("/validasi-judul/{id}")
-    public Project validasiJudul(@PathVariable Integer id, ValidasiDTO validasiDTO)throws MessagingException{
+    public Project validasiJudul(@PathVariable Integer id, @RequestBody ValidasiDTO validasiDTO)throws MessagingException{
         return projectService.updateStatusJudul(id, validasiDTO);
     }
 //    @PutMapping("/validasi-judul")
@@ -137,7 +137,7 @@ public class ProjectController {
 //    }
     
     @PutMapping("/validasi-link/{id}")
-    public Project validasiLink (@PathVariable Integer id, ValidasiDTO validasiDTO)throws MessagingException{
+    public Project validasiLink (@PathVariable Integer id, @RequestBody ValidasiDTO validasiDTO)throws MessagingException{
         return projectService.updateStatusLink(id, validasiDTO);
     }
 
