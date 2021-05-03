@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,17 +20,33 @@ public class HistoryController {
     @Autowired
     HistoryService historyService;
 
-    //=========mapping untuk history trainee==============
+    //=========mapping untuk history trainer ==============
     @GetMapping("/status")
     public String getAllStatus(Model model) {
-        model.addAttribute("status", historyService.getAllHistory());
-        System.out.println();
+        //model.addAttribute("status", historyService.getAllHistory());
+        System.out.println(model);
         return "trainee/history";
     }
 
     @GetMapping("/trainee")
     public @ResponseBody List<History> getAllStatusProcess() {
-        System.out.println("cetak status trainee");
+        System.out.println("cetak trainee");
         return historyService.getAllHistory();
     }
+    //========================================
+    
+    //############## mapping untuk history trainee #################
+     @GetMapping("/myHistory")
+    public @ResponseBody List<History>  getmyHistory() {
+        System.out.println("ini get history trainee");
+        return historyService.getHistoryByIdMcc();
+    }
+    
+    @GetMapping("/my-history")
+    public String getMyHistory(Model model) {
+        //model.addAttribute("project", projectService.getProjectTrainee());
+        System.out.println("apaan kek");
+        return "trainee/myHistory";
+    }
+    //##################################################################
 }

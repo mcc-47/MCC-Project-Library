@@ -7,12 +7,12 @@ $(document).ready(() => {
 });
 
 function getAll() {
-    table = $('#myHistory').DataTable({
+    table = $('#historyTrainee').DataTable({
         filter: true,
         orderMulti: true,
 
         ajax: {
-            url: "/history/trainee",
+            url: "/history/myHistory",
             datatype: "json",
             dataSrc: ""
         },
@@ -41,7 +41,5 @@ function getAll() {
             }
 
         ]
-
-
     });
 }

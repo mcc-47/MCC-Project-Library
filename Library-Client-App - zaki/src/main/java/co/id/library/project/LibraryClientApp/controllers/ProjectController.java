@@ -110,7 +110,7 @@ public class ProjectController {
         return projectService.create(project);
     }
     
-    //############CREATE PROJECT trainee ###############
+    //############CREATE PROJECT TRAINEE ###############
     @PostMapping("/trainee")
     public @ResponseBody
     String createProjectTrainee(@RequestBody SubmitProject submitProject) {

@@ -12,6 +12,7 @@ public class History {
     private Date waktu;
     private String pesan;
     private String status;
+    //private Integer idStatus;
 
     public History(Integer idHistory, Integer idProject, String info, Date waktu, String pesan, String status) {
         this.idHistory = idHistory;
@@ -22,6 +23,18 @@ public class History {
         this.status = status;
     }
 
+//    public History(Integer idHistory, Integer idProject, String info, Date waktu, String pesan, Integer idStatus) {
+//        this.idHistory = idHistory;
+//        this.idProject = idProject;
+//        this.info = info;
+//        this.waktu = waktu;
+//        this.pesan = pesan;
+//        this.idStatus = idStatus;
+//    }
+
+   
+
+    
     public History() {
     }
     

@@ -11,6 +11,7 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+                <!--================bagian admin================-->
                 <li>
                     <a th:href="@{/trainee}">
                         <i class="fas fa-table"></i>
@@ -29,24 +30,29 @@
                         <p>Data Project</p>
                     </a>
                 </li>
-                <li>
-                    <a th:href="@{/project/project-submission}">
-                        <i class="fas fa-table"></i>
-                        <p>Project Submission</p>
-                    </a>
-                </li>
+                <!--========================================================-->
                 <li>
                     <a th:href="@{/project/my-project}">
                         <i class="fas fa-table"></i>
                         <p>My Project</p>
                     </a>
                 </li>
+                
+                <!--============== Bagian Trainee ===================-->
                 <li>
-                    <a th:href="@{/project}">
+                    <a th:href="@{/project/title-submission}">
                         <i class="fas fa-table"></i>
-                        <p>Table Project</p>
+                        <p>Title Submission</p>
                     </a>
                 </li>
+                <li>
+                    <a th:href="@{/project/project-submission}">
+                        <i class="fas fa-table"></i>
+                        <p>Project Submission</p>
+                    </a>
+                </li>
+                <!--=======================================================-->
+               
                 <li>
                     <a th:href="@{/project/search-trainee}">
                         <i class="fas fa-table"></i>
@@ -54,9 +60,9 @@
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/project/coba}">
+                    <a th:href="@{/history/my-history}">
                         <i class="fas fa-table"></i>
-                        <p>Submit Judul</p>
+                        <p>History Trainee</p>
                     </a>
                 </li>
                 <li>
@@ -68,7 +74,7 @@
                  <li>
                     <a th:href="@{/history/status}">
                         <i class="fas fa-table"></i>
-                        <p>History Trainee</p>
+                        <p>History Trainer</p>
                     </a>
                 </li>
 <!--              <li>

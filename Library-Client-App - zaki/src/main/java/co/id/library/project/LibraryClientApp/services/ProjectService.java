@@ -103,7 +103,7 @@ public class ProjectService {
     //UPDATE PROJECT
     public String update(Integer id, Project project) {
         HttpEntity entity = new HttpEntity(project, RequestFormat.createHeaders());
-        ResponseEntity<String> res = restTemplate.exchange(url + id, HttpMethod.PUT, entity,
+        ResponseEntity<String> res = restTemplate.exchange(url + "/" + id, HttpMethod.PUT, entity,
                 new ParameterizedTypeReference<String>() {
         });
         return res.getBody();
