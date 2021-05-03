@@ -54,7 +54,7 @@ function getAll() {
                             data-target="#pesan-project"
                             onclick="getById('${row.idProject}')">
                             
-                            <i class='fas fa-sm fa-pencil-alt'></i>
+                            <i class="fas fa-clipboard-check"></i>Approval
                         </button>
                     `;
                 }
@@ -91,9 +91,9 @@ function create() {
         contentType: 'application/json',
         data: JSON.stringify(validasi),
         success: (res) => {
+            $("#pesan-project").modal("hide");
             table.ajax.reload();
             successAlert("Project Created");
-            $("#pesan-project").modal("hide");
         },
         error: (err) => {
             errorAlert("Project failed created");

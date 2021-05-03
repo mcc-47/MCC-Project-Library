@@ -80,8 +80,8 @@ function getAll() {
                             class='btn btn-sm btn-primary'
                             data-toggle="modal" 
                             data-target="#full-project"
-                            onclick="getById('${row.idProject}')"
-                            <i class='fas fa-sm fa-pencil-alt'></i> Detail
+                            onclick="getById('${row.idProject}')">
+                            <i class="fas fa-clipboard-check"></i> Approval
                         </button>
                     
                     `;

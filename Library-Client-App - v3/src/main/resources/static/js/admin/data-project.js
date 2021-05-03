@@ -74,13 +74,14 @@ function getAll() {
                 render: (data, type, row, meta) => {
                     return `
                         <button 
-                            class='btn btn-sm btn-primary'
+                            class='btn btn-sm btn-primary mb-1'
                             data-toggle="modal" 
                             data-target="#update-project"
                             onclick="getById('${row.idProject}')">
                             
                             <i class='fas fa-sm fa-pencil-alt'></i>
                         </button>
+                    
                         <button class='btn btn-sm btn-danger' onclick="deleteById('${row.idProject}')">
                             <i class='fas fa-sm fa-trash'></i>
                         </button>

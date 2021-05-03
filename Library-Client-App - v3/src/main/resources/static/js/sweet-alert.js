@@ -87,7 +87,7 @@ $(document).on('click', '#btn-logout', function (e) {
         confirmButtonText: 'Yes'
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location = link;
+            window.location.href = "/logout";
         }
     });
 });

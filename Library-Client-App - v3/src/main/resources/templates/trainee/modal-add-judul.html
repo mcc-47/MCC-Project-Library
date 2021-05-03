@@ -36,21 +36,21 @@
                         <div class="form-group">
                             <label for="idMccDua">Nama Anggota 2</label>
                             <select class="form-control" id="idMccDua" >
-                                <option>--- Select Nama Anggota ---</option>
+                                <option value="">--- Select Nama Anggota ---</option>
                                 <option th:each="t:${trainee}" th:value="${t.idMcc}" th:text="${t.nama}">1</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="idMccTiga">Nama Anggota 3</label>
                             <select class="form-control" id="idMccTiga" >
-                                <option>--- Select Nama Anggota ---</option>
+                                <option value="">--- Select Nama Anggota ---</option>
                                 <option th:each="t:${trainee}" th:value="${t.idMcc}" th:text="${t.nama}">1</option>
                             </select>
                         </div>
 
                         <div class="modal-footer border-top-0 d-flex justify-content-center">
                             <button type="submit" class="btn btn-success">Submit</button>
-                            <button data-dismiss="modal" class="btn btn-danger col-2">Back</button>
+                            <button data-dismiss="modal" class="btn btn-danger">Back</button>
                         </div>
                 </form>
             </div>

@@ -1,7 +1,9 @@
 <div class="sidebar-container" th:fragment="sidebar">
     <div class="sidebar" data-color="orange">
         <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text logo-normal text-center"> MCC Trainer </a>
+            <a th:href="@{/dashboard}" sec:authorize="hasRole('ADMIN')" class="simple-text logo-normal text-center"> MCC ADMIN </a>
+            <a th:href="@{/dashboard}" sec:authorize="hasRole('TRAINEE')" class="simple-text logo-normal text-center"> MCC Trainee</a>
+            <a th:href="@{/dashboard}" sec:authorize="hasRole('TRAINER')" class="simple-text logo-normal text-center"> MCC Trainer </a>
         </div>
         <div class="sidebar-wrapper" id="sidebar-wrapper">
             <ul class="nav">

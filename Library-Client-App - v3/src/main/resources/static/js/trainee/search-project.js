@@ -25,9 +25,6 @@ function getAll() {
                 data: "judul", name: "Judul", autoWidth: true
             },
             {
-                data: "batch", name: "Batch", autoWidth: true
-            },
-            {
                 data: "nama", name: "Nama Trainee", autoWidth: true
             },
             {

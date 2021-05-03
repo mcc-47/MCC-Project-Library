@@ -78,9 +78,8 @@ function create() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: (res) => {
-            createSuccessAlert();
             console.log("Success");
-            
+            errorAlert();
             
 //            $("#exampleModalLong").modal("hide");
             document.getElementById("createForm").reset();
@@ -88,9 +87,10 @@ function create() {
         },
         error: function (err) {
             console.log("gagal");
-            errorAlert();
+            
+            createSuccessAlert();
             table.ajax.reload();
-            $("#exampleModalLong").modal("hide");
+            $("#create-judul").modal("hide");
         }
     });
 }
