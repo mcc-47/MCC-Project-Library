@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>myProject - Trainee </title>
+    <div th:replace="fragments/header-link :: header-link"></div> 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"></link>
+</head>
+
+<body class="">
+    <div class="wrapper">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <div class="main-panel" id="main-panel"><!--
+            <!-- Navbar -->
+            <div th:replace="fragments/header :: header"></div>
+            <!-- End Navbar -->
+            <div class="panel-header panel-header-lg">
+                <h1 class="text-white text-center">Data Project MCC</h1>
+                <!--<h4 class="text-white text-center">MCC Project is stored here</h4>-->
+            </div>
+            <div class="content">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        Data myProject
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="myProject" class="table table-bordered table-striped table-hover-col-sm-3">
+                                <thead>
+
+                                    <tr>
+                                       <td>No</td>
+                                        <td>Judul</td>
+                                        <td>Nama Trainee</td>
+                                        <td>Nama Trainer</td>
+                                         <td>Deskripsi</td>
+                                        <td>ERD</td>
+                                        <td>UML</td>
+                                        <td>Skema</td>
+                                        <td>Link Project</td>
+                                        <td> Aksi </td>
+                                    </tr>
+                                </thead>
+
+                                
+                                <tbody>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/footer :: footer"></div>
+        </div>
+    </div>
+    <!--   Core JS Files   -->
+    <div th:replace="fragments/jsTemplate :: jsTemplate"></div>
+    <script th:src="@{/js/trainee/myProject.js}"></script>
+    <div th:replace="trainee/modal-edit-project :: modal-edit-project"></div>
+    <div th:replace="trainee/modal-edit-judul :: modal-edit-judul"></div>
+    <script src="/js/form-validation.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<div class="modal-edit-project" th:fragment="modal-edit-project">
+
+    <div class="modal fade" id="update-my-project" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Full Project</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="myProjectUpdate" class="needs-validation" novalidate>
+                        <div class="form-group">
+                            <label for="judul">Judul Project</label>
+                            <input type="text" id="judul" class="form-control" readonly="readonly"> 
+                            
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="nama">Nama Traineet</label>
+                            <input type="text" id="nama" class="form-control" readonly="readonly"> 
+                            
+                        </div>
+                        
+                         <div class="form-group">
+                            <label for="trainer">Nama Traineer</label>
+                            <input type="text" id="trainer" class="form-control" readonly="readonly"> 
+                           
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deskripsi">Deskripsi</label>
+                            <input type="text" id="deskripsi" class="form-control" placeholder="Deskripsi" readonly="readonly"> 
+                         
+                        </div>
+                        
+                         <div class="form-group">
+                            <label for="erd">ERD</label>
+                            <input type="text" id="erd" class="form-control" placeholder="ERD" required> 
+                            <div class="invalid-feedback">
+                                Please enter your erd
+                            </div>
+                        </div>
+                        
+                         <div class="form-group">
+                            <<label for="uml">UML</label>
+                            <input type="text" id="uml" class="form-control" placeholder="UML" required> 
+                            <div class="invalid-feedback">
+                                Please enter your uml.
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <<label for="skema">Skema Project</label>
+                            <input type="text" id="skema" class="form-control" placeholder="Skema Project" required> 
+                            <div class="invalid-feedback">
+                                Please enter your skema.
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <<label for="link">Link Full Project</label>
+                            <input type="text" id="link" class="form-control" placeholder="Link Full Project" required> 
+                            <div class="invalid-feedback">
+                                Please enter your link full project.
+                            </div>
+                        </div>
+                        
+                            
+                        </div>
+                        <div class="modal-footer border-top-0 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button data-dismiss="modal" class="btn btn-danger col-2">Back</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

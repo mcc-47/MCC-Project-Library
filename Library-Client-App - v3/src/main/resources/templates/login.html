@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Login Library Project</title>
+        <link rel="stylesheet" th:href="@{/css/login.css}">
+
+        <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <img class="wave" src="https://i.ibb.co/p1Jv6Hd/wave.png" />
+        <div class="container">
+            <div class="img">
+                <img src="https://i.ibb.co/Z2MjFH2/bgLogo.png" />
+            </div>
+            <div class="login-content">
+
+                <form id="loginForm" th:action="@{/login}" method="post" th:object="${auth}" class="needs-validation" novalidate>
+                    <p th:text="${param.error} ? 'Username or Password Incorrect' : ''"></p>
+                    <p th:text="${param.logout} ? 'You have been logout' : ''"></p>
+                    <img src="https://i.ibb.co/KzGFs6M/avatar.png" />
+                    <h2 class="title">Welcome</h2>
+
+                    <div class="input-div one">
+                        <div class="i">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="div">
+                            <input type="text" th:field="*{username}" placeholder="Username" class="input" required/>
+<!--                                                        <div class="invalid-feedback">
+                                                            Please enter your username.
+                                                        </div>-->
+                        </div>
+                    </div>
+
+                    <div class="input-div pass">
+                        <div class="i">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="div">
+                            <input type="password" th:field="*{password}" placeholder="Password" class="input" required/>
+<!--                                                       <div class="invalid-feedback">
+                                                            Please enter your username.
+                                                        </div>-->
+                        </div>
+                    </div>
+                    <input type="submit" class="btn" value="Login" />
+                </form>
+            </div>
+        </div>
+        <script th:src="@{/js/form-validation.js}"></script>
+        <script th:src="@{/js/login.js}"></script>
+        <script th:src="@{/js/sweet-alert.js}"></script>
+
+
+    </body>
+</html>

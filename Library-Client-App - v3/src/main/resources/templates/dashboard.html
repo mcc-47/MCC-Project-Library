@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dashboard</title>
+    <div th:replace="fragments/header-link :: header-link"></div> 
+    <!--<style rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />-->
+</head>
+
+<body class="">
+    <div class="wrapper">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <div class="main-panel" id="main-panel">
+            <!-- Navbar -->
+            <div th:replace="fragments/header :: header"></div>
+            <!-- End Navbar -->
+            <div class="panel-header panel-header-lg">
+                <h1 class="text-white text-center">Project Library Metrodata Coding Camp</h1>
+                <h4 class="text-white text-center">MCC Project is stored here</h4>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <h5 class="card-category">Global Sales</h5>
+                                <h4 class="card-title">Submit Project Title</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <div>
+                                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#create-judul"> 
+                                        <i class="fas fa-plus" aria-hidden="true"></i> Submit Judul Project
+                                    </button>
+                                    </div>
+                                    <div th:replace="trainee/modal-add-judul :: modal-add-judul"></div>
+
+                                    <!--<script th:src="@{/js/trainee/submit-judul.js}"></script>-->
+                                    <tbody>
+
+                                    </tbody>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <h5 class="card-category">2018 Sales</h5>
+                                <h4 class="card-title">Submit Final Project</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#"> 
+                                        <i class="fas fa-plus" aria-hidden="true"></i> Submit Full Project
+                                    </button>
+
+                                    <!--<script th:src="@{/js/trainee/submit-project.js}"></script>-->
+                                    
+                                    <tbody>
+
+                                    </tbody>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/footer :: footer"></div>
+        </div>
+    </div>
+    <!--   Core JS Files   -->
+    <div th:replace="fragments/jsTemplate :: jsTemplate"></div>
+    <!--<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>-->
+    <!--<script th:src="@{/js/admin/data-trainee.js}"></script>-->
+    <script src="/js/form-validation.js"></script>
+    <script src="/js/trainee/submit-judul.js"></script>
+    <script src="/js/trainee/get-project.js"></script>
+    
+    <script src="/js/alert.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+    <title>Dashboard - Admin</title>
+    <div th:replace="fragments/header-link :: header-link"></div>
+
+</head>
+
+<div class="content-container">
+    <div th:replace="fragments/header :: header"></div>
+    <body class="sb-nav-fixed">
+
+        <div id="layoutSidenav">
+            <div th:replace="fragments/sidebar :: sidebar"></div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4">Dashboard</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body">Data Trainee</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <div class="small text-white stretched-link"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-warning text-white mb-4">
+                                    <div class="card-body">Data Trainer</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <div class="small text-white stretched-link"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white mb-4">
+                                    <div class="card-body">Data Project</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <div class="small text-white stretched-link"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                </main>
+
+            </div>
+        </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>-->
