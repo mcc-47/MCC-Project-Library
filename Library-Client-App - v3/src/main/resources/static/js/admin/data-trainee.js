@@ -90,8 +90,8 @@ function update() {
         contentType: 'application/json',
         data: JSON.stringify(trainee),
         success: (res) => {
-            table.ajax.reload();
             successAlert("Trainee Updated");
+            table.ajax.reload();
             $("#update-trainee").modal("hide");
         },
         error: (err) => {

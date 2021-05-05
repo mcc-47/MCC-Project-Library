@@ -88,7 +88,7 @@ function create() {
         error: function (err) {
             console.log("gagal");
             
-            createSuccessAlert();
+            successAlert("Submit Judul Sukses");
             table.ajax.reload();
             $("#create-judul").modal("hide");
         }

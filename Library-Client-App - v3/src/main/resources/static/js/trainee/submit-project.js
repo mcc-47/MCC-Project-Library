@@ -41,8 +41,8 @@ function update() {
         contentType: 'application/json',
         data: JSON.stringify(project),
         success: (res) => {
-            table.ajax.reload();
             successAlert("Full Project Updated");
+            table.ajax.reload();
             $("#update-project").modal("hide");
         },
         error: (err) => {

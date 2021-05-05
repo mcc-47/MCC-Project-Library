@@ -122,8 +122,8 @@ function update() {
         contentType: 'application/json',
         data: JSON.stringify(project),
         success: (res) => {
-            table.ajax.reload();
             successAlert("Project Updated");
+            table.ajax.reload();
             $("#form-update").modal("hide");
         },
         error: (err) => {
@@ -139,8 +139,8 @@ function deleteById(id) {
             url: `/project/${id}`,
             type: 'DELETE',
             success: (res) => {
+                successAlert("Project deleted");
                 table.ajax.reload();
-                successAlert("Project sucess deleted");
             },
             error: (err) => {
                 errorAlert("Project failed deleted");
