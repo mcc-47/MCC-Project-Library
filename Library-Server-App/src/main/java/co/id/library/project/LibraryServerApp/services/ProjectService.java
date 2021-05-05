@@ -59,6 +59,7 @@ public class ProjectService {
         List<Project> project = projectRepository.findAll();
         List<ProjectDTO> pdds = new ArrayList<>();
         for (Project p : project) {
+            if(p.getSkema()!=null){
             List<String> nama = new ArrayList<>();
             for (Trainee t : p.getTraineeList()){
                 nama.add(t.getEmployee().getNama());
@@ -75,7 +76,7 @@ public class ProjectService {
                     p.getTraineeList().get(0).getEmployee().getIdTrainer().getNama());
             pdds.add(td);
         }
-        
+        }
         return pdds;
     }
     
@@ -83,6 +84,7 @@ public class ProjectService {
         List<Project> project = projectRepository.findAll();
         List<SearchTraineeDTO> pdds = new ArrayList<>();
         for (Project p : project) {
+            if(p.getSkema()!=null){
             List<String> nama = new ArrayList<>();
             for (Trainee t : p.getTraineeList()) {
                 nama.add(t.getEmployee().getNama());
@@ -98,6 +100,7 @@ public class ProjectService {
                     p.getLink()
             );
             pdds.add(td);
+        }
         }
 
         return pdds;

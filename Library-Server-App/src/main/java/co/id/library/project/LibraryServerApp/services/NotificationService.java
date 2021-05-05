@@ -36,7 +36,7 @@ public class NotificationService {
         helper.setTo(employee.getEmail());
         helper.setSubject("Registrasi Judul");
 //        message.setText(String.format("ID: %d, Name: %s, Province %s", employee.getEmployeeId(),employee.getEmployeeName(),province), "UTF-8", "html");
-        message.setText(String.format("Registrasi Judul Oleh Saya"), "UTF-8", "html");
+        message.setText(String.format("Registrasi Judul Oleh Trainee MCC"), "UTF-8", "html");
         
         javaMailSender.send(message);
         
@@ -52,7 +52,7 @@ public class NotificationService {
         helper.setTo(employee.getEmail());
         helper.setSubject("Update Project Akhir");
 //        message.setText(String.format("ID: %d, Name: %s, Province %s", employee.getEmployeeId(),employee.getEmployeeName(),province), "UTF-8", "html");
-        message.setText(String.format("Update project akhir Saya"), "UTF-8", "html");
+        message.setText(String.format("Update project akhir Trainee MCC"), "UTF-8", "html");
         
         javaMailSender.send(message);
         
@@ -68,7 +68,7 @@ public class NotificationService {
         helper.setTo(employee.getEmail());
         helper.setSubject("Update Judul Project Akhir");
 //        message.setText(String.format("ID: %d, Name: %s, Province %s", employee.getEmployeeId(),employee.getEmployeeName(),province), "UTF-8", "html");
-        message.setText(String.format("Update judul proyek akhir Saya"), "UTF-8", "html");
+        message.setText(String.format("Update judul proyek akhir Trainee MCC"), "UTF-8", "html");
         
         javaMailSender.send(message);
         
@@ -100,7 +100,7 @@ public class NotificationService {
         helper.setTo(employee.getEmail());
         helper.setSubject("[DITOLAK] Progres Project Akhir");
 //        message.setText(String.format("ID: %d, Name: %s, Province %s", employee.getEmployeeId(),employee.getEmployeeName(),province), "UTF-8", "html");
-        message.setText(String.format("Progres project akhir kelompokmu ditolak. Untuke detail silakan mengunjungi laman history projectmu ya. Semangat!"), "UTF-8", "html");
+        message.setText(String.format("Progres project akhir kelompokmu ditolak. Untuk detail silakan mengunjungi laman history projectmu ya. Semangat!"), "UTF-8", "html");
         
         javaMailSender.send(message);
         
