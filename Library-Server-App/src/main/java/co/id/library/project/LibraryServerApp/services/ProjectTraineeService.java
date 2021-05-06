@@ -91,9 +91,10 @@ public class ProjectTraineeService {
         }else{
             
         }
-        Integer trainer = traineeRepository.findById(projectTrainee.getIdMccSatu()).get().getEmployee().getIdTrainer().getIdMcc();
+//        Integer trainer = traineeRepository.findById(projectTrainee.getIdMccSatu()).get().getEmployee().getIdTrainer().getIdMcc();
+        Integer trainee = traineeRepository.findById(projectTrainee.getIdMccSatu()).get().getEmployee().getIdMcc();
         
-        notificationService.notifRegisJudul(trainer);
+        notificationService.notifRegisJudul(trainee);
         return "Registrasi Judul Berhasil";
     }
     

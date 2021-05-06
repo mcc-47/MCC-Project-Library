@@ -43,11 +43,16 @@ public class TraineeController {
         this.traineeService = traineeService;
     }
 
-    //GET ALL
+    //GET ALL TRAINEE
     @GetMapping("/get-all")
     public List<TraineeDTO> getTraineeDTO(Authentication auth) {
         return traineeService.getTrainee();
-
+    }
+    
+    //GET ALUMNI
+    @GetMapping("/get-alumni")
+    public List<TraineeDTO> getAlumniDTO(Authentication auth) {
+        return traineeService.getAlumni();
     }
     
     //GET BY ID

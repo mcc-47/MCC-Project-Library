@@ -155,4 +155,9 @@ public class ProjectController {
     public String createProjectTrainee(Authentication auth, @RequestBody ProjectTrainee projectTrainee) throws MessagingException {
         return projectTraineeService.registerJudul(projectTrainee);
     }
+    
+    @GetMapping("/get-project/{id}")
+    public ProjectDTO getOneProjectById(Authentication auth, @PathVariable("id") Integer id) {
+        return projectService.getProjectByIdProject(id);
+    }
 }

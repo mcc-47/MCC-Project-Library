@@ -28,12 +28,31 @@ public class TraineeService {
         this.employeeRepository = employeeRepository;
     }
 
-    //GET ALL
+    //GET ALL TRAINEE
     public List<TraineeDTO> getTrainee() {
         List<Employee> employee = employeeRepository.findAll();
         List<TraineeDTO> pdds = new ArrayList<>();
         for (Employee e : employee) {
-            if (e.getIdTrainer() != null) {
+            if (e.getIdTrainer() != null && e.getTrainee().getStatusMcc().contains("trainee")) {
+                TraineeDTO td = new TraineeDTO(
+                        e.getIdMcc(),
+                        e.getNama(),
+                        e.getEmail(),
+                        e.getJabatan(),
+                        e.getTrainee().getBatch(),
+                        e.getTrainee().getStatusMcc());
+                pdds.add(td);
+            }
+        }
+        return pdds;
+    }
+    
+    //GET ALL ALUMNI
+    public List<TraineeDTO> getAlumni() {
+        List<Employee> employee = employeeRepository.findAll();
+        List<TraineeDTO> pdds = new ArrayList<>();
+        for (Employee e : employee) {
+            if (e.getIdTrainer() != null && e.getTrainee().getStatusMcc().contains("lulus")) {
                 TraineeDTO td = new TraineeDTO(
                         e.getIdMcc(),
                         e.getNama(),

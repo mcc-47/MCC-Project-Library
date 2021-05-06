@@ -5,6 +5,7 @@
  */
 package co.id.library.project.LibraryServerApp.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Date;
@@ -47,7 +48,8 @@ public class History implements Serializable {
     private String info;
     @Basic(optional = false)
     @Column(name = "waktu")
-    @Temporal(TemporalType.TIMESTAMP)
+//    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date waktu;
     @Lob
     @Column(name = "pesan")
@@ -88,8 +90,6 @@ public class History implements Serializable {
         this.idProject = idProject;
         this.idStatus = idStatus;
     }
-    
-    
 
     public Integer getIdHistory() {
         return idHistory;
@@ -163,5 +163,5 @@ public class History implements Serializable {
     public String toString() {
         return "co.id.library.project.LibraryServerApp.entities.History[ idHistory=" + idHistory + " ]";
     }
-    
+
 }

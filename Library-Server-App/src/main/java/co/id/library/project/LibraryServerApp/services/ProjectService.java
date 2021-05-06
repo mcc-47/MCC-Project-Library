@@ -107,11 +107,12 @@ public class ProjectService {
     }
     
     public List<GetJudulDTO> getAllJudul(){
-//        Integer idProject = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
+//        Integer idProject = employeeRepository.                                                     (idMcc).get().getTrainee().getIdProject().getIdProject();
 //        Project e = projectRepository.findById(idProject).get();
         List<Project> project = projectRepository.findAll();
         List<GetJudulDTO> pdds = new ArrayList<>();
         for (Project e : project) {
+            if(e.getLink() == null) {
             List<String> nama = new ArrayList<>();
                 for (Trainee t : e.getTraineeList()){
                     nama.add(t.getEmployee().getNama());
@@ -125,6 +126,7 @@ public class ProjectService {
                             e.getDeskripsi()
                     );
             pdds.add(td);
+            }
         }
         return pdds;
     }
@@ -146,6 +148,27 @@ public class ProjectService {
                         nama,
                         e.getTraineeList().get(0).getEmployee().getIdTrainer().getNama(),
                         e.getDeskripsi()
+                );
+        return td;
+    }
+    
+    public ProjectDTO getProjectByIdProject(Integer idProject){
+        //Integer idProject = employeeRepository.findById(idMcc).get().getTrainee().getIdProject().getIdProject();
+        Project e = projectRepository.findById(idProject).get();
+        List<String> nama = new ArrayList<>();
+            for (Trainee t : e.getTraineeList()){
+                nama.add(t.getEmployee().getNama());
+            }
+        ProjectDTO td = new ProjectDTO(
+                        e.getIdProject(),
+                        e.getJudul(),
+                        e.getDeskripsi(),
+                        e.getErd(),
+                        e.getUml(),
+                        e.getSkema(),
+                        e.getLink(),
+                        nama,
+                        e.getTraineeList().get(0).getEmployee().getIdTrainer().getNama()
                 );
         return td;
     }
@@ -238,11 +261,16 @@ public class ProjectService {
         updateProject.setDeskripsi(project.getDeskripsi());
         updateProject.setCurrentStatus(new Status(1));
         
-        Integer trainer = updateProject.getTraineeList().get(0).getEmployee().getIdTrainer().getIdMcc();
-        notificationService.notifUpdateJudul(trainer);
+//        Integer trainer = updateProject.getTraineeList().get(0).getEmployee().getIdTrainer().getIdMcc();
+//        notificationService.notifUpdateJudul(trainer);
+        Integer trainee = traineeRepository.findById(updateProject.getTraineeList().get(0).getIdMcc()).get().getEmployee().getIdMcc();
+        
+        System.out.println(trainee);
+        
+        notificationService.notifUpdateJudul(trainee);
         
         historyRepository.save(new History(
-                "status_judul",
+                project.getJudul(),
                 java.util.Calendar.getInstance().getTime(),
                 new Project(id),
                 new Status(1)
@@ -260,14 +288,20 @@ public class ProjectService {
         updateProject.setLink(project.getLink());
         updateProject.setCurrentStatus(new Status(1));
         
-        Integer trainer = updateProject.getTraineeList().get(0).getEmployee().getIdTrainer().getIdMcc();
-        notificationService.notifUpdateLink(trainer);
+//        Integer trainer = updateProject.getTraineeList().get(0).getEmployee().getIdTrainer().getIdMcc();
+//        notificationService.notifUpdateLink(trainer);
+        
+        Integer trainee = traineeRepository.findById(updateProject.getTraineeList().get(0).getIdMcc()).get().getEmployee().getIdMcc();
+        
+        System.out.println(trainee);
+        
+        notificationService.notifUpdateLink(trainee);
         
         historyRepository.save(new History(
-                "status_link",
+                "Penambahan / Perubahan Link",
                 java.util.Calendar.getInstance().getTime(),
                 new Project(id),
-                new Status(1)
+                new Status(4)
         ));
         
         return projectRepository.save(updateProject);
@@ -300,25 +334,25 @@ public class ProjectService {
         //Integer id = employeeRepository.findById(validasiDTO.getIdMcc()).get().getTrainee().getIdProject().getIdProject();
         Project updateProject = projectRepository.findById(id).get();
         if(validasiDTO.isStatus() == true){
-            updateProject.setCurrentStatus(new Status(4));
+            updateProject.setCurrentStatus(new Status(3));
             for (Trainee t : updateProject.getTraineeList()){
                 Integer trainee =t.getEmployee().getIdMcc();
                 notificationService.notifValidasiDiterima(trainee);
             }
             historyRepository.save(new History(
-                "status_judul",
+                updateProject.getJudul(),
                 java.util.Calendar.getInstance().getTime(),
                 validasiDTO.getPesan(),
                 new Project(id),
                 new Status(3)
             ));
-            historyRepository.save(new History(
-                "status_project",
-                java.util.Calendar.getInstance().getTime(),
-                "mulai mengerjakan project",
-                new Project(id),
-                new Status(4)
-            ));
+//            historyRepository.save(new History(
+//                updateProject.getJudul(),
+//                java.util.Calendar.getInstance().getTime(),
+//                "mulai mengerjakan project",
+//                new Project(id),
+//                new Status(4)
+//            ));
         }
         else{
             updateProject.setCurrentStatus(new Status(2));
@@ -327,7 +361,7 @@ public class ProjectService {
                 notificationService.notifValidasiDitolak(trainee);
             }
             historyRepository.save(new History(
-                "status_judul",
+                updateProject.getJudul(),
                 java.util.Calendar.getInstance().getTime(),
                 validasiDTO.getPesan(),
                 new Project(id),
@@ -345,39 +379,32 @@ public class ProjectService {
 //        System.out.println(validasiDTO.getId());
         Project updateProject = projectRepository.findById(id).get();
         if(validasiDTO.isStatus() == true){
-            updateProject.setCurrentStatus(new Status(5));
+            updateProject.setCurrentStatus(new Status(6));
             for (Trainee t : updateProject.getTraineeList()){
                 Integer trainee =t.getEmployee().getIdMcc();
                 traineeRepository.findById(trainee).get().setStatusMcc("lulus");
                 notificationService.notifValidasiDiterima(trainee);
             }
             historyRepository.save(new History(
-                "status_link",
+                "Link",
                 java.util.Calendar.getInstance().getTime(),
                 validasiDTO.getPesan(),
                 new Project(id),
-                new Status(3)
-            ));
-            historyRepository.save(new History(
-                "status_project",
-                java.util.Calendar.getInstance().getTime(),
-                "project telah selesai dilaksanakan",
-                new Project(id),
-                new Status(5)
+                new Status(6)
             ));
         }
         else{
-            updateProject.setCurrentStatus(new Status(2));
+            updateProject.setCurrentStatus(new Status(5));
             for (Trainee t : updateProject.getTraineeList()){
                 Integer trainee =t.getEmployee().getIdMcc();
                 notificationService.notifValidasiDitolak(trainee);
             }
             historyRepository.save(new History(
-                "status_link",
+                "Link",
                 java.util.Calendar.getInstance().getTime(),
                 validasiDTO.getPesan(),
                 new Project(id),
-                new Status(2)
+                new Status(5)
             ));
         }
         
