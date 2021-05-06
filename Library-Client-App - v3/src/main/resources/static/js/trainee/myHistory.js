@@ -1,45 +1,48 @@
 let myHistory = new Object();
-let table = null;
+let dataTime = null;
 
 $(document).ready(() => {
 
-    getAll();
+    getHistoryData();
+    test();
 });
 
-function getAll() {
-    table = $('#historyTrainee').DataTable({
-        filter: true,
-        orderMulti: true,
 
-        ajax: {
-            url: "/history/myHistory",
-            datatype: "json",
-            dataSrc: ""
-        },
 
-        columns: [
-            {
-                data: "id", name: "No", autoWidth: true,
-                render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
-                }
-            },
-            {
-                data: "idProject", name: "Project", autoWidth: true
-            },
-            {
-                data: "info", name: "Info", autoWidth: true
-            },
-            {
-                data: "waktu", name: "Waktu", autoWidth: true
-            },
-            {
-                data: "pesan", name: "Pesan", autoWidth: true
-            },
-            {
-                data: "status", name: "Status", autoWidth: true
-            }
-
-        ]
+function getHistoryData() {
+    $.ajax({
+        url: `/history/myHistory/`,
+        type: 'GET',
+        success: (res) => {
+            coloringStatus(res);
+        }
     });
+}
+
+function coloringStatus(res) {
+//    console.log(res);
+    historyStatus = res;
+//    console.log(historyStatus[1].status);
+    
+    for(let i=0; i < historyStatus.length; i++) {
+        if (historyStatus[i].status === "Menunggu approval judul" || historyStatus[i].status === "Menunggu approval link project") {
+            $(".statusHistory").addClass("text-secondary");
+            console.log(historyStatus[i].status);
+
+        } else if (historyStatus[i].status === "Judul ditolak") {
+            $(".statusHistory").addClass("text-secondary").removeClass("text-danger");
+        } else if (historyStatus[i].status === "Development") {
+            $(".statusHistory").addClass("text-secondary");
+        } else if (historyStatus[i].status === "Link project ditolak") {
+            $(".statusHistory").addClass("text-secondary");
+        } else {
+            console.log(historyStatus);
+            $(".statusHistory").addClass("text-secondary");
+        }
+    }
+}
+
+function test() {
+    dataTime = $("#waktuHistory").val();
+    console.log(dataTime);
 }

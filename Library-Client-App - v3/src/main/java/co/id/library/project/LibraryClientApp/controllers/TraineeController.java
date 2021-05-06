@@ -22,18 +22,31 @@ public class TraineeController {
     @Autowired
     private TraineeService traineeService;
     
+    //============DATA GET ALL TRAINEE==================
     @GetMapping
     public String getAll(Model model) {
         model.addAttribute("trainee", traineeService.getAll());
         return "admin/data-trainee";
     }
     
-    //GET ALL
     @GetMapping("/get-all")
     public @ResponseBody List<Trainee> getAllProcess() {
-        System.out.println("cetak trainee");
         return traineeService.getAll();
     }
+    //===============================================
+    
+     //============DATA GET ALL ALUMNI==================
+    @GetMapping("/alumni")
+    public String getAlumni(Model model) {
+        model.addAttribute("alumni", traineeService.getAlumni());
+        return "admin/data-alumni";
+    }
+    
+    @GetMapping("/get-alumni")
+    public @ResponseBody List<Trainee> getAlumniProcess() {
+        return traineeService.getAlumni();
+    }
+    //===============================================
     
     //GET HISTORY PROJECT
     @GetMapping("/project-history")

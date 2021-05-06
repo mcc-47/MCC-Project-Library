@@ -10,28 +10,28 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="myProjectUpdate" class="needs-validation" novalidate>
+                    <form id="myProjectUpdate" class="needs-validation" th:each="p:${project}" novalidate>
                         <div class="form-group">
                             <label for="judul">Judul Project</label>
-                            <input type="text" id="judul" class="form-control" readonly="readonly"> 
+                            <input type="text" id="judul" class="form-control"  th:value="${p.judul}" readonly="readonly"> 
                             
                         </div>
                         
                         <div class="form-group">
                             <label for="nama">Nama Traineet</label>
-                            <input type="text" id="nama" class="form-control" readonly="readonly"> 
+                            <input type="text" id="nama" class="form-control" th:value="${p.nama}" readonly="readonly"> 
                             
                         </div>
                         
                          <div class="form-group">
                             <label for="trainer">Nama Traineer</label>
-                            <input type="text" id="trainer" class="form-control" readonly="readonly"> 
+                            <input type="text" id="trainer" class="form-control" th:value="${p.trainer}" readonly="readonly"> 
                            
                         </div>
 
                         <div class="form-group">
                             <label for="deskripsi">Deskripsi</label>
-                            <input type="text" id="deskripsi" class="form-control" placeholder="Deskripsi" readonly="readonly"> 
+                            <textarea type="text" id="deskripsi" class="form-control rounded-pill" placeholder="Deskripsi" rows="3" th:text="${p.deskripsi}" readonly="readonly"></textarea> 
                          
                         </div>
                         

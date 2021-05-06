@@ -83,7 +83,7 @@ function create() {
             
 //            $("#exampleModalLong").modal("hide");
             document.getElementById("createForm").reset();
-            window.location.href = `/dashboard`;
+            window.location.href = `/project-my-project`;
         },
         error: function (err) {
             console.log("gagal");

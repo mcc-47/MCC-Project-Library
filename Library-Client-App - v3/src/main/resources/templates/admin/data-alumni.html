@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title> Data Trainee MCC</title>
+        <title> Data Alumni MCC</title>
     <div th:replace="fragments/header-link :: header-link"></div> 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"></link>
 </head>
@@ -14,18 +14,18 @@
             <div th:replace="fragments/header :: header"></div>
             <!-- End Navbar -->
             <div class="panel-header panel-header-lg">
-                <h1 class="text-white text-center">Data Trainee MCC</h1>
+                <h1 class="text-white text-center">Data Alumni MCC</h1>
                 <!--<h4 class="text-white text-center">MCC Project is stored here</h4>-->
             </div>
             <div class="content">
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table mr-1"></i>
-                        Data Trainee MCC
+                        Data Alumni MCC
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="traineeTable" class="table table-bordered table-striped table-hover-col-sm-3">
+                            <table id="alumniTable" class="table table-bordered table-striped table-hover-col-sm-3">
                                 <thead>
 
                                     <tr>
@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+     Modal 
     <div class="modal fade" id="update-trainee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -129,71 +129,7 @@
     <!--   Core JS Files   -->
     <div th:replace="fragments/jsTemplate :: jsTemplate"></div>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <script th:src="@{/js/admin/data-trainee.js}"></script>
+    <script th:src="@{/js/admin/data-alumni.js}"></script>
     <script src="/js/form-validation.js"></script>
 </body>
 </html>
-
-<!--<!DOCTYPE html>
-
-<html>
-    <head>
-        <title>Data Trainee</title>
-    <div th:replace="fragments/header-link :: header-link"></div>     
-</head>
-
-<body class="sb-nav-fixed">
-    <div th:replace="fragments/header :: header"></div>
-    <div id="layoutSidenav">
-        <div th:replace="fragments/sidebar :: sidebar"></div>
-        <div id="layoutSidenav_content">
-            <div class="p-5">
-
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-table mr-1"></i>
-                        Data Trainee
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="traineeTable" class="table table-bordered table-striped table-hover-col-sm-3">
-                                <thead>
-
-                                    <tr>
-                                        <td>No</td>
-                                        <td>Nama Trainee</td>
-                                        <td>Batch</td>
-                                        <td>Email</td>
-                                        <td>Jabatan</td>
-                                        <td>Status</td>
-                                        <td>Action</td>
-                                    </tr>
-                                </thead>
-
-                                <script th:src="@{/js/admin/data-trainee.js}"></script>
-                                <tbody>
-
-                                </tbody>
-
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div th:replace="fragments/footer :: footer"></div>                  
-    <script>
-        $(document).ready(function () {
-            var table = $('#traineeTable').DataTable();
-        });
-    </script>
-
-    <div th:replace="fragments/dataTable :: dataTable"></div> 
-    <div th:replace="admin/modal-edit-trainee :: modal-edit-trainee"></div>
-    <script th:src="@{/js/form-validation.js}"></script>
-
-
-</body>
-</html>-->

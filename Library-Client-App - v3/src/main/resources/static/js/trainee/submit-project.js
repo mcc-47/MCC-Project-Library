@@ -33,6 +33,8 @@ function update() {
         skema: $("#skema").val(),
         link: $("#link").val()
     };
+    
+    console.log(project)
 
     let id = $("#idProject").val();
     $.ajax({
@@ -44,8 +46,10 @@ function update() {
             successAlert("Full Project Updated");
             table.ajax.reload();
             $("#update-project").modal("hide");
+            window.location.href = "/project/my-project";
         },
         error: (err) => {
+            console.log("Project gagal di update libnkanyasa")
             errorAlert("Full Project failed updated");
         }
     });

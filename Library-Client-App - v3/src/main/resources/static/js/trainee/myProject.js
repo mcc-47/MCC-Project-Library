@@ -3,9 +3,12 @@ let table = null;
 let projectData = new Object();
 let projectDataJudul = new Object();
 let idJudul = "";
+let historyStatus = null;
+let link = null;
 
 $(document).ready(() => {
     getAll();
+    getHistoryData();
     console.log(getAll);
     
     $("#myProjectUpdate").submit((e) => {
@@ -110,11 +113,26 @@ function getAll() {
     });
 }
 
-function getById(id) {
-    this.idProject = id;
-    console.log(id);
+function getByIdForUpdateJudul() {
+    this.idProject = $("#btn-submitJudul").val();
+    console.log(idProject);
     $.ajax({
-        url: `/project/${id}`,
+        url: `/project/${idProject}`,
+        type: 'GET',
+        success: (res) => {
+            console.log(res);
+            projectData = res;
+            setForm(res);
+            
+        }
+    });
+}
+
+function getByIdForSubmitLink() {
+    this.idProject = $("#btn-submitProject").val();
+    console.log(idProject);
+    $.ajax({
+        url: `/project/${idProject}`,
         type: 'GET',
         success: (res) => {
             console.log(res);
@@ -122,6 +140,11 @@ function getById(id) {
             setForm(res);
         }
     });
+}
+
+function getByIdForUpdateJudul2() {
+    this.idProject = $("#btn-submitJudul2").val();
+    console.log(idProject);
 }
 
 function update() {
@@ -146,6 +169,7 @@ function update() {
              console.log(project);
             console.log(res);
             $("#update-my-project").modal("hide");
+            window.location.href =  "/history/my-history";
         },
         error: (err) => {
             errorAlert("Project failed updated");
@@ -186,10 +210,10 @@ function updateJudul() {
         deskripsi: $("#deskripsi1").val(),
         idProject: idJudul
     };
-    console.log(idJudul);
+    console.log(projectData.idProject);
    
     $.ajax({
-        url: `/project/update-judul/${idJudul}`,
+        url: `/project/update-judul/${projectData.idProject}`,
         type: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify(project),
@@ -197,6 +221,7 @@ function updateJudul() {
              console.log(project);
             console.log(res);
             $("#update-judul-project").modal("hide");
+            window.location.href =  "/history/my-history";
         },
         error: (err) => {
             errorAlert("Project failed updated");
@@ -210,4 +235,52 @@ function setFormJudul(lala) {
     $("#trainer1").val(lala.trainer);
      $("#judul1").val(lala.judul);
     $("#deskripsi1").val(lala.deskripsi);
+}
+
+function gotoHistory() {
+    window.location.href= "/history/my-history";
+}
+
+function getHistoryData() {
+    $.ajax({
+        url: `/history/myHistory/`,
+        type: 'GET',
+        success: (res) => {
+            hideElement(res);
+        }
+    });
+}
+
+function hideElement(res) {
+    console.log(res);
+    
+    
+    historyStatus = res.splice(res.length - 1);
+    console.log(historyStatus[0].status);
+    
+    
+    
+//    if(historyStatus[0].status === "Menunggu approval judul" || historyStatus[0].status === "Menunggu approval link project") {
+//        $("#btn-submitProject").remove();
+//        $("#btn-submitJudul").remove();
+//        
+//    } else if(historyStatus[0].status === "Judul ditolak") {
+//        $("#btn-submitProject").remove();
+//    }  else if(historyStatus[0].status === "Development") {
+//        $("#btn-submitJudul").remove();
+//    } else if (historyStatus[0].status === "Link project ditolak") {
+//        $("#btn-submitJudul").remove();
+//    } else {
+//        $("#btn-submitProject").remove();
+//        $("#btn-submitJudul").remove();
+//    }
+    
+//    historyStatus = getHistoryData
+    
+}
+
+function hehey() {
+    this.link = $("#githubLink").val();
+    console.log(link);
+    console.log("sadad");
 }

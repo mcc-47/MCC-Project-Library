@@ -10,18 +10,18 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="myProjectJudul" class="needs-validation" novalidate>
+                    <form id="myProjectJudul" class="needs-validation" th:each="p:${project}" novalidate>
 
 
                         <div class="form-group">
                             <label for="nama">Nama Trainee</label>
-                            <input type="text" id="nama1" class="form-control" readonly="readonly"> 
+                            <input type="text" id="nama1" class="form-control" th:value="${p.nama}" readonly="readonly"> 
 
                         </div>
 
                         <div class="form-group">
                             <label for="trainer">Nama Traineer</label>
-                            <input type="text" id="trainer1" class="form-control" readonly="readonly"> 
+                            <input type="text" id="trainer1" class="form-control" th:value="${p.trainer}" readonly="readonly"> 
 
                         </div>
 
@@ -35,7 +35,7 @@
 
                         <div class="form-group">
                             <label for="deskripsi">Deskripsi</label>
-                            <input type="text" id="deskripsi1" class="form-control" placeholder="Deskripsi" required> 
+                            <textarea type="text" id="deskripsi1" class="form-control rounded-pill" placeholder="Deskripsi" rows="3" required></textarea> 
                             <div class="invalid-feedback">
                                 Please enter your description.
                             </div>

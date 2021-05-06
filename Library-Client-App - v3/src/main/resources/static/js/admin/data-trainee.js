@@ -7,7 +7,6 @@ $(document).ready(() => {
         e.preventDefault();
         formValidation(update);
     });
-
 });
 function getAll() {
     table = $('#traineeTable').DataTable({
@@ -39,26 +38,10 @@ function getAll() {
             },
             {
                 data: "status", name: "Btatus", autoWidth: true
-            },
-            {
-                render: (data, type, row, meta) => {
-                    return `
-                        <button 
-                            class='btn btn-sm btn-primary'
-                            data-toggle="modal" 
-                            data-target="#update-trainee"
-                            onclick="getById('${row.idMcc}')">
-                            
-                            <i class='fas fa-sm fa-pencil-alt'></i> 
-                        </button>
-                        <button class='btn btn-sm btn-danger' onclick="deleteById('${row.idMcc}')">
-                            <i class='fas fa-sm fa-trash'></i> 
-                        </button>
-                    
-                    `;
-                }
             }
-        ]
+        ],
+        success: (res) => {
+        }
     });
 }
 

@@ -1,4 +1,59 @@
+
 <!DOCTYPE html>
+<html lang="en">
+    <head>
+    <div th:replace="fragments/header-link :: header-link"></div> 
+    <link rel="stylesheet" href="/css/trainee/trainee-project-history.css"></link>
+</head>
+
+<body class="">
+    <div class="wrapper">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <div class="main-panel" id="main-panel">
+            
+            <div th:replace="fragments/header :: header"></div>
+            
+            <div class="panel-header panel-header-lg">
+                <h1 class="text-white text-center">Project Library Metrodata Coding Camp</h1>
+                <h4 class="text-white text-center">MCC Project is stored here</h4>
+            </div>
+            <div class="content">
+                <div class="card mb-4">
+                    <h4 class="pl-4 pt-0 m-3">Project History</h4>
+                    <hr class="p-0 m-0"></hr>
+                    <div class="p-4">
+                        <ul class="timeline">
+                            <li th:each="h:${history}" >
+                                <a href="" th:text="${h.info}" class="font-weight-bold"></a>
+                                <a href="#" id="waktuHistory" class="float-right" th:text="${h.waktu}"></a>
+                                <p class="mt-2">Pesan : <span th:text="${h.pesan}"></span></p>
+                                <h6 th:class="statusHistory" th:text="${h.status}" ></h6>
+                                <hr>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/footer :: footer"></div>
+        </div>
+    </div> 
+    <div th:replace="fragments/jsTemplate :: jsTemplate"></div>
+    <script src="/js/trainee/myHistory.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript">
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
 <html lang="en">
     <head>
         <title>History - Trainee </title>
@@ -9,52 +64,51 @@
 <body class="">
     <div class="wrapper">
         <div th:replace="fragments/sidebar :: sidebar"></div>
-        <div class="main-panel" id="main-panel"><!--
-            <!-- Navbar -->
-            <div th:replace="fragments/header :: header"></div>
-            <!-- End Navbar -->
-            <div class="panel-header panel-header-lg">
-                <h1 class="text-white text-center">My History</h1>
-                <!--<h4 class="text-white text-center">MCC Project is stored here</h4>-->
+        <div class="main-panel" id="main-panel">
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="panel-header panel-header-lg">
+    <h1 class="text-white text-center">My History</h1>
+    <h4 class="text-white text-center">MCC Project is stored here</h4>
+</div>
+<div class="content">
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+            Data myHistory
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="historyTrainee" class="table table-bordered table-striped table-hover-col-sm-3">
+                    <thead>
+
+                        <tr>
+                            <td>No</td>
+                            <td>Project</td>
+                            <td>Info</td>
+                            <td>Waktu</td>
+                            <td>Pesan</td>
+                            <td>Status</td>
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+
+                    </tbody>
+
+                </table>
             </div>
-            <div class="content">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-table mr-1"></i>
-                        Data myHistory
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="historyTrainee" class="table table-bordered table-striped table-hover-col-sm-3">
-                                <thead>
-
-                                    <tr>
-                                        <td>No</td>
-                                        <td>Project</td>
-                                        <td>Info</td>
-                                        <td>Waktu</td>
-                                        <td>Pesan</td>
-                                        <td>Status</td>
-
-                                    </tr>
-                                </thead>
-
-
-                                <tbody>
-
-                                </tbody>
-
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div th:replace="fragments/footer :: footer"></div>
         </div>
     </div>
-    <!--   Core JS Files   -->
-    <div th:replace="fragments/jsTemplate :: jsTemplate"></div>
-    <script th:src="@{/js/trainee/myHistory.js}"></script>
-    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</div>
+</div>
+Core JS Files   
+<div th:replace="fragments/jsTemplate :: jsTemplate"></div>
+<script th:src="@{/js/trainee/myHistory.js}"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 </body>
-</html>
+</html>-->

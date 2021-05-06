@@ -6,6 +6,7 @@ import co.id.library.project.LibraryClientApp.models.SearchProject;
 import co.id.library.project.LibraryClientApp.models.SubmitProject;
 import co.id.library.project.LibraryClientApp.models.TitleTrainer;
 import co.id.library.project.LibraryClientApp.models.Validasi;
+import co.id.library.project.LibraryClientApp.services.HistoryService;
 import co.id.library.project.LibraryClientApp.services.ProjectService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class ProjectController {
 
     @Autowired
     ProjectService projectService;
+    
+    @Autowired
+    HistoryService historyService;
 
     //mapping untuk data project
     @GetMapping
@@ -74,6 +78,13 @@ public class ProjectController {
     //-------------------------------------------------------
     
     //===============mapping untuk full project submission (trainer)==============
+     @GetMapping("/get-project/{id}")
+    public @ResponseBody
+    Project getProjectByIdProject(@PathVariable("id") Integer id) {
+        System.out.println(id);
+        return projectService.getProjectByIdProject(id);
+    }
+    
     @GetMapping("/project-submission")
     public String getProjectSubmission(Model model) {
         model.addAttribute("project", projectService.getAll());
@@ -155,7 +166,8 @@ public class ProjectController {
     
     @GetMapping("/my-project")
     public String getMyProject(Model model) {
-        //model.addAttribute("project", projectService.getProjectTrainee());
+        model.addAttribute("project", projectService.getProjectTrainee());
+        model.addAttribute("history", historyService.getHistoryByIdMcc());
         return "trainee/myProject";
     }
     //=====================================

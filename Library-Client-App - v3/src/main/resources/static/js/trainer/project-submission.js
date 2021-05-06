@@ -1,15 +1,16 @@
 let title = new Object();
 let table = null;
 let validasi = new Object();
-let projectData = new Object() ;
+let projectData = new Object();
 
 $(document).ready(() => {
     getAll();
-    
-    $("#detailTitle").submit((e) => {
+
+    $("#detailProject").submit((e) => {
         e.preventDefault();
         validationForm(create);
     });
+
 
 });
 
@@ -32,33 +33,7 @@ function getAll() {
             {
                 data: "judul", name: "Judul Project", autoWidth: true
             },
-            {
-                data: "deskripsi", name: "Deskripsi", autoWidth: true
-            },
-            {
-                data: "erd", name: "ERD", autoWidth: true,
-                fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-                    if (oData.link) {
-                        $(nTd).html("<a target='_blank' href=' " + oData.link + "'>" + "click here" + "</a>");
-                    }
-                }
-            },
-             {
-                data: "uml", name: "UML", autoWidth: true,
-                fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-                    if (oData.link) {
-                        $(nTd).html("<a target='_blank' href=' " + oData.link + "'>" + "click here" + "</a>");
-                    }
-                }
-            },
-             {
-                data: "skema", name: "Skema", autoWidth: true,
-                fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-                    if (oData.link) {
-                        $(nTd).html("<a target='_blank' href=' " + oData.link + "'>" + "click here" + "</a>");
-                    }
-                }
-            },
+
             {
                 data: "link", name: "Link Project", autoWidth: true,
                 fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
@@ -67,12 +42,10 @@ function getAll() {
                     }
                 }
             },
-             {
+            {
                 data: "trainer", name: "Nama Trainer", autoWidth: true
             },
-            {
-                data: "nama", name: "Nama Trainee", autoWidth: true
-            },
+
             {
                 render: (data, type, row, meta) => {
                     return `
@@ -81,9 +54,9 @@ function getAll() {
                             data-toggle="modal" 
                             data-target="#full-project"
                             onclick="getById('${row.idProject}')">
-                            <i class="fas fa-clipboard-check"></i> Approval
+                            <i class="fas fa-clipboard-check"></i> Detail
                         </button>
-                    
+                     
                     `;
                 }
             }
@@ -93,12 +66,14 @@ function getAll() {
 
 function getById(id) {
     this.idProject = id;
+    console.log(id);
     $.ajax({
-        url: `/project/${id}`,
+        url: `/project/get-project/${id}`,
         type: 'GET',
         success: (res) => {
             console.log(res);
             projectData = res;
+            setFormProject(res);
         }
     });
 }
@@ -109,7 +84,7 @@ function create() {
         pesan: $("#pesan").val()
     };
     console.log(validasi);
-     console.log(projectData.idProject);
+    console.log(projectData.idProject);
 
     $.ajax({
         url: `/project/validasi-link/${projectData.idProject}`,
@@ -119,13 +94,25 @@ function create() {
         success: (res) => {
             table.ajax.reload();
             successAlert("Project Created");
-            $("#pesan-project").modal("hide");
+            $("#full-project").modal("hide");
         },
         error: (err) => {
             errorAlert("Project failed created");
         }
     });
 }
+
+function setFormProject(data) {
+    console.log(data);
+    $("#nama_trainee").val(data.nama);
+    $("#judul_trainee").val(data.judul);
+    $("#deskripsi_trainee").val(data.deskripsi);
+    $("#erd_trainee").val(data.erd);
+    $("#uml_trainee").val(data.uml);
+    $("#skema_trainee").val(data.skema);
+    $("#link_trainee").val(data.link);
+}
+
 
 function rejectTitle() {
     validasi = {
@@ -142,11 +129,10 @@ function rejectTitle() {
         success: (res) => {
             table.ajax.reload();
             successAlert("Project Created");
-            $("#pesan-project").modal("hide");
+            $("#full-project").modal("hide");
         },
         error: (err) => {
             errorAlert("Project failed created");
         }
     });
 }
-

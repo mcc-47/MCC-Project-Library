@@ -21,10 +21,20 @@ public class TraineeService {
     @Value("${api.url}/trainee")
     private String url;
     
-    //READ
+    //GET ALL TRAINEE
     public List<Trainee> getAll() {
         ResponseEntity<List<Trainee>> response = restTemplate
                 .exchange(url + "/get-all", HttpMethod.GET,
+                        new HttpEntity(RequestFormat.createHeaders()),
+                        new ParameterizedTypeReference<List<Trainee>>() {
+                });
+        return response.getBody();
+    }
+    
+    //GET ALL ALUMNI
+    public List<Trainee> getAlumni() {
+        ResponseEntity<List<Trainee>> response = restTemplate
+                .exchange(url + "/get-alumni", HttpMethod.GET,
                         new HttpEntity(RequestFormat.createHeaders()),
                         new ParameterizedTypeReference<List<Trainee>>() {
                 });

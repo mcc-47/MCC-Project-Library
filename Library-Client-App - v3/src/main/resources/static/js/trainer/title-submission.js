@@ -28,22 +28,15 @@ function getAll() {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }
             },
+             {
+                data: "batch", name: "Batch", autoWidth: true
+            },
             {
                 data: "judul", name: "Judul Project", autoWidth: true
             },
             {
-                data: "deskripsi", name: "Deskripsi", autoWidth: true
-            },
-            {
-              data: "nama", name: "Trainee", autoWidth: true  
-            },
-            {
-              data: "batch", name: "Batch", autoWidth: true  
-            },
-            {
                 data: "trainer", name: "Trainer", autoWidth: true
             },
-           
 
             {
                 render: (data, type, row, meta) => {
@@ -54,7 +47,7 @@ function getAll() {
                             data-target="#pesan-project"
                             onclick="getById('${row.idProject}')">
                             
-                            <i class="fas fa-clipboard-check"></i>Approval
+                            <i class="fas fa-clipboard-check"></i> Detail
                         </button>
                     `;
                 }
@@ -73,6 +66,7 @@ function getById(id) {
         success: (res) => {
             console.log(res);
             projectData = res;
+             setForm(res);
         }
     });
 }
@@ -101,6 +95,12 @@ function create() {
     });
 }
 
+function setForm(data) {
+    $("#nama-trainee").val(data.nama);
+    $("#judul-trainee").val(data.judul);
+    $("#deskripsi-trainee").val(data.deskripsi);
+}
+
 function rejectTitle() {
     validasi = {
         status: $("#statusRejected").val(),
@@ -123,4 +123,3 @@ function rejectTitle() {
         }
     });
 }
-

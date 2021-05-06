@@ -18,25 +18,92 @@
                 <h4 class="text-white text-center">MCC Project is stored here</h4>
             </div>
             <div class="content">
+                <div class="row" sec:authorize="hasRole('ADMIN')">
+                    <div class="col-lg-3">
+                        <div class="card" style="border: 2px solid #0275d8">
+                            <div class="card-header">
+                                <h4 class="card-title">Data Trainee</h4>
+                            </div>
+                            <div style='font-size: 72px; position: absolute; top:-5%; right: 3%; opacity: 0.6'>
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <a th:href='@{/trainee}'>See Details  <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card " style="border: 2px solid #5cb85c">
+                            <div class="card-header">
+                                <h4 class="card-title">Data Alumni</h4>
+                            </div>
+                            <div style='font-size: 72px; position: absolute; top:-5%; right: 3%; opacity: 0.6'>
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <a th:href='@{/alumni}'>See Details  <i class="fas fa-chevron-right"></i></a>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card " style="border: 2px solid #5bc0de">
+                            <div class="card-header">
+                                <h4 class="card-title">Data Trainer</h4>
+                            </div>
+                            <div style='font-size: 72px; position: absolute; top:-5%; right: 3%; opacity: 0.6'>
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <a th:href='@{/trainer}'>See Details  <i class="fas fa-chevron-right"></i></a>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card " style="border: 2px solid #d9534f">
+                            <div class="card-header">
+                                <h4 class="card-title">Data Project</h4>
+                            </div>
+                            <div style='font-size: 72px; position: absolute; top:-5%; right: 3%; opacity: 0.6'>
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <a th:href='@{/project}'>See Details  <i class="fas fa-chevron-right"></i></a>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
-                    <div class="col-lg-6 offset-3" sec:authorize="hasRole('TRAINEE')">
+                    <div class="col-lg-6 offset-3" sec:authorize="hasRole('TRAINEE')" id="submitProject">
                         <div class="card card-chart">
                             <div class="card-header text-center">
                                 <h4 class="card-title">Submit Project Title</h4>
                             </div>
+                            <div style='font-size: 72px; position: absolute; top:-5%; right: 3%; opacity: 0.6'>
+                                <i class="fas fa-users"></i>
+                            </div>
                             <div class="card-body">
                                 <div class="chart-area">
                                     <div class="text-center">
-                                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#create-judul"> 
-                                        <i class="fas fa-plus" aria-hidden="true"></i> Submit Judul Project
-                                    </button>
+                                        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#create-judul"> 
+                                            <i class="fas fa-plus" aria-hidden="true"></i> Submit Judul Project
+                                        </button>
                                     </div>
                                     <div th:replace="trainee/modal-add-judul :: modal-add-judul"></div>
-
-                                    <!--<script th:src="@{/js/trainee/submit-judul.js}"></script>-->
-                                    <tbody>
-
-                                    </tbody>
 
                                 </div>
                             </div>
@@ -45,8 +112,8 @@
                     </div>
                 </div>
             </div>
-            <div th:replace="fragments/footer :: footer"></div>
         </div>
+        <div th:replace="fragments/footer :: footer"></div>
     </div>
     <!--   Core JS Files   -->
     <div th:replace="fragments/jsTemplate :: jsTemplate"></div>
@@ -55,13 +122,19 @@
     <script src="/js/form-validation.js"></script>
     <script src="/js/trainee/submit-judul.js"></script>
     <script src="/js/trainee/get-project.js"></script>
-    
+    <script src="/js/dashboard.js"></script>
+
     <script src="/js/alert.js"></script>
     <script>
         $(document).ready(function () {
             $('.js-example-basic-multiple').select2();
         });
     </script>
+    <!--GET DATA-->
+    <script th:src="@{/js/admin/data-trainee.js}"></script>
+    <script th:src="@{/js/admin/data-alumni.js}"></script>
+    <script th:src="@{/js/admin/data-project.js}"></script>
+    <script th:src="@{/js/admin/data-trainer.js}"></script>
 </body>
 </html>
 

@@ -44,7 +44,7 @@ public class HistoryController {
     
     @GetMapping("/my-history")
     public String getMyHistory(Model model) {
-        //model.addAttribute("project", projectService.getProjectTrainee());
+        model.addAttribute("history", historyService.getHistoryByIdMcc());
         System.out.println("apaan kek");
         return "trainee/myHistory";
     }

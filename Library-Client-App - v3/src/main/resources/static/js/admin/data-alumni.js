@@ -1,21 +1,20 @@
-let trainer = new Object();
+let alumni = new Object();
 let table = null;
 
 $(document).ready(() => {
     getAll();
-    $("#trainerUpdate").submit((e) => {
+    $("#traineeUpdate").submit((e) => {
         e.preventDefault();
         formValidation(update);
     });
+
 });
-
-
 function getAll() {
-    table = $('#trainerTable').DataTable({
+    table = $('#alumniTable').DataTable({
         filter: true,
         orderMulti: true,
         ajax: {
-            url: "/trainer/get-all",
+            url: "/alumni/get-alumni",
             datatype: "json",
             dataSrc: ""
         },
@@ -27,13 +26,19 @@ function getAll() {
                 }
             },
             {
-                data: "nama", name: "Nama Trainer", autoWidth: true
+                data: "nama", name: "Nama Trainee", autoWidth: true
+            },
+            {
+                data: "batch", name: "Batch", autoWidth: true
             },
             {
                 data: "email", name: "Email", autoWidth: true
             },
             {
-                data: "namaKelas", name: "Keahlian", autoWidth: true
+                data: "jabatan", name: "Jabatan", autoWidth: true
+            },
+            {
+                data: "status", name: "Btatus", autoWidth: true
             }
         ]
     });
@@ -42,7 +47,7 @@ function getAll() {
 function getById(id) {
     this.idMcc = id;
     $.ajax({
-        url: `/trainer/${id}`,
+        url: `/trainee/${id}`,
         type: 'GET',
         success: (res) => {
             setForm(res);
@@ -51,41 +56,42 @@ function getById(id) {
 }
 
 function update() {
-    trainer = {
+    trainee = {
         idMcc: $("#idMcc").val(),
         nama: $("#nama").val(),
+        batch: $("#batch").val(),
         email: $("#email").val(),
-        namaKelas: $("#namaKelas").val()
+        jabatan: $("#jabatan").val(),
+        status: $("#status").val()
+
     };
     let id = $("#idMcc").val();
     $.ajax({
-        url: `/trainer/${id}`,
+        url: `/trainee/${id}`,
         type: 'PUT',
         contentType: 'application/json',
-        data: JSON.stringify(trainer),
+        data: JSON.stringify(trainee),
         success: (res) => {
+            successAlert("Trainee Updated");
             table.ajax.reload();
-            successAlert("Trainer Updated");
-            $("#update-trainer").modal("hide");
+            $("#update-trainee").modal("hide");
         },
         error: (err) => {
-            errorAlert("Trainer failed updated");
+            errorAlert("Trainee failed updated");
         }
     });
 }
 
 function deleteById(id) {
-
-    questionAlert("Are you sure?", "Do you want to delete this data?", function () {
+    questionAlert("Are you sure?", "Do you want to delete this data?", () => {
         $.ajax({
-            url: `/trainer/${id}`,
+            url: `/trainee/${id}`,
             type: 'DELETE',
             success: (res) => {
-                table.ajax.reload();
-                successAlert("Trainer sucess deleted");
+                successAlert("Trainee success deleted");
             },
             error: (err) => {
-                errorAlert("Trainer failed deleted");
+                errorAlert("Trainee failed deleted");
             }
         });
     });
@@ -94,8 +100,8 @@ function deleteById(id) {
 function setForm(data) {
     $("#idMcc").val(data.idMcc);
     $("#nama").val(data.nama);
+    $("#batch").val(data.batch);
     $("#email").val(data.email);
-    $("#namaKelas").val(data.namaKelas);
+    $("#jabatan").val(data.jabatan);
+    $("#status").val(data.status);
 }
-
-    

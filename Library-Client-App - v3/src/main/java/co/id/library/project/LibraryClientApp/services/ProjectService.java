@@ -84,6 +84,15 @@ public class ProjectService {
         System.out.println("cetak id myProject");
         return restTemplate.getForEntity(url + "/" + id, Project.class).getBody();
     }
+    
+    //GET BY ID
+    public Project getProjectByIdProject(Integer id) {
+        System.out.println("cetak id myProject full submission");
+        System.out.println(id);
+        Project res = restTemplate.getForEntity(url + "/get-project/" + id, Project.class).getBody();
+        System.out.println(res);
+        return res;
+    }
 
     //CREATE project 
     public String create(Project project) {
