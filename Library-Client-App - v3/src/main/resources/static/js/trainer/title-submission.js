@@ -87,10 +87,10 @@ function create() {
         success: (res) => {
             $("#pesan-project").modal("hide");
             table.ajax.reload();
-            successAlert("Project Created");
+            successAlert("Title Validated");
         },
         error: (err) => {
-            errorAlert("Project failed created");
+            errorAlert("Title Failed to Validate");
         }
     });
 }
@@ -115,11 +115,11 @@ function rejectTitle() {
         data: JSON.stringify(validasi),
         success: (res) => {
             table.ajax.reload();
-            successAlert("Project Created");
+            successAlert("Title Rejected");
             $("#pesan-project").modal("hide");
         },
         error: (err) => {
-            errorAlert("Project failed created");
+            errorAlert("Title Failed to Reject");
         }
     });
 }

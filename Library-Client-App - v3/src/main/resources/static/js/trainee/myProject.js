@@ -260,27 +260,22 @@ function hideElement(res) {
     
     
     
-//    if(historyStatus[0].status === "Menunggu approval judul" || historyStatus[0].status === "Menunggu approval link project") {
-//        $("#btn-submitProject").remove();
-//        $("#btn-submitJudul").remove();
-//        
-//    } else if(historyStatus[0].status === "Judul ditolak") {
-//        $("#btn-submitProject").remove();
-//    }  else if(historyStatus[0].status === "Development") {
-//        $("#btn-submitJudul").remove();
-//    } else if (historyStatus[0].status === "Link project ditolak") {
-//        $("#btn-submitJudul").remove();
-//    } else {
-//        $("#btn-submitProject").remove();
-//        $("#btn-submitJudul").remove();
-//    }
+    if(historyStatus[0].status === "Menunggu approval judul" || historyStatus[0].status === "Menunggu approval link project") {
+        $("#btn-submitProject").remove();
+        $("#btn-submitJudul").remove();
+        
+    } else if(historyStatus[0].status === "Judul ditolak") {
+        $("#btn-submitProject").remove();
+    }  else if(historyStatus[0].status === "Development") {
+        $("#btn-submitJudul").remove();
+    } else if (historyStatus[0].status === "Link project ditolak") {
+        $("#btn-submitJudul").remove();
+    } else {
+        $("#btn-submitProject").remove();
+        $("#btn-submitJudul").remove();
+    }
     
 //    historyStatus = getHistoryData
     
 }
 
-function hehey() {
-    this.link = $("#githubLink").val();
-    console.log(link);
-    console.log("sadad");
-}

@@ -27,3 +27,4 @@ function hideCard() {
 //        $("#submitProject").hide();
 //    }
 }
+

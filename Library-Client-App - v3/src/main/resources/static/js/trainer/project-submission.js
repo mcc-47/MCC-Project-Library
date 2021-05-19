@@ -93,11 +93,11 @@ function create() {
         data: JSON.stringify(validasi),
         success: (res) => {
             table.ajax.reload();
-            successAlert("Project Created");
+            successAlert("Full Project Validated");
             $("#full-project").modal("hide");
         },
         error: (err) => {
-            errorAlert("Project failed created");
+            errorAlert("Project failed validate");
         }
     });
 }
@@ -128,11 +128,11 @@ function rejectTitle() {
         data: JSON.stringify(validasi),
         success: (res) => {
             table.ajax.reload();
-            successAlert("Project Created");
+            successAlert("Full Project Rejected");
             $("#full-project").modal("hide");
         },
         error: (err) => {
-            errorAlert("Project failed created");
+            errorAlert("Project failed to Reject");
         }
     });
 }

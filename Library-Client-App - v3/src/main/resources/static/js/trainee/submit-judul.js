@@ -79,18 +79,17 @@ function create() {
         dataType: "json",
         success: (res) => {
             console.log("Success");
-            errorAlert();
             
-//            $("#exampleModalLong").modal("hide");
+            $("#create-judul").modal("hide");
             document.getElementById("createForm").reset();
-            window.location.href = `/project-my-project`;
+            window.location.href = `/history/my-history`;
         },
         error: function (err) {
             console.log("gagal");
             
             successAlert("Submit Judul Sukses");
-            table.ajax.reload();
             $("#create-judul").modal("hide");
+            window.location.href = `/history/my-history`;
         }
     });
 }
