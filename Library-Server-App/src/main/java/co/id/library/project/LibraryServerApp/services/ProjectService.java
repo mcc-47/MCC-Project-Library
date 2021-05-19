@@ -60,6 +60,7 @@ public class ProjectService {
         List<ProjectDTO> pdds = new ArrayList<>();
         for (Project p : project) {
             if(p.getSkema()!=null){
+                if(p.getCurrentStatus().getIdStatus() != 6) {
             List<String> nama = new ArrayList<>();
             for (Trainee t : p.getTraineeList()){
                 nama.add(t.getEmployee().getNama());
@@ -75,6 +76,8 @@ public class ProjectService {
                     nama,
                     p.getTraineeList().get(0).getEmployee().getIdTrainer().getNama());
             pdds.add(td);
+                    
+                }
         }
         }
         return pdds;
