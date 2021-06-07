@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> List Judul Project </title>
+    <div th:replace="fragments/header-link :: header-link"></div> 
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"></link>
+</head>
+
+<body class="">
+    <div class="wrapper">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <div class="main-panel" id="main-panel">
+            <!-- Navbar -->
+            <div th:replace="fragments/header :: header"></div>
+            <!-- End Navbar -->
+            <div class="panel-header panel-header-lg">
+                <h1 class="text-white text-center">List Judul Project MCC</h1>
+                <!--<h4 class="text-white text-center">MCC Project is stored here</h4>-->
+            </div>
+            <div class="content">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        List Judul Project MCC
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="titleSubmission" class="table table-bordered table-striped table-hover-col-sm-3">
+                                <thead>
+
+                                    <tr>
+                                       <td>No</td>
+                                        <td>Batch</td>
+                                        <td>Judul</td>
+                                        <td>Trainer</td>
+                                        <td>Aksi</td>
+                                    </tr>
+                                </thead>
+
+                                
+
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div th:replace="fragments/footer :: footer"></div>
+        </div>
+    </div>
+    <!--   Core JS Files   -->
+    <div th:replace="fragments/jsTemplate :: jsTemplate"></div>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script> 
+    <script th:src="@{/js/trainer/title-submission.js}"></script>
+    <div th:replace="trainer/modal-detail-title :: modal-detail-title"></div>
+</body>
+</html>
+

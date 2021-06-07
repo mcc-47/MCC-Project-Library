@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> List Full Project - Trainer </title>
+    <div th:replace="fragments/header-link :: header-link"></div> 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"></link>
+</head>
+
+<body class="">
+    <div class="wrapper">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <div class="main-panel" id="main-panel">
+            <!-- Navbar -->
+            <div th:replace="fragments/header :: header"></div>
+            <!-- End Navbar -->
+            <div class="panel-header panel-header-lg">
+                <h1 class="text-white text-center">List Full Project MCC</h1>
+                <!--<h4 class="text-white text-center">MCC Project is stored here</h4>-->
+            </div>
+            <div class="content">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        List Full Project MCC
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="projectSubmission" class="table table-bordered table-striped table-hover-col-sm-3">
+                                <thead>
+
+                                <td>No</td>
+                                <td>Judul Project</td>
+                                <td>Link</td>
+                                <td>Trainer</td>
+                                <td>Aksi</td>
+                                </thead>
+
+
+
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div th:replace="fragments/footer :: footer"></div>
+        </div>
+    </div>
+    <!--   Core JS Files   -->
+    <div th:replace="fragments/jsTemplate :: jsTemplate"></div>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script> 
+    <script th:src="@{/js/trainer/project-submission.js}"></script>
+    <div th:replace="trainer/modal-detail-full :: modal-detail-full"></div>
+</body>
+</html>

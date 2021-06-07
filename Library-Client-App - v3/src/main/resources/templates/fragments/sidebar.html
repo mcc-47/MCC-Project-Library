@@ -1,0 +1,98 @@
+<div class="sidebar-container" th:fragment="sidebar">
+    <div class="sidebar" data-color="orange">
+        <div class="logo">
+            <a th:href="@{/dashboard}" sec:authorize="hasRole('ADMIN')" class="simple-text logo-normal text-center"> MCC ADMIN </a>
+            <a th:href="@{/dashboard}" sec:authorize="hasRole('TRAINEE')" class="simple-text logo-normal text-center"> MCC Trainee</a>
+            <a th:href="@{/dashboard}" sec:authorize="hasRole('TRAINER')" class="simple-text logo-normal text-center"> MCC Trainer </a>
+        </div>
+        <div class="sidebar-wrapper" id="sidebar-wrapper">
+            <ul class="nav">
+                 
+                <!--================bagian admin================-->
+                <li th:class="${#strings.contains(#httpServletRequest.requestURI,'/trainee')} ? 'menu-item active' : 'menu-item'"
+                    sec:authorize="hasRole('ADMIN')">
+                    <a th:href="@{/trainee}" class="menu-link">
+                        <i class="fa fa-folder-open" aria-hidden="true"></i> Data Trainee
+                    </a>
+                </li>
+                <li th:class="${#strings.contains(#httpServletRequest.requestURI,'/alumni')} ? 'menu-item active' : 'menu-item'"
+                    sec:authorize="hasRole('ADMIN')">
+                    <a th:href="@{/alumni}" class="menu-link">
+                        <i class="fa fa-folder-open" aria-hidden="true"></i> Data Alumni
+                    </a>
+                </li>
+                <li th:class="${#strings.contains(#httpServletRequest.requestURI,'/trainer')} ? 'menu-item active' : 'menu-item'"
+                    sec:authorize="hasRole('ADMIN')">
+                    <a th:href="@{/trainer}" class="menu-link">
+                        <i class="fa fa-folder-open" aria-hidden="true"></i> Data Trainer
+                    </a>
+                </li>
+                
+                <li th:class="${#strings.contains(#httpServletRequest.requestURI,'/project')} ? 'menu-item active' : 'menu-item'"
+                    sec:authorize="hasRole('ADMIN')">
+                    <a th:href="@{/project}" class="menu-link">
+                        <i class="fa fa-folder-open" aria-hidden="true"></i> Data Project
+                    </a>
+                </li>
+                <!--========================================================-->
+
+                <!--========= Bagian Trainee ============================-->
+                <li th:class="${#strings.contains(#httpServletRequest.requestURI,'/dashboard')} ? 'menu-item active' : 'menu-item'"
+                    sec:authorize="hasRole('TRAINEE')">
+                    <a th:href="@{/dashboard}" class="menu-link">
+                        <i class="fa fa-folder-open" aria-hidden="true"></i> Dashboard
+                    </a>
+                </li>
+                
+                 <li th:class="${#strings.contains(#httpServletRequest.requestURI,'/project/search-trainee')} ? 'menu-item active' : 'menu-item'"
+                    sec:authorize="hasRole('TRAINEE')">
+                    <a th:href="@{/project/search-trainee}" class="menu-link">
+                        <i class="fa fa-folder-open" aria-hidden="true"></i> Search Project
+                    </a>
+                </li>
+                
+                <li th:class="${#strings.contains(#httpServletRequest.requestURI,'/project/my-project')} ? 'menu-item active' : 'menu-item'"
+                    sec:authorize="hasRole('TRAINEE')" id="hideMyProject">
+                    <a th:href="@{/project/my-project}" class="menu-link">
+                        <i class="fa fa-folder-open" aria-hidden="true"></i> My Project
+                    </a>
+                </li>
+                
+                <li th:class="${#strings.contains(#httpServletRequest.requestURI,'/history/my-history')} ? 'menu-item active' : 'menu-item'"
+                    sec:authorize="hasRole('TRAINEE')" style="display: none">
+                    <a th:href="@{/history/my-history}" class="menu-link">
+                        <i class="fa fa-folder-open" aria-hidden="true"></i> My History
+                    </a>
+                </li>
+              
+                <!--===================================================-->
+
+                <!--============== Bagian Trainer ===================-->
+                 <li th:class="${#strings.contains(#httpServletRequest.requestURI,'/project/title-submission')} ? 'menu-item active' : 'menu-item'"
+                    sec:authorize="hasRole('TRAINER')">
+                    <a th:href="@{/project/title-submission}" class="menu-link">
+                        <i class="fa fa-folder-open" aria-hidden="true"></i> Title Submission
+                    </a>
+                </li>
+                
+                <li th:class="${#strings.contains(#httpServletRequest.requestURI,'/project/project-submission')} ? 'menu-item active' : 'menu-item'"
+                    sec:authorize="hasRole('TRAINER')">
+                    <a th:href="@{/project/project-submission}" class="menu-link">
+                        <i class="fa fa-folder-open" aria-hidden="true"></i> Project Submission
+                    </a>
+                </li>
+                
+<!--                <li th:class="${#strings.contains(#httpServletRequest.requestURI,'/history/status')} ? 'menu-item active' : 'menu-item'"
+                    sec:authorize="hasRole('TRAINER')">
+                    <a th:href="@{/history/status}" class="menu-link">
+                        <i class="fa fa-folder-open" aria-hidden="true"></i> History Trainee
+                    </a>
+                </li>-->
+                <!--=======================================================-->
+
+
+
+            </ul>
+        </div>
+    </div>
+</div>
